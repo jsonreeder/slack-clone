@@ -8,6 +8,5 @@
 /tmp/*
 bundle.js
 bundle.js.map
-Gemfile.lock
 node_modules/
 npm-debug.log
