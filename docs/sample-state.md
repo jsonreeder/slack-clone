@@ -1,8 +1,5 @@
-```js
 {
   currentUser: {
-    id: 1,
-    name: "Maude Chardin",
     username: "maude"
   },
   forms: {
@@ -21,21 +18,21 @@
   },
   directMessages: {
     1: {
-      memberUserNames: [
+      usernames: [
         "slackbot",
         "maude"
       ],
       hasUnread: false
     },
     2: {
-      memberUserNames: [
+      usernames: [
         "harold",
         "maude"
       ],
       hasUnread: false
     },
     1: {
-      memberUserNames: [
+      usernames: [
         "maude"
       ],
       hasUnread: false
@@ -45,27 +42,35 @@
     name: "general",
     topic: "Company-wide announcements and work-based matters"
     greeting: "This channel is for team-wide communication and announcements. All team members are in this channel.",
-    memberCount: 42
+    members: {
+      1: {
+        username: "harold",
+        avatar: "http://imagelinketc.com/abc"
+      },
+      2: {
+        username: "maude",
+        avator: "http://imagelinketc.com/def"
+      }
+    }
   },
   messages: {
     1: {
-      senderUserName: "harold",
-      senderAvatar: "http://imagelinketc.com/abc",
+      username: "harold",
+      avatar: "http://imagelinketc.com/abc",
       datetimeSent: 1234567,
       body: "How's it goin?"
     },
-    1: {
-      senderUserName: "maude",
-      senderAvatar: "http://imagelinketc.com/def",
+    2: {
+      username: "maude",
+      avatar: "http://imagelinketc.com/def",
       datetimeSent: 1234587,
       body: "Fine and dandy."
     },
     3: {
-      senderUserName: "harold",
-      senderAvatar: "http://imagelinketc.com/abc",
+      username: "harold",
+      avatar: "http://imagelinketc.com/abc",
       datetimeSent: 1234599,
       body: "That's swell."
     },
   }
 }
-```

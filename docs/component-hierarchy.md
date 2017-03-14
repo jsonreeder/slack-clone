@@ -1,4 +1,4 @@
-# Component Heirarchy
+# Component Hierarchy
 
 ## Components
 
@@ -24,11 +24,14 @@
     - Channels
     - DirectMessages
   - HomeContainer
-    - ChannelTitle
-    - ChannelGreeting
+    - ForumDetail
+    - ForumGreeting
     - MessageHistoryContainer
       - Message
     - Compose
+  - ForumDetail
+    - ForumDetails
+    - ForumMembersIndex
 
 ### Join New Channel
 - JoinChannelIndex
@@ -42,10 +45,11 @@
 
 ## Routes
 
-| Path                     | Component             |
-|--------------------------|-----------------------|
-| "/"                      | "SplashContainer"     |
-| "/try"                   | "TryAuth"             |
-| "/join"                  | "JoinContainer"       |
-| "/sign-in"               | "SignInContainer"     |
-| "/messages/:channelName" | "MessagesContainer"   |
+| Path                           | Component             |
+|--------------------------------|-----------------------|
+| "/"                            | "SplashContainer"     |
+| "/try"                         | "TryAuth"             |
+| "/join"                        | "JoinContainer"       |
+| "/sign-in"                     | "SignInContainer"     |
+| "/messages/:forumName"         | "MessagesContainer"   |
+| "/messages/:forumName/details" | "ForumDetail"         |

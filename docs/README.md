@@ -81,3 +81,4 @@ _Slack features that I will not attempt to integrate_
 - Notifications
 - Snippets
 - Creating new channels, modifying channels (beyond creating new direct messages)
+- User presence / absence (green circles)
