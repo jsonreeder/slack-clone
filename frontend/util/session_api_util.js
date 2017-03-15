@@ -1,8 +1,3 @@
-let user = {
-  username: 'harold',
-  password: 'password'
-};
-
 export const join = user => (
   $.ajax({
     method: 'post',
