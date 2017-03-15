@@ -1,0 +1,26 @@
+.splash {
+  background: $gray-background;
+  display: flex;
+  height: 700px;
+  font-family: $sans-serif;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.splash-content {
+  strong {
+    color: $pink;
+  }
+
+  p {
+    font-size: 1.5em;
+    color: $gray-light-text;
+  }
+
+  h1 {
+    font-weight: 900;
+    font-size: 94px;
+    padding: 20px 0;
+  }
+}
