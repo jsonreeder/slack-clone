@@ -1,0 +1,36 @@
+.auth-header {
+  background: $gray-background;
+  font-family: $sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand {
+    color: $black-logo;
+    font-size: 2em;
+    font-weight: bold;
+
+    li {
+      margin: 0 5px;
+    }
+
+  }
+
+  .nav {
+    color: $gray-dark-text;
+    font-weight: bold;
+
+    li {
+      margin: 0 10px;
+    }
+  }
+
+}
+
+
+
