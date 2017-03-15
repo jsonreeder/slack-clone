@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Splash = () => (
   <div>
@@ -9,9 +10,12 @@ const Splash = () => (
       </ul>
       <ul className='nav'>
         <li>Product</li>
-        <li>Sign in</li>
+        <li>
+          <Link to="/signIn">Sign in</Link>
+        </li>
       </ul>
     </header>
+
     <section className='splash'>
       <div className='splash-content'>
         <h1>
@@ -20,6 +24,7 @@ const Splash = () => (
         <p>
           A chat app, inspired by Slack
         </p>
+          <Link to="/join">Join</Link>
       </div>
     </section>
   </div>
