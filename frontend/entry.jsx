@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
 
   ReactDOM.render(
-    <Root />,
+    <Root store={ store }/>,
     root
   );
 });

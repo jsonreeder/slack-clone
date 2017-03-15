@@ -1,7 +1,8 @@
 import React from 'react';
 
-const App = () => (
+const App = ({ children }) => (
   <section className='app-container'>
+    { children }
     <header className='auth-header'>
       <ul className='brand'>
         <li>[logo]</li>
