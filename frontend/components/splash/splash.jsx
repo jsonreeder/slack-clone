@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Splash = () => (
+const splashPage = () => (
   <div>
     <header className='splash-header'>
       <ul className='brand'>
@@ -11,7 +11,7 @@ const Splash = () => (
       <ul className='nav'>
         <li>Product</li>
         <li>
-          <Link to="/signIn">Sign in</Link>
+          <Link to="/signin">Sign in</Link>
         </li>
       </ul>
     </header>
@@ -28,6 +28,17 @@ const Splash = () => (
       </div>
     </section>
   </div>
+);
+
+const welcome = (currentUser, signOut) => (
+  <hgroup>
+    <h2>Hi, {currentUser.username}</h2>
+    <button onClick={signOut}>Sign out</button>
+  </hgroup>
+);
+
+const Splash = ({ currentUser, signOut }) => (
+  currentUser ? welcome(currentUser, signOut) : splashPage()
 );
 
 export default Splash;
