@@ -1,5 +1,5 @@
 # Schema Information
-- Each table will also include timestamps.
+- Each table will also include timestamps (`created_at`, `updated_at`)
 - Avatars and other images will be stored as Cloudinary links.
 
 ## Users
