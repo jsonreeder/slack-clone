@@ -1,20 +1,11 @@
 import React from 'react';
 
 import GreetingContainer from './greeting/greeting_container';
+import SplashHeader from './splash/slash_header';
 
 const App = ({ children }) => (
   <section className='app-container'>
-    <header className='auth-header'>
-      <ul className='brand'>
-        <li>[logo]</li>
-        <li>smack</li>
-      </ul>
-      <ul className='nav'>
-        <li>Product</li>
-        <li>Sign in</li>
-      </ul>
-    </header>
-
+    <SplashHeader />
     <GreetingContainer />
     { children }
 
