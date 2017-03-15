@@ -1,0 +1,59 @@
+.link-button,
+button {
+  border: $border-button;
+  padding: 9px;
+  border-radius: 4px;
+  color: $gray-light-text;
+}
+
+.link-button:hover {
+  color: $black;
+  border: $border-button-hover;
+}
+
+.large-button {
+  border: $border;
+  border-radius: 5px;
+  padding: 15px;
+  width: 400px;
+  font-size: 1.2em;
+}
+
+.splash-button {
+  border: $border;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+  width: 400px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.large-button:hover,
+.splash-button:hover {
+  color: $black;
+}
+
+.green {
+  background: $green;
+  color: $white;
+  border: $green;
+}
+
+.gray {
+  background: $gray;
+  color: $white;
+  border: $green;
+}
+
+.blue {
+  background: $blue;
+  color: $white;
+  border: $blue;
+}
+
+.purple {
+  background: $purple;
+  color: $white;
+  border: $purple;
+}

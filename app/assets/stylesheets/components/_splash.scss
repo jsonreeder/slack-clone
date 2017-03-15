@@ -1,7 +1,8 @@
 .splash {
   background: $gray-background;
+  color: $black;
   display: flex;
-  height: 700px;
+  height: 500px;
   font-family: $sans-serif;
   justify-content: center;
   flex-direction: column;
@@ -16,6 +17,7 @@
   p {
     font-size: 1.5em;
     color: $gray-light-text;
+    padding: 0 10px;
   }
 
   h1 {
@@ -23,4 +25,10 @@
     font-size: 94px;
     padding: 20px 0;
   }
+}
+
+.splash-links {
+  width: 400px;
+  display: flex;
+  padding: 20px 0;
 }
