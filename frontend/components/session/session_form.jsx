@@ -32,7 +32,7 @@ class SessionForm extends React.Component {
 
   navLink() {
     if (this.props.formType === 'signin') {
-      return <Link to='/join'>join instead</Link>;
+      return <Link to='/join'>Join</Link>;
     } else {
       return <Link to='/signin'>sign in instead</Link>;
     }
@@ -53,8 +53,21 @@ class SessionForm extends React.Component {
   render() {
     return(
       <div>
+        <header className='splash-header'>
+          <ul className='brand'>
+            <li>[logo]</li>
+            <li>slack</li>
+          </ul>
+          <ul className='nav'>
+            <li>Product</li>
+            <li>
+              {this.navLink()}
+            </li>
+          </ul>
+        </header>
+
         <form onSubmit={this.handleSubmit}>
-          Please {this.props.formType} or {this.navLink()}
+          Please {this.props.formType} or 
           {this.renderErrors()}
           <div className="login-form">
             <label>
