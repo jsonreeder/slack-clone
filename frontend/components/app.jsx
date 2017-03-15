@@ -1,8 +1,9 @@
 import React from 'react';
 
+import GreetingContainer from './greeting/greeting_container';
+
 const App = ({ children }) => (
   <section className='app-container'>
-    { children }
     <header className='auth-header'>
       <ul className='brand'>
         <li>[logo]</li>
@@ -13,6 +14,10 @@ const App = ({ children }) => (
         <li>Sign in</li>
       </ul>
     </header>
+
+    <GreetingContainer />
+    { children }
+
     <section className='splash'>
       <div className='splash-content'>
         <h1>
