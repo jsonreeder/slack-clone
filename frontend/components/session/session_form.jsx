@@ -8,16 +8,6 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate() {
-    this.redirectIfLoggedIn();
-  }
-
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      this.props.router.push('/');
-    }
-  }
-
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -31,7 +21,7 @@ class SessionForm extends React.Component {
   }
 
   navLink() {
-    if (this.props.formType === 'login') {
+    if (this.props.formType === 'signin') {
       return <Link to='/join'>join instead</Link>;
     } else {
       return <Link to='/signin'>sign in instead</Link>;
@@ -54,7 +44,6 @@ class SessionForm extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h1>Sign In / Join</h1>
           Please {this.props.formType} or {this.navLink()}
           {this.renderErrors()}
           <div className="login-form">
