@@ -23,7 +23,11 @@ const Root = ({ store }) => {
           component={ SessionFormContainer }
           onEnter={ _redirectIfLoggedIn }
         />
-          <Route path="/join" component={ SessionFormContainer } />
+        <Route
+          path="/join"
+          component={ SessionFormContainer }
+          onEnter={ _redirectIfLoggedIn }
+        />
       </Router>
     </Provider>
   );
