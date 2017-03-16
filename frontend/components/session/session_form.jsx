@@ -93,7 +93,7 @@ class SessionForm extends React.Component {
                       type='text'
                       value={this.state.username}
                       onChange={this.update('username')}
-                      className="login-input"
+                      className="login-input large-button"
                     />
                   </li>
                   <li>
@@ -101,13 +101,17 @@ class SessionForm extends React.Component {
                       type='password'
                       value={this.state.password}
                       onChange={this.update('password')}
-                      className="login-input"
+                      className="login-input large-button"
                     />
                   </li>
                 </ul>
               {this.renderErrors()}
               </div>
-              <input type='submit' value='Submit' className='green-button'/>
+              <input
+                type='submit'
+                value='Submit'
+                className='green large-button'
+              />
             </div>
           </form>
         </div>

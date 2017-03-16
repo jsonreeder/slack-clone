@@ -23,7 +23,7 @@ const splashPage = () => (
         <p>
           A chat app, inspired by Slack
         </p>
-        <Link to="/join" className="link-button">Join</Link>
+        <Link to="/join" className="link-button green">Join</Link>
       </div>
     </section>
   </div>
