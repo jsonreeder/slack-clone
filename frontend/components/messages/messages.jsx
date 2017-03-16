@@ -96,7 +96,7 @@ class Message extends React.Component {
       <div className="compose">
         Message #general (coming soon)
       </div>
-    )
+    );
   }
 
 
