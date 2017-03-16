@@ -127,12 +127,17 @@ class SessionForm extends React.Component {
       authFormBody = <div className="login-form">
         <ul>
           <li>
-            <button onClick={this.signInHarold} className="link-button">
+            <button
+              onClick={this.signInHarold}
+              className="splash-button large-button blue"
+            >
               Harold
             </button>
           </li>
           <li>
-            <button onClick={this.signInMaude} className="link-button">
+            <button
+              onClick={this.signInMaude}
+              className="splash-button large-button purple">
               Maude
             </button>
           </li>
