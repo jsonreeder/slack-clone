@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+import { signIn } from '../../actions/session_actions';
+
 class SessionForm extends React.Component {
   constructor (props) {
     super(props);
@@ -31,22 +33,22 @@ class SessionForm extends React.Component {
   }
 
   navLinks() {
-    let signIn = <li><Link to='/signin' className="link-button">Sign in</Link></li>;
-    let join = <li><Link to='/join' className="link-button">Join</Link></li>;
+    let signInPage = <li><Link to='/signin' className="link-button">Sign in</Link></li>;
+    let joinPage = <li><Link to='/join' className="link-button">Join</Link></li>;
     let tryPage = <li><Link to='/try' className="link-button">Try</Link></li>;
 
     if (this.props.formType === 'signin') {
-      signIn = undefined;
+      signInPage = undefined;
     } else if (this.props.formType === 'join') {
-      join = undefined;
+      joinPage = undefined;
     } else if (this.props.formType === 'try') {
       tryPage = undefined;
     }
 
     return (
       <ul className='nav'>
-        {join}
-        {signIn}
+        {joinPage}
+        {signInPage}
         {tryPage}
       </ul>
     );
@@ -105,6 +107,19 @@ class SessionForm extends React.Component {
     return instructions;
   }
 
+  signInHarold() {
+    window.store.dispatch(
+      signIn({user: {username: "harold", password: "password"}})
+    );
+  }
+
+  signInMaude() {
+    window.store.dispatch(
+      signIn({user: {username: "maude", password: "password"}})
+    );
+  }
+
+
   authFormBody() {
     let authFormBody;
 
@@ -112,8 +127,14 @@ class SessionForm extends React.Component {
       authFormBody = <div className="login-form">
         <ul>
           <li>
-            <Link to='/signin' className="link-button">Harold</Link>
-            <Link to='/signin' className="link-button">Maude</Link>
+            <button onClick={this.signInHarold} className="link-button">
+              Harold
+            </button>
+          </li>
+          <li>
+            <button onClick={this.signInMaude} className="link-button">
+              Maude
+            </button>
           </li>
         </ul>
       </div>;
