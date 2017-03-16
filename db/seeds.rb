@@ -1,3 +1,13 @@
 User.destroy_all
 User.create!(username: 'harold', password: 'password')
 User.create!(username: 'maude', password: 'password')
+User.create!(username: 'abbot', password: 'password')
+User.create!(username: 'costello', password: 'password')
+User.create!(username: 'poncho', password: 'password')
+User.create!(username: 'lefty', password: 'password')
+User.create!(username: 'abelard', password: 'password')
+User.create!(username: 'heloise', password: 'password')
+User.create!(username: 'luke', password: 'password')
+User.create!(username: 'c-3po', password: 'password')
+User.create!(username: 'lyra', password: 'password')
+User.create!(username: 'pantalaimon', password: 'password')
