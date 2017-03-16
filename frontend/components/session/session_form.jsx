@@ -128,25 +128,27 @@ class SessionForm extends React.Component {
       ["lyra", "pantalaimon"]
     ];
 
+    const colorClass = [
+      "splash-button large-button blue",
+      "splash-button large-button purple",
+    ];
+
     const chosenGuests = guests[Math.floor(Math.random() * guests.length)];
 
     return(
       <ul>
-        <li>
-          <button
-            onClick={this.signInGuest(chosenGuests[0])}
-            className="splash-button large-button blue"
-          >
-            {chosenGuests[0]}
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={this.signInGuest(chosenGuests[1])}
-            className="splash-button large-button purple">
-            {chosenGuests[1]}
-          </button>
-        </li>
+        {
+          chosenGuests.map(	(guest, idx) => (
+            <li key={idx}>
+              <button
+                onClick={this.signInGuest(guest)}
+                className={colorClass[idx]}
+              >
+                {guest}
+              </button>
+            </li>
+          ))
+        }
       </ul>
     );
   }
