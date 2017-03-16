@@ -31,7 +31,6 @@ const home = () => {
 const Message = ({ currentUser, signOut }) => (
   <div className="messages-container">
     {sidebar(currentUser.username, signOut)}
-    {home()}
   </div>
 );
 
