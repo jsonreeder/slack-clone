@@ -26,13 +26,15 @@ class Message extends React.Component {
   home () {
     return(
       <div className="home-container">
-        <h1 className="forum-name">#general</h1>
-        {this.forumDetail()}
+        {this.forumHeader()}
+        {this.forumBody()}
       </div>
     );
   }
 
   // Children
+
+  // Sidebar
   userInfo (username, signOut) {
     const formattedName = username[0].toUpperCase() + username.slice(1);
     return(
@@ -44,6 +46,26 @@ class Message extends React.Component {
     );
   }
 
+  // Home
+  forumHeader () {
+    return(
+      <div className="forum-header">
+        <h1 className="forum-name">#general</h1>
+      </div>
+    );
+  }
+
+  forumBody () {
+    return(
+      <div className="forum-body">
+        <p>
+          Forum Body
+        </p>
+        {this.forumDetail()}
+      </div>
+    );
+  }
+
   forumDetail () {
     return(
       <div className="forum-detail">
@@ -52,6 +74,7 @@ class Message extends React.Component {
     );
   }
 
+  // Render
   render () {
     if (!this.props.currentUser) {
       return(
