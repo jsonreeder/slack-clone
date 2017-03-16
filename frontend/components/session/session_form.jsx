@@ -62,10 +62,12 @@ class SessionForm extends React.Component {
     return(
       <div>
         <header className='header auth-header'>
-          <ul className='brand'>
-            <li>[logo]</li>
-            <li>slack</li>
-          </ul>
+          <a href="/">
+            <ul className='brand'>
+              <li>[logo]</li>
+              <li>slack</li>
+            </ul>
+          </a>
           <ul className='nav'>
             <li>
               {this.navLink()}

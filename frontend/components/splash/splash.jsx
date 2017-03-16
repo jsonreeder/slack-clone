@@ -4,10 +4,12 @@ import { Link } from 'react-router';
 const splashPage = () => (
   <div>
     <header className='header splash-header'>
-      <ul className='brand'>
-        <li>[logo]</li>
-        <li>slack</li>
-      </ul>
+      <a href="/">
+        <ul className='brand'>
+          <li>[logo]</li>
+          <li>slack</li>
+        </ul>
+      </a>
       <ul className='nav'>
         <li>
           <Link to="/signin" className="link-button">Sign in</Link>
