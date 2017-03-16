@@ -1,5 +1,4 @@
-.auth-header {
-  background: $gray-background;
+.header {
   font-family: $sans-serif;
   display: flex;
   justify-content: space-between;
@@ -11,7 +10,7 @@
   }
 
   .brand {
-    color: $black-logo;
+    color: $black;
     font-size: 2em;
     font-weight: bold;
 
@@ -32,5 +31,12 @@
 
 }
 
+.splash-header {
+  background: $gray-background;
+}
 
+.auth-header {
+  background: white;
+  border-bottom: $border;
+}
 
