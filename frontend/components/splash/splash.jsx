@@ -10,7 +10,7 @@ const splashPage = () => (
       </ul>
       <ul className='nav'>
         <li>
-          <Link to="/signin">Sign in</Link>
+          <Link to="/signin" className="link-button">Sign in</Link>
         </li>
       </ul>
     </header>
@@ -23,17 +23,31 @@ const splashPage = () => (
         <p>
           A chat app, inspired by Slack
         </p>
-          <Link to="/join">Join</Link>
+        <Link to="/join" className="link-button">Join</Link>
       </div>
     </section>
   </div>
 );
 
 const welcome = (currentUser, signOut) => (
-  <hgroup>
-    <h2>Hi, {currentUser.username}</h2>
-    <button onClick={signOut}>Sign out</button>
-  </hgroup>
+  <div>
+    <header className='header splash-header'>
+      <ul className='brand'>
+        <li>[logo]</li>
+        <li>slack</li>
+      </ul>
+      <ul className='nav'>
+        <li>
+          <button onClick={signOut}>Sign out</button>
+        </li>
+      </ul>
+    </header>
+    <div className="splash">
+      <div className='splash-content'>
+        <h1>Hi, {currentUser.username}</h1>
+      </div>
+    </div>
+  </div>
 );
 
 const Splash = ({ currentUser, signOut }) => (
