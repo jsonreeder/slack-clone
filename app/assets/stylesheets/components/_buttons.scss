@@ -1,0 +1,11 @@
+.link-button,
+button {
+  border: $border-button;
+  padding: 9px;
+  border-radius: 4px;
+}
+
+.green-button {
+  background: $green;
+  color: $white;
+}
