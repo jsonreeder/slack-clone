@@ -8,39 +8,40 @@
   padding: 10px;
   color: $gray-light-text;
   width: 250px;
+}
 
-  .user-info {
+.user-info {
 
-    li {
-      padding: 3px 0;
-    }
+  li {
+    padding: 3px 0;
+  }
 
-    .name {
-      color: $white;
-      font-size: 1.3em;
-    }
+  .name {
+    color: $white;
+    font-size: 1.3em;
+  }
 
-    button {
-      border: none;
-      padding: 0;
+  button {
+    border: none;
+    padding: 0;
 
-    }
+  }
 
-    button:hover {
-      color: $green;
-    }
+  button:hover {
+    color: $green;
   }
 }
 
 .home-container {
-  background: $blue;
   display: flex;
   flex-direction: column;
   width: 100vw;
+  background: $white;
 }
 
 .forum-header {
-  background: $white;
+  padding: 10px;
+  border-bottom: $border;
 }
 
 .forum-body {
@@ -49,6 +50,28 @@
 }
 
 .forum-detail {
-  background: $gray;
+  border-left: $border;
   height: 100vh;
+  width: 250px;
+  padding: 10px;
+}
+
+.message-container {
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.message-history {
+  height: 100%;
+}
+
+.compose {
+  background: $white;
+  border: $border;
+  padding: 10px;
+  border-radius: 5px;
+  color: #DDDDDD;
 }

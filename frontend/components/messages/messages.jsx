@@ -58,10 +58,17 @@ class Message extends React.Component {
   forumBody () {
     return(
       <div className="forum-body">
-        <p>
-          Forum Body
-        </p>
+        {this.messageContainer()}
         {this.forumDetail()}
+      </div>
+    );
+  }
+
+  messageContainer () {
+    return(
+      <div className="message-container">
+        {this.messageHistory()}
+        {this.compose()}
       </div>
     );
   }
@@ -73,6 +80,25 @@ class Message extends React.Component {
       </div>
     );
   }
+
+  // Message
+
+  messageHistory () {
+    return(
+      <div className="message-history">
+        MessageHistory
+      </div>
+    );
+  }
+
+  compose () {
+    return(
+      <div className="compose">
+        Message #general (coming soon)
+      </div>
+    )
+  }
+
 
   // Render
   render () {
