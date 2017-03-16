@@ -1,0 +1,47 @@
+.auth-form-container {
+  background: $gray-background;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $white;
+  margin: 30px;
+  padding: 10px;
+
+}
+
+.auth-form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+
+  h1 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+
+  .subtitle {
+    font-size: .8em;
+  }
+}
+
+.auth-form-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  strong {
+    font-weight: bold;
+  }
+
+  input.login-input {
+    border: .5px black solid;
+  }
+}

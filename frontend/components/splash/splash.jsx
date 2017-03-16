@@ -3,13 +3,12 @@ import { Link } from 'react-router';
 
 const splashPage = () => (
   <div>
-    <header className='splash-header'>
+    <header className='header splash-header'>
       <ul className='brand'>
         <li>[logo]</li>
         <li>slack</li>
       </ul>
       <ul className='nav'>
-        <li>Product</li>
         <li>
           <Link to="/signin">Sign in</Link>
         </li>

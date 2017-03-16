@@ -38,6 +38,14 @@ class SessionForm extends React.Component {
     }
   }
 
+  title() {
+    if (this.props.formType === 'signin') {
+      return <h1>Sign in to Slack Clone</h1>;
+    } else {
+      return <Link to='/signin'>Join Slack Clone</Link>;
+    }
+  }
+
   renderErrors() {
     return(
       <ul>
@@ -53,40 +61,52 @@ class SessionForm extends React.Component {
   render() {
     return(
       <div>
-        <header className='splash-header'>
+        <header className='header auth-header'>
           <ul className='brand'>
             <li>[logo]</li>
             <li>slack</li>
           </ul>
           <ul className='nav'>
-            <li>Product</li>
             <li>
               {this.navLink()}
             </li>
           </ul>
         </header>
 
-        <form onSubmit={this.handleSubmit}>
-          Please {this.props.formType} or 
-          {this.renderErrors()}
-          <div className="login-form">
-            <label>
-              <input
-                type='text'
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
-            </label>
-              <input
-                type='password'
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-          </div>
-          <input type='submit' value='Submit' />
-        </form>
+        <div className='auth-form-container'>
+          <form onSubmit={this.handleSubmit} className='auth-form'>
+            <div className="auth-form-header">
+              {this.title()}
+              <p className='subtitle'>
+                slack-copy.heroku.com
+              </p>
+            </div>
+            <div className="auth-form-body">
+              <p>
+                Enter your <strong>username</strong>&nbsp;
+                and <strong>password</strong>.
+              </p>
+              {this.renderErrors()}
+              <div className="login-form">
+                <label>
+                  <input
+                    type='text'
+                    value={this.state.username}
+                    onChange={this.update('username')}
+                    className="login-input"
+                  />
+                </label>
+                <input
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="login-input"
+                />
+              </div>
+              <input type='submit' value='Submit' />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
