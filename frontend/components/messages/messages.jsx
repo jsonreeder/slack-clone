@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { hashHistory } from 'react-router';
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (!newProps.currentUser) {
+      hashHistory.push('/');
+    }
   }
 
   userInfo (username, signOut) {
