@@ -105,6 +105,50 @@ class SessionForm extends React.Component {
     return instructions;
   }
 
+  authFormBody() {
+    let authFormBody;
+
+    if (this.props.formType === 'try') {
+      authFormBody = <div className="login-form">
+        <ul>
+          <li>
+            <Link to='/signin' className="link-button">Harold</Link>
+            <Link to='/signin' className="link-button">Maude</Link>
+          </li>
+        </ul>
+      </div>;
+    } else {
+      authFormBody = <div className="login-form">
+        <ul>
+          <li>
+            <input
+              type='text'
+              value={this.state.username}
+              onChange={this.update('username')}
+              className="login-input large-button"
+            />
+          </li>
+          <li>
+            <input
+              type='password'
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="login-input large-button"
+            />
+          </li>
+        </ul>
+        {this.renderErrors()}
+        <input
+          type='submit'
+          value='Submit'
+          className='green large-button'
+        />
+      </div>;
+    }
+
+    return authFormBody;
+  }
+
   authForm() {
     return(
       <div className='auth-form-container'>
@@ -117,36 +161,11 @@ class SessionForm extends React.Component {
           </div>
           <div className="auth-form-body">
             {this.instructions()}
-            <div className="login-form">
-              <ul>
-                <li>
-                  <input
-                    type='text'
-                    value={this.state.username}
-                    onChange={this.update('username')}
-                    className="login-input large-button"
-                  />
-                </li>
-                <li>
-                  <input
-                    type='password'
-                    value={this.state.password}
-                    onChange={this.update('password')}
-                    className="login-input large-button"
-                  />
-                </li>
-              </ul>
-            {this.renderErrors()}
-            </div>
-            <input
-              type='submit'
-              value='Submit'
-              className='green large-button'
-            />
+            {this.authFormBody()}
           </div>
         </form>
       </div>
-    )
+    );
   }
 
   render() {
