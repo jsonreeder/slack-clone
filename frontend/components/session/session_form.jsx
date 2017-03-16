@@ -30,19 +30,34 @@ class SessionForm extends React.Component {
     this.props.processForm({user});
   }
 
-  navLink() {
+  navLinks() {
+    let signIn = <li><Link to='/signin' className="link-button">Sign in</Link></li>;
+    let join = <li><Link to='/join' className="link-button">Join</Link></li>;
+    let tryPage = <li><Link to='/try' className="link-button">Try</Link></li>;
     if (this.props.formType === 'signin') {
-      return <Link to='/join' className="link-button">Join</Link>;
-    } else {
-      return <Link to='/signin' className="link-button">Sign in</Link>;
+      signIn = undefined;
+    } else if (this.props.formType === 'join') {
+      join = undefined;
+    } else if (this.props.formType === 'try') {
+      tryPage = undefined;
     }
+
+    return (
+      <ul className='nav'>
+        {join}
+        {signIn}
+        {tryPage}
+      </ul>
+    );
   }
 
   title() {
     if (this.props.formType === 'signin') {
       return <h1>Sign in to Slack Clone</h1>;
-    } else {
+    } else if (this.props.formType === 'join') {
       return <h1>Join Slack Clone</h1>;
+    } else {
+      return <h1>Try Slack Clone</h1>;
     }
   }
 
@@ -68,11 +83,7 @@ class SessionForm extends React.Component {
               <li>slack</li>
             </ul>
           </a>
-          <ul className='nav'>
-            <li>
-              {this.navLink()}
-            </li>
-          </ul>
+          {this.navLinks()}
         </header>
 
         <div className='auth-form-container'>
