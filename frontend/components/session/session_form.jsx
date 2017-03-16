@@ -1,23 +1,29 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import {
+  Link,
+  withRouter
+} from 'react-router';
 
 class SessionForm extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = {
+      username: "",
+      password: ""
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signInGuest = this.signInGuest.bind(this);
   }
 
-	componentDidUpdate() {
-		this.redirectIfLoggedIn();
-	}
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
 
-	redirectIfLoggedIn() {
-		if (this.props.loggedIn) {
-			this.props.router.push("/");
-		}
-	}
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.router.push("/");
+    }
+  }
 
   update(field) {
     return e => this.setState({
@@ -28,13 +34,18 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({user});
+    this.props.processForm({
+      user
+    });
   }
 
   navLinks() {
-    let signInPage = <li><Link to='/signin' className="link-button">Sign in</Link></li>;
-    let joinPage = <li><Link to='/join' className="link-button">Join</Link></li>;
-    let tryPage = <li><Link to='/try' className="link-button">Try</Link></li>;
+    let signInPage =
+      <li><Link to='/signin' className="link-button">Sign in</Link></li>;
+    let joinPage =
+      <li><Link to='/join' className="link-button">Join</Link></li>;
+    let tryPage =
+      <li><Link to='/try' className="link-button">Try</Link></li>;
 
     if (this.props.formType === 'signin') {
       signInPage = undefined;
@@ -64,7 +75,7 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return(
+    return (
       <ul className="errors">
         {this.props.errors.map((error, idx) => (
           <li key={`error-${idx}`}>
@@ -76,7 +87,7 @@ class SessionForm extends React.Component {
   }
 
   authHeader() {
-    return(
+    return (
       <header className='header auth-header'>
         <a href="/">
           <ul className='brand'>
@@ -93,11 +104,13 @@ class SessionForm extends React.Component {
     let instructions;
 
     if (this.props.formType === 'try') {
-      instructions = <p>
+      instructions =
+        <p>
         Pick a <strong>guest</strong> personality.
       </p>;
     } else {
-      instructions = <p>
+      instructions =
+        <p>
         Enter your <strong>username</strong>&nbsp;
         and <strong>password</strong>.
       </p>;
@@ -135,7 +148,7 @@ class SessionForm extends React.Component {
 
     const chosenGuests = guests[Math.floor(Math.random() * guests.length)];
 
-    return(
+    return (
       <ul>
         {
           chosenGuests.map(	(guest, idx) => (
@@ -157,11 +170,13 @@ class SessionForm extends React.Component {
     let authFormBody;
 
     if (this.props.formType === 'try') {
-      authFormBody = <div className="login-form">
+      authFormBody =
+        <div className="login-form">
       {this.generateGuestPair()}
       </div>;
     } else {
-      authFormBody = <div className="login-form">
+      authFormBody =
+        <div className="login-form">
         <ul>
           <li>
             <input
@@ -193,7 +208,7 @@ class SessionForm extends React.Component {
   }
 
   authForm() {
-    return(
+    return (
       <div className='auth-form-container'>
         <form onSubmit={this.handleSubmit} className='auth-form'>
           <div className="auth-form-header">
@@ -212,7 +227,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         {this.authHeader()}
         {this.authForm()}
