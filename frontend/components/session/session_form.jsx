@@ -34,6 +34,7 @@ class SessionForm extends React.Component {
     let signIn = <li><Link to='/signin' className="link-button">Sign in</Link></li>;
     let join = <li><Link to='/join' className="link-button">Join</Link></li>;
     let tryPage = <li><Link to='/try' className="link-button">Try</Link></li>;
+
     if (this.props.formType === 'signin') {
       signIn = undefined;
     } else if (this.props.formType === 'join') {
@@ -88,6 +89,17 @@ class SessionForm extends React.Component {
   }
 
   authForm() {
+    let instructions = <p>
+      Enter your <strong>username</strong>&nbsp;
+      and <strong>password</strong>.
+    </p>;
+
+    if (this.props.formType === 'try') {
+      instructions = <p>
+        Pick a <strong>guest</strong> personality.
+      </p>;
+    }
+
     return(
       <div className='auth-form-container'>
         <form onSubmit={this.handleSubmit} className='auth-form'>
@@ -98,10 +110,7 @@ class SessionForm extends React.Component {
             </p>
           </div>
           <div className="auth-form-body">
-            <p>
-              Enter your <strong>username</strong>&nbsp;
-              and <strong>password</strong>.
-            </p>
+            {instructions}
             <div className="login-form">
               <ul>
                 <li>
