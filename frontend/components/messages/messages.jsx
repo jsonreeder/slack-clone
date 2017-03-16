@@ -41,12 +41,18 @@ class Message extends React.Component {
   }
 
   render () {
-    return(
-      <div className="messages-container">
-        {this.sidebar(this.props.currentUser.username, this.props.signOut)}
-        {this.home()}
-      </div>
-    );
+    if (!this.props.currentUser) {
+      return(
+        <div></div>
+      );
+    } else {
+      return(
+        <div className="messages-container">
+          {this.sidebar(this.props.currentUser.username, this.props.signOut)}
+          {this.home()}
+        </div>
+      );
+    }
   }
 }
 
