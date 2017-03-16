@@ -1,19 +1,20 @@
 .auth-form-container {
   background: $gray-background;
+  color: $gray-light-text;
   height: 500px;
   display: flex;
   justify-content: center;
 }
 
 .auth-form {
-  color: $gray-light-text;
+  border: $border;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: $white;
   margin: 30px;
   padding: 20px 180px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .auth-form-header {
@@ -45,7 +46,7 @@
   input {
     border: $border;
     border-radius: 5px;
-    padding: 5px;
+    padding: 15px;
 
   }
 
@@ -56,10 +57,10 @@
 
 
   ul {
-    padding: 5px 0;
+    padding: 10px 0;
   }
 
   li {
-    margin: 6px 0;
+    margin: 10px 0;
   }
 }

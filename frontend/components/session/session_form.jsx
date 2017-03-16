@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signin') {
       return <Link to='/join'>Join</Link>;
     } else {
-      return <Link to='/signin'>sign in instead</Link>;
+      return <Link to='/signin'>Sign in</Link>;
     }
   }
 
@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signin') {
       return <h1>Sign in to Slack Clone</h1>;
     } else {
-      return <Link to='/signin'>Join Slack Clone</Link>;
+      return <h1>Join Slack Clone</h1>;
     }
   }
 
