@@ -88,18 +88,24 @@ class SessionForm extends React.Component {
     );
   }
 
-  authForm() {
-    let instructions = <p>
-      Enter your <strong>username</strong>&nbsp;
-      and <strong>password</strong>.
-    </p>;
+  instructions() {
+    let instructions;
 
     if (this.props.formType === 'try') {
       instructions = <p>
         Pick a <strong>guest</strong> personality.
       </p>;
+    } else {
+      instructions = <p>
+        Enter your <strong>username</strong>&nbsp;
+        and <strong>password</strong>.
+      </p>;
     }
 
+    return instructions;
+  }
+
+  authForm() {
     return(
       <div className='auth-form-container'>
         <form onSubmit={this.handleSubmit} className='auth-form'>
@@ -110,7 +116,7 @@ class SessionForm extends React.Component {
             </p>
           </div>
           <div className="auth-form-body">
-            {instructions}
+            {this.instructions()}
             <div className="login-form">
               <ul>
                 <li>
