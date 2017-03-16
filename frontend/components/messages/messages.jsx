@@ -1,37 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const userInfo = (username, signOut) => {
-  const formattedName = username[0].toUpperCase() + username.slice(1);
-  return(
-    <ul className="user-info">
-      <li className="name">{formattedName}</li>
-      <li>@{username}</li>
-      <li><button onClick={signOut}>Sign out</button></li>
-    </ul>
-  );
-};
+class Message extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-const sidebar = (username, signOut) => {
-  return(
-    <div className="sidebar-container">
-      {userInfo(username, signOut)}
-    </div>
-  );
-};
+  userInfo (username, signOut) {
+    const formattedName = username[0].toUpperCase() + username.slice(1);
+    return(
+      <ul className="user-info">
+        <li className="name">{formattedName}</li>
+        <li>@{username}</li>
+        <li><button onClick={signOut}>Sign out</button></li>
+      </ul>
+    );
+  }
 
-const home = () => {
-  return(
-    <div className="home-container">
-      <h1 className="forum-name">#general</h1>
-    </div>
-  );
-};
+  sidebar (username, signOut) {
+    return(
+      <div className="sidebar-container">
+        {this.userInfo(username, signOut)}
+      </div>
+    );
+  }
 
-const Message = ({ currentUser, signOut }) => (
-  <div className="messages-container">
-    {sidebar(currentUser.username, signOut)}
-  </div>
-);
+  home () {
+    return(
+      <div className="home-container">
+        <h1 className="forum-name">#general</h1>
+      </div>
+    );
+  }
+
+  render () {
+    return(
+      <div className="messages-container">
+        {this.sidebar(this.props.currentUser.username, this.props.signOut)}
+        {this.home()}
+      </div>
+    );
+  }
+}
 
 export default Message;
