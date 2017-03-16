@@ -6,23 +6,24 @@
 }
 
 .auth-form {
+  color: $gray-light-text;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: $white;
   margin: 30px;
-  padding: 10px;
-
+  padding: 20px 180px;
+  border-radius: 10px;
 }
 
 .auth-form-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  padding: 30px 0px;
 
   h1 {
-    font-size: 1.4em;
+    font-size: 1.8em;
     font-weight: bold;
     padding-bottom: 5px;
   }
@@ -41,7 +42,24 @@
     font-weight: bold;
   }
 
-  input.login-input {
+  input {
     border: .5px black solid;
+    border-radius: 5px;
+    padding: 5px;
+
+  }
+
+  input[type="submit"] {
+    background: $green;
+    color: $white;
+  }
+
+
+  ul {
+    padding: 5px 0;
+  }
+
+  li {
+    margin: 6px 0;
   }
 }
