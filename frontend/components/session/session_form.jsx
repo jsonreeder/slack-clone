@@ -73,61 +73,72 @@ class SessionForm extends React.Component {
     );
   }
 
+  authHeader() {
+    return(
+      <header className='header auth-header'>
+        <a href="/">
+          <ul className='brand'>
+            <li>[logo]</li>
+            <li>slack</li>
+          </ul>
+        </a>
+        {this.navLinks()}
+      </header>
+    );
+  }
+
+  authForm() {
+    return(
+      <div className='auth-form-container'>
+        <form onSubmit={this.handleSubmit} className='auth-form'>
+          <div className="auth-form-header">
+            {this.title()}
+            <p className='subtitle'>
+              slack-copy.heroku.com
+            </p>
+          </div>
+          <div className="auth-form-body">
+            <p>
+              Enter your <strong>username</strong>&nbsp;
+              and <strong>password</strong>.
+            </p>
+            <div className="login-form">
+              <ul>
+                <li>
+                  <input
+                    type='text'
+                    value={this.state.username}
+                    onChange={this.update('username')}
+                    className="login-input large-button"
+                  />
+                </li>
+                <li>
+                  <input
+                    type='password'
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="login-input large-button"
+                  />
+                </li>
+              </ul>
+            {this.renderErrors()}
+            </div>
+            <input
+              type='submit'
+              value='Submit'
+              className='green large-button'
+            />
+          </div>
+        </form>
+      </div>
+    )
+  }
+
   render() {
     return(
       <div>
-        <header className='header auth-header'>
-          <a href="/">
-            <ul className='brand'>
-              <li>[logo]</li>
-              <li>slack</li>
-            </ul>
-          </a>
-          {this.navLinks()}
-        </header>
-
-        <div className='auth-form-container'>
-          <form onSubmit={this.handleSubmit} className='auth-form'>
-            <div className="auth-form-header">
-              {this.title()}
-              <p className='subtitle'>
-                slack-copy.heroku.com
-              </p>
-            </div>
-            <div className="auth-form-body">
-              <p>
-                Enter your <strong>username</strong>&nbsp;
-                and <strong>password</strong>.
-              </p>
-              <div className="login-form">
-                <ul>
-                  <li>
-                    <input
-                      type='text'
-                      value={this.state.username}
-                      onChange={this.update('username')}
-                      className="login-input large-button"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type='password'
-                      value={this.state.password}
-                      onChange={this.update('password')}
-                      className="login-input large-button"
-                    />
-                  </li>
-                </ul>
-              {this.renderErrors()}
-              </div>
-              <input
-                type='submit'
-                value='Submit'
-                className='green large-button'
-              />
-            </div>
-          </form>
-        </div>
+        {this.authHeader()}
+        {this.authForm()}
       </div>
     );
   }
