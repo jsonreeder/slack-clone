@@ -3,6 +3,12 @@ button {
   border: $border-button;
   padding: 9px;
   border-radius: 4px;
+  color: $gray-light-text;
+}
+
+.link-button:hover {
+  color: $black;
+  border: $border-button-hover;
 }
 
 .green-button {
