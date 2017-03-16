@@ -12,11 +12,26 @@ const userInfo = (username, signOut) => {
   );
 };
 
+const sidebar = (username, signOut) => {
+  return(
+    <div className="sidebar-container">
+      {userInfo(username, signOut)}
+    </div>
+  );
+};
+
+const home = () => {
+  return(
+    <div className="home-container">
+      <h1 className="forum-name">#general</h1>
+    </div>
+  );
+};
+
 const Message = ({ currentUser, signOut }) => (
   <div className="messages-container">
-    <div className="sidebar-container">
-      {userInfo(currentUser.username, signOut)}
-    </div>
+    {sidebar(currentUser.username, signOut)}
+    {home()}
   </div>
 );
 

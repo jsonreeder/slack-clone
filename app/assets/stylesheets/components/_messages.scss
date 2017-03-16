@@ -1,4 +1,8 @@
 .messages-container {
+  display: flex;
+}
+
+.sidebar-container {
   background: $purple-dark;
   padding: 10px;
   color: $gray-light-text;
@@ -24,5 +28,8 @@
       color: $green;
     }
   }
+}
 
+.home-container {
+  background: $blue;
 }
