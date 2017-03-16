@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
-import { signIn } from '../../actions/session_actions';
-
 class SessionForm extends React.Component {
   constructor (props) {
     super(props);
     this.state = { username: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signInHarold = this.signInHarold.bind(this);
+    this.signInMaude = this.signInHarold.bind(this);
   }
 
 	componentDidUpdate() {
@@ -108,15 +108,11 @@ class SessionForm extends React.Component {
   }
 
   signInHarold() {
-    window.store.dispatch(
-      signIn({user: {username: "harold", password: "password"}})
-    );
+    this.props.signIn({user: {username: "harold", password: "password"}});
   }
 
   signInMaude() {
-    window.store.dispatch(
-      signIn({user: {username: "maude", password: "password"}})
-    );
+    this.props.signIn({user: {username: "maude", password: "password"}});
   }
 
 
