@@ -24,7 +24,7 @@ const splashPage = () => (
           A chat app, inspired by Slack
         </p>
         <nav className='splash-links'>
-          <Link to="/join" className="splash-button green">Try</Link>
+          <Link to="/try" className="splash-button green">Try</Link>
           <Link to="/join" className="splash-button gray">Join</Link>
         </nav>
       </div>

@@ -19,12 +19,17 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route path="/" component={ App } />
         <Route
-          path="/signin"
+          path="/try"
           component={ SessionFormContainer }
           onEnter={ _redirectIfLoggedIn }
         />
         <Route
           path="/join"
+          component={ SessionFormContainer }
+          onEnter={ _redirectIfLoggedIn }
+        />
+        <Route
+          path="/signin"
           component={ SessionFormContainer }
           onEnter={ _redirectIfLoggedIn }
         />

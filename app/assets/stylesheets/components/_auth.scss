@@ -1,7 +1,7 @@
 .auth-form-container {
   background: $gray-background;
   color: $gray-light-text;
-  height: 500px;
+  // height: 500px;
   display: flex;
   justify-content: center;
 }
@@ -13,7 +13,7 @@
   align-items: center;
   background: $white;
   margin: 30px;
-  padding: 20px 40px;
+  padding: 40px;
   border-radius: 5px;
 }
 
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0px;
+  padding: 0 0 30px 0px;
 
   h1 {
     font-size: 1.8em;
@@ -47,11 +47,15 @@
     text-align: center;
   }
 
-  ul {
-    padding: 10px 0;
-  }
-
   li {
     margin: 10px 0;
   }
+}
+
+ul.errors {
+  color: $pink;
+}
+
+.login-form {
+  margin: 10px 0;
 }
