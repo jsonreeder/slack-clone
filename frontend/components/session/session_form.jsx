@@ -118,28 +118,45 @@ class SessionForm extends React.Component {
     };
   }
 
+  generateGuestPair() {
+    const guests = [
+      ["harold", "maude"],
+      ["abbot", "costello"],
+      ["poncho", "lefty"],
+      ["abelard", "heloise"],
+      ["luke", "c-3po"],
+      ["lyra", "pantalaimon"]
+    ];
+
+    const chosenGuests = guests[Math.floor(Math.random() * guests.length)];
+
+    return(
+      <ul>
+        <li>
+          <button
+            onClick={this.signInGuest(chosenGuests[0])}
+            className="splash-button large-button blue"
+          >
+            {chosenGuests[0]}
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={this.signInGuest(chosenGuests[1])}
+            className="splash-button large-button purple">
+            {chosenGuests[1]}
+          </button>
+        </li>
+      </ul>
+    );
+  }
+
   authFormBody() {
     let authFormBody;
 
     if (this.props.formType === 'try') {
       authFormBody = <div className="login-form">
-        <ul>
-          <li>
-            <button
-              onClick={this.signInGuest("harold")}
-              className="splash-button large-button blue"
-            >
-              Harold
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={this.signInGuest("maude")}
-              className="splash-button large-button purple">
-              Maude
-            </button>
-          </li>
-        </ul>
+      {this.generateGuestPair()}
       </div>;
     } else {
       authFormBody = <div className="login-form">
