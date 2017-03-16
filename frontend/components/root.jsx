@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
 import SessionFormContainer from './session/session_form_container';
+import MessagesContainer from './messages/messages_container';
 
 const Root = ({ store }) => {
 
@@ -32,6 +33,10 @@ const Root = ({ store }) => {
           path="/signin"
           component={ SessionFormContainer }
           onEnter={ _redirectIfLoggedIn }
+        />
+        <Route
+          path="/messages"
+          component={ MessagesContainer }
         />
       </Router>
     </Provider>

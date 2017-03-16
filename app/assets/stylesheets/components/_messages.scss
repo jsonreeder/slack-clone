@@ -1,0 +1,28 @@
+.messages-container {
+  background: $purple-dark;
+  padding: 10px;
+  color: $gray-light-text;
+
+  .user-info {
+
+    li {
+      padding: 3px 0;
+    }
+
+    .name {
+      color: $white;
+      font-size: 1.3em;
+    }
+
+    button {
+      border: none;
+      padding: 0;
+
+    }
+
+    button:hover {
+      color: $green;
+    }
+  }
+
+}
