@@ -184,6 +184,7 @@ class SessionForm extends React.Component {
               value={this.state.username}
               onChange={this.update('username')}
               className="login-input large-button"
+              placeholder="username"
             />
           </li>
           <li>
@@ -192,6 +193,7 @@ class SessionForm extends React.Component {
               value={this.state.password}
               onChange={this.update('password')}
               className="login-input large-button"
+              placeholder="password"
             />
           </li>
         </ul>
