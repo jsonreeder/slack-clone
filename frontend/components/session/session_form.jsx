@@ -6,8 +6,7 @@ class SessionForm extends React.Component {
     super(props);
     this.state = { username: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.signInHarold = this.signInHarold.bind(this);
-    this.signInMaude = this.signInHarold.bind(this);
+    this.signInGuest = this.signInGuest.bind(this);
   }
 
 	componentDidUpdate() {
@@ -107,14 +106,17 @@ class SessionForm extends React.Component {
     return instructions;
   }
 
-  signInHarold() {
-    this.props.signIn({user: {username: "harold", password: "password"}});
+  signInGuest(guestUsername) {
+    return e => {
+      e.preventDefault();
+      this.props.signIn({
+        user: {
+          username: guestUsername,
+          password: "password"
+        }
+      });
+    };
   }
-
-  signInMaude() {
-    this.props.signIn({user: {username: "maude", password: "password"}});
-  }
-
 
   authFormBody() {
     let authFormBody;
@@ -124,7 +126,7 @@ class SessionForm extends React.Component {
         <ul>
           <li>
             <button
-              onClick={this.signInHarold}
+              onClick={this.signInGuest("harold")}
               className="splash-button large-button blue"
             >
               Harold
@@ -132,7 +134,7 @@ class SessionForm extends React.Component {
           </li>
           <li>
             <button
-              onClick={this.signInMaude}
+              onClick={this.signInGuest("maude")}
               className="splash-button large-button purple">
               Maude
             </button>
