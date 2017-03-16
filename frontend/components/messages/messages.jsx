@@ -12,16 +12,12 @@ const userInfo = (username, signOut) => {
   );
 };
 
-const welcome = (currentUser, signOut) => (
+const Message = ({ currentUser, signOut }) => (
   <div className="messages-container">
     <div className="sidebar-container">
       {userInfo(currentUser.username, signOut)}
     </div>
   </div>
-);
-
-const Message = ({ currentUser, signOut }) => (
-  welcome(currentUser, signOut)
 );
 
 export default Message;
