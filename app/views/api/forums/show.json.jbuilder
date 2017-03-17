@@ -1,1 +1,1 @@
-json.extract! @channel, :name
+json.extract! @forum, :name, :kind, :topic, :greeting

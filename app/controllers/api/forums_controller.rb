@@ -4,6 +4,6 @@ class Api::ForumsController < ApplicationController
   end
 
   def show
-    @forum = Forum.find(params[:id])
+    @forum = Forum.find_by_name(params[:name])
   end
 end
