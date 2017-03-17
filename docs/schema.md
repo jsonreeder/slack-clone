@@ -18,7 +18,7 @@ id          | integer   | not null, primary key
 username    | string    | not null, indexed, unique
 avatar      | string    | not null
 
-## Fora
+## Forums
 column name | data type | details
 ------------|-----------|--------------------------
 id          | integer   | not null, primary key
@@ -34,7 +34,7 @@ greeting    | text      |
 column name         | data type | details
 --------------------|-----------|------------------------------------------------------------------------------------------------
 id                  | integer   | not null, primary key
-forum_id            | integer   | not null, foreign key (references fora), indexed, uniqe(membershipable_id, membershipable_type)
+forum_id            | integer   | not null, foreign key (references forums), indexed, uniqe(membershipable_id, membershipable_type)
 membershipable_id   | integer   | not null, foreign key (references users or bots), indexed
 membershipable_type | string    | not null
 
@@ -45,7 +45,7 @@ membershipable_type | string    | not null
 column name      | data type | details
 -----------------|-----------|----------------------------------------------------------
 id               | integer   | not null, primary key
-forum_id         | integer   | not null, foreign key (references fora), indexed
+forum_id         | integer   | not null, foreign key (references forums), indexed
 messageable_id   | integer   | not null, foreign key (references users or bots), indexed
 messageable_type | string    | not null
 body             | text      | not null

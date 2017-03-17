@@ -1,0 +1,112 @@
+.messages-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar-container {
+  background: $purple-dark;
+  padding: 10px 20px;
+  color: $gray-light-text;
+  min-width: 180px;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: .8em;
+    padding-bottom: 5px;
+    font-weight: bold;
+  }
+}
+
+.channels-list {
+  padding: 20px 0;
+
+  li {
+    padding: 2px 0 5px 5px;
+    border-radius: 3px;
+
+    &:hover {
+      background: $green-light;
+      color: $white;
+    }
+  }
+}
+
+.user-info {
+
+  li {
+    padding: 3px 0;
+  }
+
+  .name {
+    color: $white;
+    font-size: 1.3em;
+  }
+
+  button {
+    border: none;
+    padding: 0;
+
+  }
+
+  button:hover {
+    color: $green;
+  }
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background: $white;
+}
+
+.forum-header {
+  padding: 10px 20px;
+  border-bottom: $border;
+
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+.forum-body {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.forum-detail {
+  border-left: $border;
+  width: 400px;
+  padding: 15px;
+
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+.forum-title {
+  padding-bottom: 10px;
+}
+
+.message-container {
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.message-history {
+  height: 100%;
+}
+
+.compose {
+  background: $white;
+  border: $border;
+  padding: 10px;
+  border-radius: 5px;
+  color: #DDDDDD;
+}

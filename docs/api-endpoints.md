@@ -27,8 +27,7 @@
 
 ### Fora
 
-- `GET /api/fora`
-- `POST /api/fora`
-- `GET /api/fora/:forumName`
+- `GET /api/forums`
+- `GET /api/forums/:name`
   - Using `forumName` instead of `id` so that the url can access the channel via its name
-- `GET /api/fora/:id/messages`
+- `GET /api/forum/:name/messages`
