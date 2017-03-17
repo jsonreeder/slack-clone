@@ -81,7 +81,16 @@ class Message extends React.Component {
   }
 
   usersIndex () {
-    const users = <li>@ exampleuser</li>
+    let users;
+    if (this.props.users.allUsers) {
+      const allUsers = this.props.users.allUsers;
+      users = <ul>
+        {allUsers.map(user => (
+          <li>@ {user.username}</li>
+         ))}
+      </ul>;
+    }
+
     return (
       <div className="users-index">
         <h2>Users</h2>
