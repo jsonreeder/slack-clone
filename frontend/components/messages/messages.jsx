@@ -19,6 +19,7 @@ class Message extends React.Component {
   componentDidMount() {
     this.props.requestAllForums();
     this.props.requestSingleForum(this.props.params.forumName);
+    this.props.requestAllUsers();
   }
 
   // Parents

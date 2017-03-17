@@ -5,17 +5,20 @@ import {
   requestAllForums,
   requestSingleForum
 } from '../../actions/forum_actions';
+import { requestAllUsers } from '../../actions/user_actions';
 import Messages from './messages';
 
-const mapStateToProps = ({ forum, session }) => ({
+const mapStateToProps = ({ session, forum, users }) => ({
+  currentUser: session.currentUser,
   forum,
-  currentUser: session.currentUser
+  users
 });
 
 const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
   requestAllForums: () => dispatch(requestAllForums()),
-  requestSingleForum: name => dispatch(requestSingleForum(name))
+  requestSingleForum: name => dispatch(requestSingleForum(name)),
+  requestAllUsers: users => dispatch(requestAllUsers(users))
 });
 
 export default connect(
