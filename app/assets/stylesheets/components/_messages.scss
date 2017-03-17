@@ -18,20 +18,27 @@
 
 .sidebar-header {
   background: $purple-dark;
-  width: 180px;
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 10px 20px 0 20px;
+  background: green;
 }
 
 .sidebar-body {
   padding-top: 100px;
   padding: 0 20px 40px 20px;
+  margin-top: 100px;
+  overflow: scroll;
+  background: white;
+  height: 200px;
 }
 
 .sidebar-container {
   background: $purple-dark;
-  color: $gray-light-text;
+  color: $purple-light-text;
   width: 285px;
-  overflow: scroll;
+  font-weight: 100;
 
   h2 {
     text-transform: uppercase;
