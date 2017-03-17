@@ -19,7 +19,7 @@ const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/messages');
+      replace('/messages/general');
     }
   };
 
@@ -47,7 +47,7 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn }
           />
           <Route
-            path="/messages"
+            path="/messages/:forumName"
             component={ MessagesContainer }
             onEnter={ _ensureLoggedIn }
           />
