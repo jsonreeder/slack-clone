@@ -28,8 +28,9 @@
 .sidebar-body {
   background: $purple-dark;
   padding: 0 20px;
-  overflow: scroll;
-  height: 80vh;
+  margin-bottom: 20px;
+  overflow: auto;
+  height: 70vh;
   width: 100%
 }
 
