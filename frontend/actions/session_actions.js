@@ -1,23 +1,22 @@
-import * as APIUtil from '../util/session_api_util';
-import { hashHistory } from 'react-router';
+import * as SessionAPIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const join = user => dispatch => (
-  APIUtil.join(user)
+  SessionAPIUtil.join(user)
     .then(newUser => dispatch(receiveCurrentUser(newUser)),
           err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const signIn = user => dispatch => (
-  APIUtil.signIn(user)
+  SessionAPIUtil.signIn(user)
     .then(signedInUser => dispatch(receiveCurrentUser(signedInUser)),
           err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const signOut = () => dispatch => (
-  APIUtil.signOut()
+  SessionAPIUtil.signOut()
     .then(signedOutUser => dispatch(receiveCurrentUser(null)))
 );
 

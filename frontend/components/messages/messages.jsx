@@ -11,7 +11,14 @@ class Message extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!newProps.currentUser) {
       hashHistory.push('/');
+    } else if (this.props.params.forumName !== newProps.params.forumName) {
+      this.props.requestSingleForum(newProps.params.forumName);
     }
+  }
+
+  componentDidMount() {
+    this.props.requestAllForums();
+    this.props.requestSingleForum(this.props.params.forumName);
   }
 
   // Parents
@@ -19,6 +26,7 @@ class Message extends React.Component {
     return(
       <div className="sidebar-container">
         {this.userInfo(username, signOut)}
+        {this.channelsIndex()}
       </div>
     );
   }
@@ -46,11 +54,42 @@ class Message extends React.Component {
     );
   }
 
+  channelsIndex () {
+    let channels;
+    if (this.props.forum.forums) {
+      channels = (
+        this.props.forum.forums.map((forum, idx) => (
+          <li key={idx}>
+            <Link to={`/messages/${forum.name}`}>
+              # {forum.name}
+            </Link>
+          </li>
+        ))
+      );
+    }
+
+    return(
+      <div className="channels-list">
+        <h2>Channels</h2>
+        <ul>
+          {channels}
+        </ul>
+      </div>
+    );
+  }
+
   // Home
   forumHeader () {
+    let title;
+    if (this.props.forum.currentForum) {
+      title = <h1 className="forum-name">
+        #{this.props.forum.currentForum.name}
+      </h1>;
+    }
+
     return(
       <div className="forum-header">
-        <h1 className="forum-name">#general</h1>
+        {title}
       </div>
     );
   }
@@ -74,9 +113,21 @@ class Message extends React.Component {
   }
 
   forumDetail () {
+    let title;
+    let topic;
+    if (this.props.forum.currentForum) {
+      title = <h1 className="forum-title">
+          About #{this.props.forum.currentForum.name}
+        </h1>;
+      topic = <div className="forum-topic">
+          {this.props.forum.currentForum.topic}
+        </div>;
+    }
+
     return(
       <div className="forum-detail">
-        <h1>About #general</h1>
+        {title}
+        {topic}
       </div>
     );
   }
@@ -84,9 +135,16 @@ class Message extends React.Component {
   // Message
 
   messageHistory () {
+    let greeting;
+    if (this.props.forum.currentForum) {
+      greeting = <p className="forum-greeting">
+        {this.props.forum.currentForum.greeting}
+      </p>;
+    }
+
     return(
       <div className="message-history">
-        MessageHistory
+        {greeting}
       </div>
     );
   }

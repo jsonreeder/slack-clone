@@ -5,7 +5,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 // TODO: Remove import after development
-import { join, signIn, signOut } from './actions/session_actions';
+import { requestAllForums, requestSingleForum } from './actions/forum_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -19,9 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TODO: Remove from window after development
   window.store = store;
-  window.join = join;
-  window.signIn = signIn;
-  window.signOut = signOut;
+  window.requestAllForums = requestAllForums;
+  window.requestSingleForum = requestSingleForum;
 
   ReactDOM.render(
     <Root store={ store }/>,

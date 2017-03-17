@@ -48,14 +48,21 @@
   }
 
   li {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 }
 
 ul.errors {
   color: $pink;
+  padding-bottom: 10px;
 }
 
 .login-form {
   margin: 10px 0;
 }
+
+
+.input-fields {
+  padding-bottom: 10px;
+}
+
