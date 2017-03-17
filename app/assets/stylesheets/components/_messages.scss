@@ -4,7 +4,7 @@
 }
 
 .sidebar-body::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.3em;
   background-color: $purple-dark-scrollbar;
 }
 
@@ -17,24 +17,21 @@
 }
 
 .sidebar-header {
-  /* background: $gray; */
-  position: fixed;
   background: $purple-dark;
   width: 180px;
-  padding: 10px 20px;
+  padding: 10px 20px 0 20px;
 }
 
 .sidebar-body {
   padding-top: 100px;
-  padding: 100px 20px 10px 20px;
-  width: 180px;
+  padding: 0 20px 40px 20px;
 }
 
 .sidebar-container {
   background: $purple-dark;
   color: $gray-light-text;
+  width: 285px;
   overflow: scroll;
-  width: 180px;
 
   h2 {
     text-transform: uppercase;
