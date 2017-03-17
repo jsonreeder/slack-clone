@@ -126,6 +126,18 @@ class Message extends React.Component {
   }
 
   forumDetail () {
+    return(
+      <div className="forum-detail">
+        <ul>
+          <li>{this.forumAbout()}</li>
+        </ul>
+      </div>
+    );
+  }
+
+  // Forum Detail
+
+  forumAbout () {
     let title;
     let topic;
     if (this.props.forum.currentForum) {
@@ -138,7 +150,7 @@ class Message extends React.Component {
     }
 
     return(
-      <div className="forum-detail">
+      <div className="forum-about">
         {title}
         {topic}
       </div>
