@@ -127,11 +127,10 @@ class Message extends React.Component {
 
   forumDetail () {
     return(
-      <div className="forum-detail">
-        <ul>
-          <li>{this.forumAbout()}</li>
-        </ul>
-      </div>
+      <ul className="forum-detail">
+        <li>{this.forumAbout()}</li>
+        <li>{this.forumMembers()}</li>
+      </ul>
     );
   }
 
@@ -153,6 +152,20 @@ class Message extends React.Component {
       <div className="forum-about">
         {title}
         {topic}
+      </div>
+    );
+  }
+
+  forumMembers () {
+    const title = <h1>Members</h1>;
+    const members = <ul>
+      <li>@example member</li>
+    </ul>;
+
+    return(
+      <div className="forum-members">
+        {title}
+        {members}
       </div>
     );
   }
