@@ -27,6 +27,7 @@ class Message extends React.Component {
       <div className="sidebar-container">
         {this.userInfo(username, signOut)}
         {this.channelsIndex()}
+        {this.usersIndex()}
       </div>
     );
   }
@@ -76,6 +77,18 @@ class Message extends React.Component {
         </ul>
       </div>
     );
+  }
+
+  usersIndex () {
+    const users = <li>@ exampleuser</li>
+    return (
+      <div className="users-index">
+        <h2>Users</h2>
+        <ul>
+          {users}
+        </ul>
+      </div>
+    )
   }
 
   // Home
