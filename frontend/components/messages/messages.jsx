@@ -58,16 +58,23 @@ class Message extends React.Component {
     let channels;
     if (this.props.forum.forums) {
       channels = (
-        this.props.forum.forums.map(forum => (
-          <li>{forum.name}</li>
+        this.props.forum.forums.map((forum, idx) => (
+          <li key={idx}>
+            <Link to={`/messages/${forum.name}`}>
+              # {forum.name}
+            </Link>
+          </li>
         ))
       );
     }
 
     return(
-      <ul className="channels-list">
-        {channels}
-      </ul>
+      <div className="channels-list">
+        <h2>Channels</h2>
+        <ul>
+          {channels}
+        </ul>
+      </div>
     );
   }
 
