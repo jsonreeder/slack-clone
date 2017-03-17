@@ -3,11 +3,25 @@
   height: 100vh;
 }
 
+.sidebar-container::-webkit-scrollbar {
+  width: 0.5em;
+  background-color: $purple-dark-scrollbar;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background-color: $purple-light-scrollbar;
+}
+
 .sidebar-container {
   background: $purple-dark;
   padding: 10px 20px;
   color: $gray-light-text;
   min-width: 180px;
+  overflow: scroll;
 
   h2 {
     text-transform: uppercase;
