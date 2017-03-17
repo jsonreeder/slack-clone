@@ -36,6 +36,7 @@ class Message extends React.Component {
     return(
       <div className="sidebar-container">
         {sidebarHeader}
+        <div className="sidebar-filler"></div>
         {sidebarBody}
       </div>
     );
