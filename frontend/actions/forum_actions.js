@@ -1,4 +1,4 @@
-import * as ForumAPIUtil from '../UTIL/forum_api_util';
+import * as ForumAPIUtil from '../util/forum_api_util';
 
 export const RECEIVE_ALL_FORUMS = 'RECEIVE_ALL_FORUMS';
 export const RECEIVE_SINGLE_FORUM = 'RECEIVE_SINGLE_FORUM';
