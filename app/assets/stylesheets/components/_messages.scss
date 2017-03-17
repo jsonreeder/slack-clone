@@ -52,11 +52,11 @@
 .forum-body {
   display: flex;
   justify-content: space-between;
+  height: 100vh;
 }
 
 .forum-detail {
   border-left: $border;
-  height: 100vh;
   width: 400px;
   padding: 15px;
 
