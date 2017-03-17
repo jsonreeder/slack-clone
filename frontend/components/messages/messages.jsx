@@ -177,9 +177,16 @@ class Message extends React.Component {
 
   forumMembers () {
     const title = <h1>Members</h1>;
-    const members = <ul>
-      <li>@example member</li>
-    </ul>;
+    let members;
+
+    if (this.props.forum.currentForum) {
+      let rawMembers = this.props.forum.currentForum.members;
+      members = <ul className="forum-members">
+        {rawMembers.map((member, idx) => (
+           <li key={idx}>@ {member.username}</li>
+         ))}
+      </ul>;
+    }
 
     return(
       <div className="forum-members">

@@ -1,1 +1,1 @@
-json.extract! @forum, :id, :name, :kind, :topic, :greeting
+json.extract! @forum, :id, :name, :kind, :topic, :greeting, :members
