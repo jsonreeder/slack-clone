@@ -55,9 +55,16 @@ class Message extends React.Component {
 
   // Home
   forumHeader () {
+    let title;
+    if (this.props.forum.currentForum) {
+      title = <h1 className="forum-name">
+        #{this.props.forum.currentForum.name}
+      </h1>;
+    }
+
     return(
       <div className="forum-header">
-        <h1 className="forum-name">#general</h1>
+        {title}
       </div>
     );
   }

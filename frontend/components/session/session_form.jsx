@@ -142,7 +142,8 @@ class SessionForm extends React.Component {
       ["marykate", "ashley"],
       ["thelma", "louise"],
       ["rosencrantz", "guildenstern"],
-      ["click", "clack"]
+      ["click", "clack"],
+      ['hannibal', 'clarice']
     ];
 
     const colorClass = [
@@ -176,12 +177,12 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'try') {
       authFormBody =
         <div className="login-form">
-      {this.generateGuestPair()}
-      </div>;
+          {this.generateGuestPair()}
+        </div>;
     } else {
       authFormBody =
         <div className="login-form">
-        <ul>
+        <ul className="input-fields">
           <li>
             <input
               type='text'

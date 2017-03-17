@@ -23,8 +23,8 @@ button {
   border: $border;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px;
   width: 400px;
+  margin: 0 10px;
   font-size: 1.2em;
   text-align: center;
 }
@@ -47,9 +47,9 @@ button {
 }
 
 .blue {
-  background: $blue;
+  background: $blue-dark;
   color: $white;
-  border: $blue;
+  border: $blue-dark;
 }
 
 .purple {

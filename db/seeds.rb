@@ -9,7 +9,8 @@ pairs = [
   ['marykate', 'ashley'],
   ['thelma', 'louise'],
   ['rosencrantz', 'guildenstern'],
-  ['click', 'clack']
+  ['click', 'clack'],
+  ['hannibal', 'clarice']
 ]
 
 pairs.flatten.each do |username|
