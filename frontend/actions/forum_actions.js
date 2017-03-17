@@ -8,7 +8,7 @@ export const requestAllForums = () => dispatch => (
     .then(fetchedForums => dispatch(receiveAllForums(fetchedForums)))
 );
 
-export const requestForum = name => dispatch => (
+export const requestSingleForum = name => dispatch => (
   ForumAPIUtil.fetchSingleForum(name)
     .then(fetchedForum => dispatch(receiveSingleForum(fetchedForum)))
 );
