@@ -24,11 +24,19 @@ class Message extends React.Component {
 
   // Parents
   sidebar (username, signOut) {
+    const sidebarHeader = <div className="sidebar-header">
+      {this.userInfo(username, signOut)}
+    </div>;
+
+    const sidebarBody = <div className="sidebar-body">
+      {this.channelsIndex()}
+      {this.usersIndex()}
+    </div>;
+
     return(
       <div className="sidebar-container">
-        {this.userInfo(username, signOut)}
-        {this.channelsIndex()}
-        {this.usersIndex()}
+        {sidebarHeader}
+        {sidebarBody}
       </div>
     );
   }
@@ -93,7 +101,7 @@ class Message extends React.Component {
 
     return (
       <div className="users-index">
-        <h2>Users</h2>
+        <h2>Direct Messages</h2>
         <ul>
           {users}
         </ul>

@@ -3,25 +3,38 @@
   height: 100vh;
 }
 
-.sidebar-container::-webkit-scrollbar {
+.sidebar-body::-webkit-scrollbar {
   width: 0.5em;
   background-color: $purple-dark-scrollbar;
 }
 
-.sidebar-container::-webkit-scrollbar-thumb {
+.sidebar-body::-webkit-scrollbar-thumb {
   border-radius: 4px;
 }
 
-.sidebar-container::-webkit-scrollbar-thumb {
+.sidebar-body::-webkit-scrollbar-thumb {
   background-color: $purple-light-scrollbar;
+}
+
+.sidebar-header {
+  /* background: $gray; */
+  position: fixed;
+  background: $purple-dark;
+  width: 180px;
+  padding: 10px 20px;
+}
+
+.sidebar-body {
+  padding-top: 100px;
+  padding: 100px 20px 10px 20px;
+  width: 180px;
 }
 
 .sidebar-container {
   background: $purple-dark;
-  padding: 10px 20px;
   color: $gray-light-text;
-  min-width: 180px;
   overflow: scroll;
+  width: 180px;
 
   h2 {
     text-transform: uppercase;
