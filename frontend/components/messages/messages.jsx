@@ -85,8 +85,8 @@ class Message extends React.Component {
     if (this.props.users.allUsers) {
       const allUsers = this.props.users.allUsers;
       users = <ul>
-        {allUsers.map(user => (
-          <li>@ {user.username}</li>
+        {allUsers.map((user, idx) => (
+          <li key={idx}>@ {user.username}</li>
          ))}
       </ul>;
     }
@@ -98,7 +98,7 @@ class Message extends React.Component {
           {users}
         </ul>
       </div>
-    )
+    );
   }
 
   // Home
