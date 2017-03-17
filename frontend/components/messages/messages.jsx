@@ -11,7 +11,14 @@ class Message extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!newProps.currentUser) {
       hashHistory.push('/');
+    } else if (this.props.params.forumName !== newProps.params.forumName) {
+      this.props.requestSingleForum(newProps.params.forumName);
     }
+  }
+
+  componentDidMount() {
+    this.props.requestAllForums();
+    this.props.requestSingleForum(this.props.params.forumName);
   }
 
   // Parents
