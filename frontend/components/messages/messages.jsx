@@ -26,6 +26,7 @@ class Message extends React.Component {
     return(
       <div className="sidebar-container">
         {this.userInfo(username, signOut)}
+        {this.channelsIndex()}
       </div>
     );
   }
@@ -49,6 +50,23 @@ class Message extends React.Component {
         <li className="name">{formattedName}</li>
         <li>@{username}</li>
         <li><button onClick={signOut}>Sign out</button></li>
+      </ul>
+    );
+  }
+
+  channelsIndex () {
+    let channels;
+    if (this.props.forum.forums) {
+      channels = (
+        this.props.forum.forums.map(forum => (
+          <li>{forum.name}</li>
+        ))
+      );
+    }
+
+    return(
+      <ul className="channels-list">
+        {channels}
       </ul>
     );
   }
@@ -110,9 +128,16 @@ class Message extends React.Component {
   // Message
 
   messageHistory () {
+    let greeting;
+    if (this.props.forum.currentForum) {
+      greeting = <p className="forum-greeting">
+        {this.props.forum.currentForum.greeting}
+      </p>;
+    }
+
     return(
       <div className="message-history">
-        MessageHistory
+        {greeting}
       </div>
     );
   }
