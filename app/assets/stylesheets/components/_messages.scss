@@ -3,11 +3,49 @@
   height: 100vh;
 }
 
+.sidebar-body::-webkit-scrollbar {
+  width: 0.5em;
+  background-color: $purple-dark-scrollbar;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb {
+  background-color: $purple-light-scrollbar;
+}
+
+.sidebar-header {
+  background: $purple-dark;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.sidebar-body {
+  background: $purple-dark;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  overflow: auto;
+  height: 70vh;
+  width: 100%
+}
+
+.sidebar-filler {
+  /* border-bottom: $border-dark; */
+  margin-top: 110px;
+}
+
 .sidebar-container {
   background: $purple-dark;
-  padding: 10px 20px;
-  color: $gray-light-text;
-  min-width: 180px;
+  box-sizing: border-box;
+  color: $purple-light-text;
+  min-width: 220px;
+  font-weight: 100;
+  position: relative;
 
   h2 {
     text-transform: uppercase;
@@ -15,13 +53,20 @@
     padding-bottom: 5px;
     font-weight: bold;
   }
+
+
+  li {
+    padding: 0 0 2px 5px;
+  }
 }
 
 .channels-list {
-  padding: 20px 0;
+
+  ul {
+    padding-bottom: 10px;
+  }
 
   li {
-    padding: 2px 0 5px 5px;
     border-radius: 3px;
 
     &:hover {
@@ -39,6 +84,7 @@
 
   .name {
     color: $white;
+    font-weight: 500;
     font-size: 1.3em;
   }
 
@@ -79,16 +125,23 @@
 .forum-detail {
   border-left: $border;
   width: 400px;
-  padding: 15px;
+  overflow: scroll;
+  height: 90vh;
 
   h1 {
     font-size: 1.2em;
     font-weight: bold;
+    padding-bottom: 5px;
   }
-}
 
-.forum-title {
-  padding-bottom: 10px;
+  > li {
+    padding: 15px;
+    border-bottom: $border;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
 }
 
 .message-container {

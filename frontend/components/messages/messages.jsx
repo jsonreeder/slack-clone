@@ -17,16 +17,28 @@ class Message extends React.Component {
   }
 
   componentDidMount() {
+    $('html,body').css('overflow','hidden');
     this.props.requestAllForums();
     this.props.requestSingleForum(this.props.params.forumName);
+    this.props.requestAllUsers();
   }
 
   // Parents
   sidebar (username, signOut) {
+    const sidebarHeader = <div className="sidebar-header">
+      {this.userInfo(username, signOut)}
+    </div>;
+
+    const sidebarBody = <div className="sidebar-body">
+      {this.channelsJoined()}
+      {this.usersIndex()}
+    </div>;
+
     return(
       <div className="sidebar-container">
-        {this.userInfo(username, signOut)}
-        {this.channelsIndex()}
+        {sidebarHeader}
+        <div className="sidebar-filler"></div>
+        {sidebarBody}
       </div>
     );
   }
@@ -54,11 +66,11 @@ class Message extends React.Component {
     );
   }
 
-  channelsIndex () {
+  channelsJoined () {
     let channels;
-    if (this.props.forum.forums) {
+    if (this.props.currentUser.forums) {
       channels = (
-        this.props.forum.forums.map((forum, idx) => (
+        this.props.currentUser.forums.map((forum, idx) => (
           <li key={idx}>
             <Link to={`/messages/${forum.name}`}>
               # {forum.name}
@@ -73,6 +85,27 @@ class Message extends React.Component {
         <h2>Channels</h2>
         <ul>
           {channels}
+        </ul>
+      </div>
+    );
+  }
+
+  usersIndex () {
+    let users;
+    if (this.props.users.allUsers) {
+      const allUsers = this.props.users.allUsers;
+      users = <ul>
+        {allUsers.map((user, idx) => (
+          <li key={idx}>@ {user.username}</li>
+         ))}
+      </ul>;
+    }
+
+    return (
+      <div className="users-index">
+        <h2>Direct Messages</h2>
+        <ul>
+          {users}
         </ul>
       </div>
     );
@@ -113,6 +146,17 @@ class Message extends React.Component {
   }
 
   forumDetail () {
+    return(
+      <ul className="forum-detail">
+        <li>{this.forumAbout()}</li>
+        <li>{this.forumMembers()}</li>
+      </ul>
+    );
+  }
+
+  // Forum Detail
+
+  forumAbout () {
     let title;
     let topic;
     if (this.props.forum.currentForum) {
@@ -125,9 +169,30 @@ class Message extends React.Component {
     }
 
     return(
-      <div className="forum-detail">
+      <div className="forum-about">
         {title}
         {topic}
+      </div>
+    );
+  }
+
+  forumMembers () {
+    const title = <h1>Members</h1>;
+    let members;
+
+    if (this.props.forum.currentForum) {
+      let rawMembers = this.props.forum.currentForum.members;
+      members = <ul className="forum-members">
+        {rawMembers.map((member, idx) => (
+           <li key={idx}>@ {member.username}</li>
+         ))}
+      </ul>;
+    }
+
+    return(
+      <div className="forum-members">
+        {title}
+        {members}
       </div>
     );
   }
