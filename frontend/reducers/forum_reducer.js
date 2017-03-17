@@ -9,10 +9,12 @@ const ForumReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
   case RECEIVE_ALL_FORUMS:
-    return merge({}, action.forums);
+    return merge({}, {
+      forums: action.forums
+    });
   case RECEIVE_SINGLE_FORUM:
     return merge({}, state, {
-      [action.forum.name]: action.forum
+      currentForum: action.forum
     });
   default:
     return state;

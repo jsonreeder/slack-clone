@@ -7,7 +7,8 @@ import {
 } from '../../actions/forum_actions';
 import Messages from './messages';
 
-const mapStateToProps = ({ session }) => ({
+const mapStateToProps = ({ forum, session }) => ({
+  forum,
   currentUser: session.currentUser
 });
 

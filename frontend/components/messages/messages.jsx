@@ -81,11 +81,20 @@ class Message extends React.Component {
   }
 
   forumDetail () {
-    return(
-      <div className="forum-detail">
-        <h1>About #general</h1>
-      </div>
-    );
+    if (this.props.forum.currentForum) {
+      return(
+        <div className="forum-detail">
+          <h1>About #general</h1>
+          {this.props.forum.currentForum.topic}
+        </div>
+      );
+    } else {
+      return(
+        <div className="forum-detail">
+          <h1>About #general</h1>
+        </div>
+      );
+    }
   }
 
   // Message
