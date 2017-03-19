@@ -5,6 +5,8 @@ import { hashHistory } from 'react-router';
 class Message extends React.Component {
   constructor(props) {
     super(props);
+    this.children = this.props.children;
+    this.detailsShown = false;
   }
 
   // Lifecycle methods
@@ -25,10 +27,6 @@ class Message extends React.Component {
 
   // Parents
   sidebar (username, signOut) {
-    const sidebarHeader = <div className="sidebar-header">
-      {this.userInfo(username, signOut)}
-    </div>;
-
     const sidebarBody = <div className="sidebar-body">
       {this.channelsJoined()}
       {this.usersIndex()}
@@ -36,7 +34,7 @@ class Message extends React.Component {
 
     return(
       <div className="sidebar-container">
-        {sidebarHeader}
+        {this.sidebarHeader()}
         <div className="sidebar-filler"></div>
         {sidebarBody}
       </div>
@@ -55,14 +53,28 @@ class Message extends React.Component {
   // Children
 
   // Sidebar
-  userInfo (username, signOut) {
-    const formattedName = username[0].toUpperCase() + username.slice(1);
+  sidebarHeader () {
+    let title;
+    let username;
+    if (this.props.currentUser) {
+      username = this.props.currentUser.username;
+      title = <div>
+        <h1>{username[0].toUpperCase() + username.slice(1)}</h1>
+        <ul className="sub-header">
+          <li>@{username}</li>
+        </ul>
+      </div>;
+    }
+
     return(
-      <ul className="user-info">
-        <li className="name">{formattedName}</li>
-        <li>@{username}</li>
-        <li><button onClick={signOut}>Sign out</button></li>
-      </ul>
+      <Link onClick={this.props.signOut}>
+        <ul className="sidebar-header">
+          <li className="name">{title}</li>
+          <li>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+          </li>
+        </ul>
+      </Link>
     );
   }
 
@@ -112,18 +124,30 @@ class Message extends React.Component {
   }
 
   // Home
+
   forumHeader () {
     let title;
+    let detailsLinks;
     if (this.props.forum.currentForum) {
-      title = <h1 className="forum-name">
-        #{this.props.forum.currentForum.name}
-      </h1>;
+      title = <div>
+        <h1>#{this.props.forum.currentForum.name}</h1>
+        <ul className="sub-header">
+          <li>2</li>
+          <li>Description</li>
+        </ul>
+      </div>;
+      detailsLinks = <Link
+          to={`/messages/${this.props.forum.currentForum.name}/details`}
+        >
+          <i className="fa fa-columns" aria-hidden="true"></i>
+      </Link>;
     }
 
     return(
-      <div className="forum-header">
-        {title}
-      </div>
+      <ul className="forum-header">
+        <li>{title}</li>
+        <li>{detailsLinks}</li>
+      </ul>
     );
   }
 
@@ -131,7 +155,7 @@ class Message extends React.Component {
     return(
       <div className="forum-body">
         {this.messageContainer()}
-        {this.forumDetail()}
+        {this.children}
       </div>
     );
   }
@@ -145,57 +169,6 @@ class Message extends React.Component {
     );
   }
 
-  forumDetail () {
-    return(
-      <ul className="forum-detail">
-        <li>{this.forumAbout()}</li>
-        <li>{this.forumMembers()}</li>
-      </ul>
-    );
-  }
-
-  // Forum Detail
-
-  forumAbout () {
-    let title;
-    let topic;
-    if (this.props.forum.currentForum) {
-      title = <h1 className="forum-title">
-          About #{this.props.forum.currentForum.name}
-        </h1>;
-      topic = <div className="forum-topic">
-          {this.props.forum.currentForum.topic}
-        </div>;
-    }
-
-    return(
-      <div className="forum-about">
-        {title}
-        {topic}
-      </div>
-    );
-  }
-
-  forumMembers () {
-    const title = <h1>Members</h1>;
-    let members;
-
-    if (this.props.forum.currentForum) {
-      let rawMembers = this.props.forum.currentForum.members;
-      members = <ul className="forum-members">
-        {rawMembers.map((member, idx) => (
-           <li key={idx}>@ {member.username}</li>
-         ))}
-      </ul>;
-    }
-
-    return(
-      <div className="forum-members">
-        {title}
-        {members}
-      </div>
-    );
-  }
 
   // Message
 

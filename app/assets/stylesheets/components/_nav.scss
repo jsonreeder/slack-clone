@@ -2,6 +2,7 @@
   font-family: $sans-serif;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
 
   ul {
@@ -28,7 +29,67 @@
       margin: 0 10px;
     }
   }
+}
 
+.forum-header,
+.sidebar-header {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+  ul {
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+.sidebar-header {
+  h1 {
+    color: $white;
+  }
+
+  &:hover {
+    background: $purple_darkest;
+
+    i {
+      color: $white;
+    }
+  }
+}
+
+.forum-header {
+  border-bottom: $border;
+
+  ul.sub-header {
+    color: $gray-light-text;
+  }
+}
+
+ul.sub-header {
+  font-size: .8em;
+  font-weight: 300;
+
+  li {
+    margin-top: 5px;
+    padding: 0 5px;
+
+    &+li {
+      border-left: 0.2px solid $gray-light-text;
+    }
+  }
 }
 
 .splash-header {
