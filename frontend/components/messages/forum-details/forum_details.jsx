@@ -7,7 +7,6 @@ class ForumDetails extends React.Component {
 
   componentDidMount() {
     this.props.requestSingleForum(this.props.params.forumName);
-    console.log(this.props);
   }
 
   forumAbout () {

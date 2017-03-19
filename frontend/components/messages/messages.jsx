@@ -6,6 +6,7 @@ class Message extends React.Component {
   constructor(props) {
     super(props);
     this.children = this.props.children;
+    this.detailsShown = false;
   }
 
   // Lifecycle methods
@@ -113,11 +114,23 @@ class Message extends React.Component {
   }
 
   // Home
+  showDetails (forumName) {
+    console.log(this.state);
+    this.setState({
+      detailsShown: true
+    });
+    hashHistory.push(`/messages/${forumName}/details`);
+    this.forceUpdate();
+  }
+
   forumHeader () {
     let title;
     if (this.props.forum.currentForum) {
       title = <h1 className="forum-name">
         #{this.props.forum.currentForum.name}
+        <Link
+          onClick={() => this.showDetails(this.props.forum.currentForum.name)}
+        > [details] </Link>
       </h1>;
     }
 
