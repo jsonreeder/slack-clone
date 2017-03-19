@@ -61,7 +61,7 @@ class Message extends React.Component {
     const formattedName = username[0].toUpperCase() + username.slice(1);
     return(
       <div className="user-info">
-        <ul className="user-nav">
+        <ul className="narrow-header user-nav">
           <li className="name">{formattedName}</li>
           <li>
             <button onClick={signOut}>
@@ -140,7 +140,7 @@ class Message extends React.Component {
     }
 
     return(
-      <ul className="header forum-header">
+      <ul className="narrow-header forum-header">
         <li>{title}</li>
         <li>{detailsLinks}</li>
       </ul>

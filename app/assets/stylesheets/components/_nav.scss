@@ -29,6 +29,19 @@
       margin: 0 10px;
     }
   }
+}
+
+.narrow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+
+  ul {
+    display: flex;
+    align-items: center;
+  }
+
 
 }
 
