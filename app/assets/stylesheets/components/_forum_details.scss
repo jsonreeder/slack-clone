@@ -1,0 +1,21 @@
+.forum-details {
+  border-left: $border;
+  width: 400px;
+  overflow: scroll;
+  height: 90vh;
+
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+
+  > li {
+    padding: 15px;
+    border-bottom: $border;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}

@@ -52,7 +52,7 @@ class ForumDetails extends React.Component {
 
   render() {
     return(
-      <ul className="forum-detail">
+      <ul className="forum-details">
         <li>{this.forumAbout()}</li>
         <li>{this.forumMembers()}</li>
       </ul>
