@@ -29,7 +29,7 @@ class Message extends React.Component {
     </div>;
 
     const sidebarBody = <div className="sidebar-body">
-      {this.channelsIndex()}
+      {this.channelsJoined()}
       {this.usersIndex()}
     </div>;
 
@@ -65,11 +65,11 @@ class Message extends React.Component {
     );
   }
 
-  channelsIndex () {
+  channelsJoined () {
     let channels;
-    if (this.props.forum.forums) {
+    if (this.props.currentUser.forums) {
       channels = (
-        this.props.forum.forums.map((forum, idx) => (
+        this.props.currentUser.forums.map((forum, idx) => (
           <li key={idx}>
             <Link to={`/messages/${forum.name}`}>
               # {forum.name}
