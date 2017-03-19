@@ -22,7 +22,7 @@ class ForumDetails extends React.Component {
     );
   }
 
-  forumAbout () {
+  channelDetails () {
     let topic;
     if (this.props.currentForum) {
       topic = <div className="forum-topic">
@@ -31,9 +31,13 @@ class ForumDetails extends React.Component {
     }
 
     return(
-      <div className="forum-about">
-        {topic}
-      </div>
+      <li className="forum-about">
+        <h2>Channel Details</h2>
+        <ul>
+          <h3>Purpose</h3>
+          {topic}
+        </ul>
+      </li>
     );
   }
 
@@ -62,7 +66,7 @@ class ForumDetails extends React.Component {
     return(
       <ul className="forum-details">
         {this.forumHeader()}
-        <li>{this.forumAbout()}</li>
+        {this.channelDetails()}
         <li>{this.forumMembers()}</li>
       </ul>
     );
