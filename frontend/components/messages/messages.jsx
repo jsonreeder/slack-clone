@@ -34,7 +34,7 @@ class Message extends React.Component {
 
     return(
       <div className="sidebar-container">
-        {this.sidebarHeader(username, signOut)}
+        {this.sidebarHeader()}
         <div className="sidebar-filler"></div>
         {sidebarBody}
       </div>
@@ -53,15 +53,19 @@ class Message extends React.Component {
   // Children
 
   // Sidebar
-  sidebarHeader (username, signOut) {
-    const formattedName = username[0].toUpperCase() + username.slice(1);
-
+  sidebarHeader () {
+    let title;
+    let username;
+    if (this.props.currentUser) {
+      username = this.props.currentUser.username;
+      title = <h1>{username[0].toUpperCase() + username.slice(1)}</h1>;
+    }
 
     return(
       <ul className="sidebar-header">
-        <li className="name">{formattedName}</li>
+        <li className="name">{title}</li>
         <li>
-          <Link onClick={signOut}>
+          <Link onClick={this.props.signOut}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>
           </Link>
         </li>

@@ -45,15 +45,15 @@
     display: flex;
     align-items: center;
   }
-}
-
-.forum-header {
-  border-bottom: $border;
 
   h1 {
     font-size: 1.2em;
     font-weight: bold;
   }
+}
+
+.forum-header {
+  border-bottom: $border;
 }
 
 ul.forum-header-details {
