@@ -57,9 +57,16 @@
 }
 
 .sidebar-header {
-
   h1 {
     color: $white;
+  }
+
+  &:hover {
+    background: $purple_darkest;
+
+    i {
+      color: $white;
+    }
   }
 }
 

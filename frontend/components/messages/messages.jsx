@@ -67,14 +67,14 @@ class Message extends React.Component {
     }
 
     return(
-      <ul className="sidebar-header">
-        <li className="name">{title}</li>
-        <li>
-          <Link onClick={this.props.signOut}>
-            <i className="fa fa-sign-out" aria-hidden="true"></i>
-          </Link>
-        </li>
-      </ul>
+      <Link onClick={this.props.signOut}>
+        <ul className="sidebar-header">
+          <li className="name">{title}</li>
+          <li>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+          </li>
+        </ul>
+      </Link>
     );
   }
 

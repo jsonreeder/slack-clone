@@ -67,29 +67,6 @@
   }
 }
 
-.user-info {
-  li {
-    padding: 3px 0;
-  }
-
-  .name {
-    color: $white;
-    font-weight: 500;
-    font-size: 1.3em;
-  }
-
-  button {
-    color: $white;
-    border: none;
-    padding: 0;
-
-  }
-
-  button:hover {
-    color: $green;
-  }
-}
-
 .home-container {
   display: flex;
   flex-direction: column;
@@ -97,7 +74,6 @@
   background: $white;
   position: relative;
 }
-
 
 .forum-body {
   margin-top: 65px;
