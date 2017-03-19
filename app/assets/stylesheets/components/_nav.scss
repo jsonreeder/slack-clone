@@ -33,12 +33,12 @@
 
 .forum-header,
 .sidebar-header {
-  background: gray;
+  position: absolute;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding: 15px 20px;
-  padding: 10px;
+  padding: 10px 20px;
   box-sizing: border-box;
 
   ul {
@@ -54,10 +54,13 @@
 
 .forum-header {
   border-bottom: $border;
+
+  ul.sub-header {
+    color: $gray-light-text;
+  }
 }
 
 ul.sub-header {
-  color: $gray-light-text;
   font-size: .8em;
   font-weight: 300;
 
@@ -73,8 +76,6 @@ ul.sub-header {
 
 .sidebar-header {
   // background: $purple-dark;
-  position: absolute;
-  width: 100%;
 }
 
 .splash-header {
