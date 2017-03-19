@@ -13,7 +13,8 @@ PAIRS = [
   ['thelma', 'louise'],
   ['rosencrantz', 'guildenstern'],
   ['click', 'clack'],
-  ['hannibal', 'clarice']
+  ['hannibal', 'clarice'],
+  ['orville', 'wilbur']
 ]
 
 general = Forum.create!(
