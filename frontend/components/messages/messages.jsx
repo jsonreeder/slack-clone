@@ -117,18 +117,22 @@ class Message extends React.Component {
 
   forumHeader () {
     let title;
+    let detailsLinks;
     if (this.props.forum.currentForum) {
       title = <h1 className="forum-name">
         #{this.props.forum.currentForum.name}
         <Link
           to={`/messages/${this.props.forum.currentForum.name}/details`}
-        > [details] </Link>
+        >
+          </Link>
       </h1>;
+      detailsLinks = <i className="fa fa-columns" aria-hidden="true"></i>
     }
 
     return(
       <div className="forum-header">
         {title}
+        {detailsLinks}
       </div>
     );
   }
