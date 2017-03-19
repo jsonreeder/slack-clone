@@ -119,21 +119,21 @@ class Message extends React.Component {
     let title;
     let detailsLinks;
     if (this.props.forum.currentForum) {
-      title = <h1 className="forum-name">
+      title = <h1>
         #{this.props.forum.currentForum.name}
-        <Link
+      </h1>;
+      detailsLinks = <Link
           to={`/messages/${this.props.forum.currentForum.name}/details`}
         >
-          </Link>
-      </h1>;
-      detailsLinks = <i className="fa fa-columns" aria-hidden="true"></i>
+          <i className="fa fa-columns" aria-hidden="true"></i>
+      </Link>;
     }
 
     return(
-      <div className="forum-header">
-        {title}
-        {detailsLinks}
-      </div>
+      <ul className="header forum-header">
+        <li>{title}</li>
+        <li>{detailsLinks}</li>
+      </ul>
     );
   }
 
