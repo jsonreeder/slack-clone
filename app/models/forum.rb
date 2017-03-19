@@ -14,4 +14,9 @@
 class Forum < ApplicationRecord
   validates :name, :kind, presence: true
   validates :kind, inclusion: { in: %w(channel direct_message) }
+  has_many :memberships
+  has_many :members,
+           through: :memberships,
+           source: :membershipable,
+           source_type: :User
 end

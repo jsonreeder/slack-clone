@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317002222) do
+ActiveRecord::Schema.define(version: 20170317162917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170317002222) do
     t.text     "greeting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "forum_id",            null: false
+    t.string   "membershipable_type"
+    t.integer  "membershipable_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["forum_id", "membershipable_id", "membershipable_type"], name: "index_membershps_on_member", unique: true, using: :btree
+    t.index ["forum_id"], name: "index_memberships_on_forum_id", using: :btree
+    t.index ["membershipable_type", "membershipable_id"], name: "index_memberships_on_membershipable_type_and_membershipable_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
