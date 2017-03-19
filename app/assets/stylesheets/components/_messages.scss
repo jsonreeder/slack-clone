@@ -116,12 +116,18 @@
 .forum-header {
   padding: 10px 20px;
   border-bottom: $border;
-  background: green;
 
   h1 {
     font-size: 1.2em;
     font-weight: bold;
   }
+}
+
+ul.forum-header-details {
+  color: $gray-light-text;
+  font-size: .8em;
+  font-weight: 300;
+  padding-top: 3px;
 }
 
 .forum-body {

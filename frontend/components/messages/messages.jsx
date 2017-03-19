@@ -127,7 +127,7 @@ class Message extends React.Component {
     if (this.props.forum.currentForum) {
       title = <div>
         <h1>#{this.props.forum.currentForum.name}</h1>
-        <ul>
+        <ul className="forum-header-details">
           <li>2</li>
           <li>Description</li>
         </ul>
