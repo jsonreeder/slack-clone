@@ -37,22 +37,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  // padding: 15px 20px;
+  padding: 10px;
+  box-sizing: border-box;
 
   ul {
     display: flex;
     align-items: center;
   }
+}
 
+.forum-header {
+  border-bottom: $border;
+
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+ul.forum-header-details {
+  color: $gray-light-text;
+  font-size: .8em;
+  font-weight: 300;
+
+  li {
+    margin-top: 5px;
+    padding: 0 5px;
+
+    &+li {
+      border-left: 0.2px solid $gray-light-text;
+    }
+  }
 }
 
 .sidebar-header {
   // background: $purple-dark;
-
   position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 20px;
   width: 100%;
 }
 

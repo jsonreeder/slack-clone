@@ -55,18 +55,18 @@ class Message extends React.Component {
   // Sidebar
   sidebarHeader (username, signOut) {
     const formattedName = username[0].toUpperCase() + username.slice(1);
+
+
     return(
-      <div className="sidebar-header">
-        <ul className="user-nav">
-          <li className="name">{formattedName}</li>
-          <li>
-            <button onClick={signOut}>
-              <i className="fa fa-sign-out" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
-        @{username}
-      </div>
+      <ul className="sidebar-header">
+        <li className="name">{formattedName}</li>
+        <li>
+          <Link onClick={signOut}>
+            <i className="fa fa-sign-out" aria-hidden="true"></i>
+          </Link>
+        </li>
+      @{username}
+      </ul>
     );
   }
 

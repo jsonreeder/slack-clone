@@ -103,29 +103,6 @@
   background: $white;
 }
 
-.forum-header {
-  border-bottom: $border;
-
-  h1 {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-}
-
-ul.forum-header-details {
-  color: $gray-light-text;
-  font-size: .8em;
-  font-weight: 300;
-
-  li {
-    margin-top: 5px;
-    padding: 0 5px;
-
-    &+li {
-      border-left: 0.2px solid $gray-light-text;
-    }
-  }
-}
 
 .forum-body {
   display: flex;
