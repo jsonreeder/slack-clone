@@ -60,11 +60,17 @@ class Message extends React.Component {
   userInfo (username, signOut) {
     const formattedName = username[0].toUpperCase() + username.slice(1);
     return(
-      <ul className="user-info">
-        <li className="name">{formattedName}</li>
-        <li>@{username}</li>
-        <li><button onClick={signOut}>Sign out</button></li>
-      </ul>
+      <div className="user-info">
+        <ul className="user-nav">
+          <li className="name">{formattedName}</li>
+          <li>
+            <button onClick={signOut}>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ul>
+        @{username}
+      </div>
     );
   }
 
