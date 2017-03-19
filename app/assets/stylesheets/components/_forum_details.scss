@@ -1,6 +1,6 @@
 .forum-details {
   border-left: $border;
-  width: 400px;
+  width: 500px;
   overflow: scroll;
   height: 90vh;
 
@@ -17,5 +17,9 @@
     &:last-child {
       border-bottom: 0;
     }
+  }
+
+  .forum-title {
+    background: $gray-background;
   }
 }

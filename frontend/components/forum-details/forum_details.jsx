@@ -9,13 +9,22 @@ class ForumDetails extends React.Component {
     this.props.requestSingleForum(this.props.params.forumName);
   }
 
-  forumAbout () {
+  forumHeader () {
     let title;
+    if (this.props.currentForum) {
+      title = <h1>About #{this.props.currentForum.name}</h1>;
+    }
+
+    return(
+      <li className="forum-title">
+        {title}
+      </li>
+    );
+  }
+
+  forumAbout () {
     let topic;
     if (this.props.currentForum) {
-      title = <h1 className="forum-title">
-          About #{this.props.currentForum.name}
-        </h1>;
       topic = <div className="forum-topic">
           {this.props.currentForum.topic}
         </div>;
@@ -23,7 +32,6 @@ class ForumDetails extends React.Component {
 
     return(
       <div className="forum-about">
-        {title}
         {topic}
       </div>
     );
@@ -53,6 +61,7 @@ class ForumDetails extends React.Component {
   render() {
     return(
       <ul className="forum-details">
+        {this.forumHeader()}
         <li>{this.forumAbout()}</li>
         <li>{this.forumMembers()}</li>
       </ul>
