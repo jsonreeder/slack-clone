@@ -36,8 +36,8 @@
 }
 
 .sidebar-filler {
-  /* border-bottom: $border-dark; */
-  margin-top: 110px;
+  // border-bottom: $border-dark;
+  margin-top: 75px;
 }
 
 .sidebar-container {
@@ -114,7 +114,7 @@
 }
 
 .forum-header {
-  padding: 10px 20px;
+  padding: 5px;
   border-bottom: $border;
 
   h1 {
@@ -127,7 +127,16 @@ ul.forum-header-details {
   color: $gray-light-text;
   font-size: .8em;
   font-weight: 300;
-  padding-top: 3px;
+  margin-top: 3px;
+
+  li {
+    margin-top: 5px;
+    padding: 0 5px;
+
+    &+li {
+      border-left: 0.2px solid $gray-light-text;
+    }
+  }
 }
 
 .forum-body {
