@@ -31,6 +31,22 @@
   }
 }
 
+.forum-header,
+.sidebar-header {
+  background: gray;
+}
+
+.sidebar-header {
+  // background: $purple-dark;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+
 .narrow-header {
   display: flex;
   justify-content: space-between;

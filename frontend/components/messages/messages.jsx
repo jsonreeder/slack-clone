@@ -27,10 +27,6 @@ class Message extends React.Component {
 
   // Parents
   sidebar (username, signOut) {
-    const sidebarHeader = <div className="sidebar-header">
-      {this.userInfo(username, signOut)}
-    </div>;
-
     const sidebarBody = <div className="sidebar-body">
       {this.channelsJoined()}
       {this.usersIndex()}
@@ -38,7 +34,7 @@ class Message extends React.Component {
 
     return(
       <div className="sidebar-container">
-        {sidebarHeader}
+        {this.sidebarHeader(username, signOut)}
         <div className="sidebar-filler"></div>
         {sidebarBody}
       </div>
@@ -57,10 +53,10 @@ class Message extends React.Component {
   // Children
 
   // Sidebar
-  userInfo (username, signOut) {
+  sidebarHeader (username, signOut) {
     const formattedName = username[0].toUpperCase() + username.slice(1);
     return(
-      <div className="user-info">
+      <div className="sidebar-header">
         <ul className="narrow-header user-nav">
           <li className="name">{formattedName}</li>
           <li>
