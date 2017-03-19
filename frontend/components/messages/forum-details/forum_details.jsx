@@ -7,17 +7,18 @@ class ForumDetails extends React.Component {
 
   componentDidMount() {
     this.props.requestSingleForum(this.props.params.forumName);
+    console.log(this.props);
   }
 
   forumAbout () {
     let title;
     let topic;
-    if (this.props.forum.currentForum) {
+    if (this.props.currentForum) {
       title = <h1 className="forum-title">
-          About #{this.props.forum.currentForum.name}
+          About #{this.props.currentForum.name}
         </h1>;
       topic = <div className="forum-topic">
-          {this.props.forum.currentForum.topic}
+          {this.props.currentForum.topic}
         </div>;
     }
 
@@ -33,8 +34,8 @@ class ForumDetails extends React.Component {
     const title = <h1>Members</h1>;
     let members;
 
-    if (this.props.forum.currentForum) {
-      let rawMembers = this.props.forum.currentForum.members;
+    if (this.props.currentForum) {
+      let rawMembers = this.props.currentForum.members;
       members = <ul className="forum-members">
         {rawMembers.map((member, idx) => (
            <li key={idx}>@ {member.username}</li>

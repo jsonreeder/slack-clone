@@ -4,7 +4,7 @@ import { requestSingleForum } from '../../../actions/forum_actions';
 import ForumDetails from './forum_details';
 
 const mapStateToProps = ({ forum }) => ({
-  forum
+  currentForum: forum.currentForum
 });
 
 const mapDispatchToProps = dispatch => ({
