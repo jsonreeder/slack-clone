@@ -58,7 +58,12 @@ class Message extends React.Component {
     let username;
     if (this.props.currentUser) {
       username = this.props.currentUser.username;
-      title = <h1>{username[0].toUpperCase() + username.slice(1)}</h1>;
+      title = <div>
+        <h1>{username[0].toUpperCase() + username.slice(1)}</h1>
+        <ul className="sub-header">
+          <li>@{username}</li>
+        </ul>
+      </div>;
     }
 
     return(
@@ -69,7 +74,6 @@ class Message extends React.Component {
             <i className="fa fa-sign-out" aria-hidden="true"></i>
           </Link>
         </li>
-      @{username}
       </ul>
     );
   }
@@ -127,7 +131,7 @@ class Message extends React.Component {
     if (this.props.forum.currentForum) {
       title = <div>
         <h1>#{this.props.forum.currentForum.name}</h1>
-        <ul className="forum-header-details">
+        <ul className="sub-header">
           <li>2</li>
           <li>Description</li>
         </ul>
