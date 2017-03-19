@@ -42,7 +42,6 @@ class ForumDetails extends React.Component {
   }
 
   forumMembers () {
-    const title = <h1>Members</h1>;
     let members;
 
     if (this.props.currentForum) {
@@ -55,10 +54,10 @@ class ForumDetails extends React.Component {
     }
 
     return(
-      <div className="forum-members">
-        {title}
+      <li className="forum-members">
+        <h2>Members</h2>
         {members}
-      </div>
+      </li>
     );
   }
 
@@ -67,7 +66,7 @@ class ForumDetails extends React.Component {
       <ul className="forum-details">
         {this.forumHeader()}
         {this.channelDetails()}
-        <li>{this.forumMembers()}</li>
+        {this.forumMembers()}
       </ul>
     );
   }
