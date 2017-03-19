@@ -49,7 +49,6 @@ class Message extends React.Component {
       <div className="home-container">
         {this.forumHeader()}
         {this.forumBody()}
-        {this.children}
       </div>
     );
   }
@@ -133,6 +132,7 @@ class Message extends React.Component {
     return(
       <div className="forum-body">
         {this.messageContainer()}
+        {this.children}
       </div>
     );
   }
