@@ -3,9 +3,10 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
+import SplashContainer from './splash/splash_container';
 import SessionFormContainer from './session/session_form_container';
 import MessagesContainer from './messages/messages_container';
-import SplashContainer from './splash/splash_container';
+import ForumDetailsContainer from './messages/forum-details/forum_details_container';
 
 const Root = ({ store }) => {
 
@@ -50,7 +51,13 @@ const Root = ({ store }) => {
             path="/messages/:forumName"
             component={ MessagesContainer }
             onEnter={ _ensureLoggedIn }
-          />
+          >
+            <Route
+              path="/messages/:forumName/details"
+              component={ ForumDetailsContainer }
+              onEnter={ _ensureLoggedIn }
+            />
+          </Route>
         </Route>
       </Router>
     </Provider>

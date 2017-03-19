@@ -5,6 +5,7 @@ import { hashHistory } from 'react-router';
 class Message extends React.Component {
   constructor(props) {
     super(props);
+    this.children = this.props.children;
   }
 
   // Lifecycle methods
@@ -48,6 +49,7 @@ class Message extends React.Component {
       <div className="home-container">
         {this.forumHeader()}
         {this.forumBody()}
+        {this.children}
       </div>
     );
   }
@@ -131,7 +133,6 @@ class Message extends React.Component {
     return(
       <div className="forum-body">
         {this.messageContainer()}
-        {this.forumDetail()}
       </div>
     );
   }
@@ -145,57 +146,6 @@ class Message extends React.Component {
     );
   }
 
-  forumDetail () {
-    return(
-      <ul className="forum-detail">
-        <li>{this.forumAbout()}</li>
-        <li>{this.forumMembers()}</li>
-      </ul>
-    );
-  }
-
-  // Forum Detail
-
-  forumAbout () {
-    let title;
-    let topic;
-    if (this.props.forum.currentForum) {
-      title = <h1 className="forum-title">
-          About #{this.props.forum.currentForum.name}
-        </h1>;
-      topic = <div className="forum-topic">
-          {this.props.forum.currentForum.topic}
-        </div>;
-    }
-
-    return(
-      <div className="forum-about">
-        {title}
-        {topic}
-      </div>
-    );
-  }
-
-  forumMembers () {
-    const title = <h1>Members</h1>;
-    let members;
-
-    if (this.props.forum.currentForum) {
-      let rawMembers = this.props.forum.currentForum.members;
-      members = <ul className="forum-members">
-        {rawMembers.map((member, idx) => (
-           <li key={idx}>@ {member.username}</li>
-         ))}
-      </ul>;
-    }
-
-    return(
-      <div className="forum-members">
-        {title}
-        {members}
-      </div>
-    );
-  }
 
   // Message
 
