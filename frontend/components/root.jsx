@@ -6,7 +6,7 @@ import App from './app';
 import SplashContainer from './splash/splash_container';
 import SessionFormContainer from './session/session_form_container';
 import MessagesContainer from './messages/messages_container';
-import ForumDetailsContainer from './messages/forum-details/forum_details_container';
+import ForumDetailsContainer from './forum-details/forum_details_container';
 
 const Root = ({ store }) => {
 

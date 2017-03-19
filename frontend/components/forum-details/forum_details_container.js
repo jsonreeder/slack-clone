@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { requestSingleForum } from '../../../actions/forum_actions';
+import { requestSingleForum } from '../../actions/forum_actions';
 import ForumDetails from './forum_details';
 
 const mapStateToProps = ({ forum }) => ({
