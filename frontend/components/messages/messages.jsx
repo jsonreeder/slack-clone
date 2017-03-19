@@ -125,9 +125,13 @@ class Message extends React.Component {
     let title;
     let detailsLinks;
     if (this.props.forum.currentForum) {
-      title = <h1>
-        #{this.props.forum.currentForum.name}
-      </h1>;
+      title = <div>
+        <h1>#{this.props.forum.currentForum.name}</h1>
+        <ul>
+          <li>2</li>
+          <li>Description</li>
+        </ul>
+      </div>;
       detailsLinks = <Link
           to={`/messages/${this.props.forum.currentForum.name}/details`}
         >
