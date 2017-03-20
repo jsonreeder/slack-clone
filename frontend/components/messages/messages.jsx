@@ -165,9 +165,14 @@ class Message extends React.Component {
   }
 
   messageContainer () {
+    let history;
+    if (this.props.forum.currentForum) {
+      history = this.props.forum.currentForum.messages;
+    }
+
     return(
       <div className="message-container">
-        <MessageHistory />
+        <MessageHistory history={history}/>
         {this.compose()}
       </div>
     );
