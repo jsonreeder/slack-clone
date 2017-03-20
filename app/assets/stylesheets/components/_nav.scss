@@ -76,6 +76,13 @@
   ul.sub-header {
     color: $gray-light-text;
   }
+
+  li#sub-header-topic {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 60vw;
+  }
 }
 
 ul.sub-header {

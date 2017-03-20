@@ -134,8 +134,8 @@ class Message extends React.Component {
       title = <div>
         <h1>#{this.props.forum.currentForum.name}</h1>
         <ul className="sub-header">
-          <li>2</li>
-          <li>{`${this.props.forum.currentForum.topic.slice(0, 70)}...`}</li>
+          <li>{this.props.forum.currentForum.members.length}</li>
+          <li id="sub-header-topic">{`${this.props.forum.currentForum.topic}`}</li>
         </ul>
       </div>;
       detailsLinks = <Link
