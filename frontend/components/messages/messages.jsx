@@ -94,7 +94,9 @@ class Message extends React.Component {
 
     return(
       <div className="channels-list">
-        <h2>Channels</h2>
+        <Link to="/browse">
+          <h2>Channels</h2>
+        </Link>
         <ul>
           {channels}
         </ul>
