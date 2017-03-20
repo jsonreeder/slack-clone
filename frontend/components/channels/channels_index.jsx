@@ -1,14 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { hashHistory } from 'react-router';
 
 class ChannelsIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      forumName: "eastereggs"
+    };
+    this.handleCreateMembership = this.handleCreateMembership.bind(this);
   }
 
   componentDidMount() {
     this.props.requestAllForums();
     $('html,body').css('overflow','hidden');
+  }
+
+  handleCreateMembership() {
+    return e => {
+      window.store.dispatch(createMembership("eastereggs"));
+      hashHistory.push("/messages/eastereggs");
+    };
   }
 
   channelsIndexHeader() {
@@ -29,19 +41,16 @@ class ChannelsIndex extends React.Component {
   channelsIndexBody() {
     let channelsList;
     if (this.props.forum.forums) {
-      console.log(this.props);
       channelsList = <li>Success</li>;
       channelsList = <ul className="channels-index-channels-list">
         {this.props.forum.forums.map((forum, idx) => (
-          <Link
-            to={`/messages/${forum.name}`}
-            onClick={() => this.props.createMembership(forum.name)}
-            key={idx}
-          >
-            <li>
+          <li key={idx}>
+            <button
+              onClick={this.handleCreateMembership()}
+            >
               {forum.name}
-            </li>
-          </Link>
+            </button>
+          </li>
          ))}
       </ul>;
     }
