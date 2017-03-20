@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { createMessage } from '../../actions/message_actions';
 import ComposeMessage from './compose_message';
 
-const mapStateToProps = ({ forum }) => ({
-  currentForum: forum.currentForum
+const mapStateToProps = ({ forum, session }) => ({
+  currentForum: forum,
+  currentUser: session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
