@@ -8,7 +8,7 @@ import {
 import { requestAllUsers } from '../../actions/user_actions';
 import Messages from './messages';
 
-const mapStateToProps = ({ session, forum, users }) => ({
+const mapStateToProps = ({ forum, session, users }) => ({
   currentUser: session.currentUser,
   forum,
   users

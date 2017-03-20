@@ -7,6 +7,7 @@ import SplashContainer from './splash/splash_container';
 import SessionFormContainer from './session/session_form_container';
 import MessagesContainer from './messages/messages_container';
 import ForumDetailsContainer from './forum-details/forum_details_container';
+import ChannelsIndexContainer from './channels/channels_index_container';
 
 const Root = ({ store }) => {
 
@@ -58,6 +59,11 @@ const Root = ({ store }) => {
               onEnter={ _ensureLoggedIn }
             />
           </Route>
+          <Route
+            path="/browse"
+            component={ ChannelsIndexContainer }
+            onEnter={ _ensureLoggedIn }
+          />
         </Route>
       </Router>
     </Provider>
