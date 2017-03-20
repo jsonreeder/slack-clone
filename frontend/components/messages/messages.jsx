@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
 import MessageHistory from './message_history';
+import ComposeMessage from './compose_message';
 
 class Message extends React.Component {
   constructor(props) {
@@ -173,7 +174,7 @@ class Message extends React.Component {
     return(
       <div className="message-container">
         <MessageHistory history={history}/>
-        {this.compose()}
+        <ComposeMessage />
       </div>
     );
   }
@@ -195,15 +196,6 @@ class Message extends React.Component {
       </div>
     );
   }
-
-  compose () {
-    return(
-      <div className="compose">
-        Message #general (coming soon)
-      </div>
-    );
-  }
-
 
   // Render
   render () {
