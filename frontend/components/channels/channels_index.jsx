@@ -18,7 +18,7 @@ class ChannelsIndex extends React.Component {
 
   handleCreateMembership() {
     return e => {
-      window.store.dispatch(createMembership("eastereggs"));
+      this.props.createMembership("eastereggs");
       hashHistory.push("/messages/eastereggs");
     };
   }

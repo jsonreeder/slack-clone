@@ -12,7 +12,7 @@ const mapStateToProps = ({ forum, session }) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestAllForums: () => dispatch(requestAllForums()),
-  createMembership: (forumName) => dispatch(createMembership())
+  createMembership: forumName => dispatch(createMembership(forumName))
 });
 
 export default connect(
