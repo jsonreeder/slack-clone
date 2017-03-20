@@ -29,12 +29,15 @@ class ChannelsIndex extends React.Component {
   channelsIndexBody() {
     let channelsList;
     if (this.props.forum.forums) {
+      console.log(this.props);
       channelsList = <li>Success</li>;
       channelsList = <ul className="channels-index-channels-list">
         {this.props.forum.forums.map((forum, idx) => (
           <Link
             to={`/messages/${forum.name}`}
-            key={idx}>
+            onClick={() => this.props.createMembership(forum.name)}
+            key={idx}
+          >
             <li>
               {forum.name}
             </li>

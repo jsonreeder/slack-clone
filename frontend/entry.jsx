@@ -6,6 +6,7 @@ import configureStore from './store/store';
 
 // TODO: Remove import after development
 import { requestAllForums, requestSingleForum } from './actions/forum_actions';
+import { createMembership } from './actions/membership_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.requestAllForums = requestAllForums;
   window.requestSingleForum = requestSingleForum;
+  window.createMembership = createMembership;
 
   ReactDOM.render(
     <Root store={ store }/>,
