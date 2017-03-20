@@ -1,8 +1,9 @@
 .compose-message-container {
   background: $white;
-  border: $border-dark;
+  border: $border-light;
   padding: 10px;
   border-radius: 5px;
+  font-weight: 100;
 }
 
 .message-input {
