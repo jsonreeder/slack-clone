@@ -31,8 +31,14 @@ class ChannelsIndex extends React.Component {
     if (this.props.forum.forums) {
       channelsList = <li>Success</li>;
       channelsList = <ul className="channels-index-channels-list">
-        {this.props.forum.forums.map(forum => (
-          <li>{forum.name}</li>
+        {this.props.forum.forums.map((forum, idx) => (
+          <Link
+            to={`/messages/${forum.name}`}
+            key={idx}>
+            <li>
+              {forum.name}
+            </li>
+          </Link>
          ))}
       </ul>;
     }

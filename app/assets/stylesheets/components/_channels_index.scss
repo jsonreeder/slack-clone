@@ -49,8 +49,15 @@
 
   ul {
     li {
+      border: 1px solid black;
       border-top: $border;
       padding: 10px 0;
+      width: 100%;
+
+      &:hover {
+        background: $blue-light;
+        border: 1px solid $blue;
+      }
     }
   }
 
