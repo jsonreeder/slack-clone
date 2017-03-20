@@ -5,9 +5,6 @@ import { hashHistory } from 'react-router';
 class ChannelsIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      forumName: "eastereggs"
-    };
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
   }
 
@@ -16,10 +13,10 @@ class ChannelsIndex extends React.Component {
     $('html,body').css('overflow','hidden');
   }
 
-  handleCreateMembership() {
+  handleCreateMembership(forumName) {
     return e => {
-      this.props.createMembership("eastereggs");
-      hashHistory.push("/messages/eastereggs");
+      this.props.createMembership(forumName);
+      hashHistory.push(`/messages/${forumName}`);
     };
   }
 
@@ -44,12 +41,10 @@ class ChannelsIndex extends React.Component {
       channelsList = <li>Success</li>;
       channelsList = <ul className="channels-index-channels-list">
         {this.props.forum.forums.map((forum, idx) => (
-          <li key={idx}>
-            <button
-              onClick={this.handleCreateMembership()}
+          <li key={idx}
+              onClick={this.handleCreateMembership(forum.name)}
             >
               {forum.name}
-            </button>
           </li>
          ))}
       </ul>;
