@@ -1,6 +1,7 @@
 User.destroy_all
 Membership.destroy_all
 Forum.destroy_all
+Message.destroy_all
 
 PAIRS = [
   ['harold', 'maude'],
@@ -15,6 +16,16 @@ PAIRS = [
   ['click', 'clack'],
   ['hannibal', 'clarice'],
   ['orville', 'wilbur']
+]
+
+GREETINGS = [
+  'Howdy',
+  'Ahlan wa Sahlan',
+  "What's up!",
+  'Salve',
+  'Cheers',
+  "What's good",
+  'Yo'
 ]
 
 general = Forum.create!(
@@ -51,6 +62,11 @@ PAIRS.flatten.each do |username|
     membershipable_id: user_id,
     membershipable_type: 'User'
   )
+  Message.create!(
+    forum_id: Forum.first.id,
+    body: GREETINGS.sample,
+    messageable_type: "User",
+    messageable_id: user_id
+  )
 end
-
 
