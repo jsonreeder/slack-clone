@@ -3,11 +3,22 @@ import React from 'react';
 class ComposeMessage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      body: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted');
+    this.props.createMessage(this.state);
+    this.setState({body: ""});
+  }
+
+  update(property) {
+    return e => this.setState({
+      [property]: e.target.value
+    });
   }
 
   render() {
@@ -24,6 +35,8 @@ class ComposeMessage extends React.Component {
         >
           <input
             type="text"
+            value={this.state.body}
+            onChange={this.update("body")}
             placeholder={placeholder}
             className="message-input"
           />
