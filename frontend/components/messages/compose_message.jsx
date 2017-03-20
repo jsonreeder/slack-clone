@@ -5,6 +5,11 @@ class ComposeMessage extends React.Component {
     super(props);
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('submitted');
+  }
+
   render() {
     let placeholder;
     if (this.props.currentForum) {
@@ -15,6 +20,7 @@ class ComposeMessage extends React.Component {
       <div className="compose-message-container">
         <form
           className="compose-message-form"
+          onSubmit={this.handleSubmit}
         >
           <input
             type="text"
