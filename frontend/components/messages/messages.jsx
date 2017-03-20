@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
 import MessageHistory from './message_history';
+import ComposeMessage from './compose_message';
 
 class Message extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Message extends React.Component {
       channels = (
         this.props.currentUser.forums.map((forum, idx) => (
           <li key={idx}>
-            <Link to={`/messages/${forum.name}`}>
+            <Link to={`/messages/${forum.name}/details`}>
               # {forum.name}
             </Link>
           </li>
@@ -166,14 +167,20 @@ class Message extends React.Component {
 
   messageContainer () {
     let history;
+    let currentForum;
     if (this.props.forum.currentForum) {
       history = this.props.forum.currentForum.messages;
+      currentForum = this.props.forum.currentForum;
     }
 
     return(
       <div className="message-container">
         <MessageHistory history={history}/>
-        {this.compose()}
+        <ComposeMessage
+          currentForum={currentForum}
+          createMessage={this.props.createMessage}
+          currentUser={this.props.currentUser}
+        />
       </div>
     );
   }
@@ -195,15 +202,6 @@ class Message extends React.Component {
       </div>
     );
   }
-
-  compose () {
-    return(
-      <div className="compose">
-        Message #general (coming soon)
-      </div>
-    );
-  }
-
 
   // Render
   render () {
