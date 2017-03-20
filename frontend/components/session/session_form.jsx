@@ -144,7 +144,8 @@ class SessionForm extends React.Component {
       ["rosencrantz", "guildenstern"],
       ["click", "clack"],
       ['hannibal', 'clarice'],
-      ['orville', 'wilbur']
+      ['orville', 'wilbur'],
+      ['mozart', 'salieri']
     ];
 
     const colorClass = [

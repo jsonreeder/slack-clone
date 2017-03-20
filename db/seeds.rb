@@ -15,7 +15,8 @@ PAIRS = [
   ['rosencrantz', 'guildenstern'],
   ['click', 'clack'],
   ['hannibal', 'clarice'],
-  ['orville', 'wilbur']
+  ['orville', 'wilbur'],
+  ['mozart', 'salieri']
 ]
 
 GREETINGS = [
