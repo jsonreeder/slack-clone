@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
+import MessageHistory from './message_history';
+
 class Message extends React.Component {
   constructor(props) {
     super(props);
@@ -165,7 +167,7 @@ class Message extends React.Component {
   messageContainer () {
     return(
       <div className="message-container">
-        {this.messageHistory()}
+        <MessageHistory />
         {this.compose()}
       </div>
     );
