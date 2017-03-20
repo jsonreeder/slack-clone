@@ -1,12 +1,17 @@
 import React from 'react';
 
-const ComposeMessage = () => {
+class ComposeMessage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return(
-    <div className="compose-message-container">
-      Message #general
-    </div>
-  );
-};
+  render() {
+    return(
+      <div className="compose-message-container">
+        Message #general
+      </div>
+    );
+  }
+}
 
 export default ComposeMessage;
