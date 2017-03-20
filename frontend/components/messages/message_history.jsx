@@ -38,6 +38,11 @@ const MessageHistory = () => {
          sender: "edison",
          time: "8:03 AM"
        })}
+      {singleMessage({
+         content: "He led no armies into battle, he conquered no countries, and he enslaved no peoples... Nonetheless, he exerted a degree of power the magnitude of which no warrior ever dreamed. His name still commands a respect as sweeping in scope and as world-wide as that of any other mortal - a devotion rooted deep in human gratitude and untainted by the bias that is often associated with race, color, politics, and religion.",
+         sender: "edison",
+         time: "8:05 AM"
+       })}
     </div>
   );
 };
