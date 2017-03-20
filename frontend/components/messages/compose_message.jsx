@@ -6,9 +6,21 @@ class ComposeMessage extends React.Component {
   }
 
   render() {
+    let placeholder;
+    if (this.props.currentForum) {
+      placeholder =`Message #${this.props.currentForum.name}`;
+    }
+
     return(
       <div className="compose-message-container">
-        Message #general
+        <form
+          className="compose-message-form"
+        >
+          <input
+            type="text"
+            placeholder={placeholder}
+          />
+        </form>
       </div>
     );
   }
