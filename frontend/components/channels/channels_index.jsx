@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class ChannelsIndex extends React.Component {
   constructor(props) {
@@ -13,9 +14,16 @@ class ChannelsIndex extends React.Component {
   channelsIndexHeader() {
     return(
       <div className="channels-index-header">
+        <div className="channels-index-nav">
+          <ul className="escape">
+            <Link to="/">
+              <li id="x">&times;</li>
+            </Link>
+          </ul>
+        </div>
         <h1>Browse all channels</h1>
       </div>
-    )
+    );
   }
 
   channelsIndexBody() {
