@@ -43,6 +43,10 @@
     font-size: .8em;
     padding-bottom: 5px;
     font-weight: bold;
+
+    &:hover {
+      color: $white;
+    }
   }
 
 
