@@ -27,15 +27,22 @@ class ChannelsIndex extends React.Component {
   }
 
   channelsIndexBody() {
+    let channelsList;
+    if (this.props.forum.forums) {
+      channelsList = <li>Success</li>;
+      channelsList = <ul className="channels-index-channels-list">
+        {this.props.forum.forums.map(forum => (
+          <li>{forum.name}</li>
+         ))}
+      </ul>;
+    }
+
     return(
       <div className="channels-index-body">
         <h2>
           Channels you can join
         </h2>
-        <ul>
-          <li>A channel</li>
-          <li>Another channel</li>
-        </ul>
+        {channelsList}
       </div>
     );
   }
