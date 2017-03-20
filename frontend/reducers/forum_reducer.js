@@ -6,20 +6,18 @@ import {
 } from '../actions/forum_actions';
 
 const ForumReducer = (state = {}, action) => {
-  Object.freeze(state);
+  const newState = merge({}, state);
+
   switch (action.type) {
   case RECEIVE_ALL_FORUMS:
     return merge({}, {
       forums: Object.values(action.forums)
     });
   case RECEIVE_SINGLE_FORUM:
-    let newState = merge({}, state, {
-      currentForum: action.forum
-    });
-    newState.currentForum.members = action.forum.members;
+    newState.currentForum = action.forum;
     return newState;
   default:
-    return state;
+    return newState;
   }
 };
 

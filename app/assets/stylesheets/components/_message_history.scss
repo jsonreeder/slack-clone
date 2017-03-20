@@ -1,0 +1,34 @@
+.message-history-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  overflow: scroll;
+}
+
+.single-message-container {
+  margin: 8px 0;
+
+}
+
+.single-message-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 2px;
+
+  .sender {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .time {
+    color: $gray;
+    font-size: .7em;
+    font-weight: 300;
+  }
+}
+
+.single-message-content {
+  font-weight: 300;
+}

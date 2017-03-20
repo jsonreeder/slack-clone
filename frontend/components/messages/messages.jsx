@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
+import MessageHistory from './message_history';
+
 class Message extends React.Component {
   constructor(props) {
     super(props);
@@ -163,9 +165,14 @@ class Message extends React.Component {
   }
 
   messageContainer () {
+    let history;
+    if (this.props.forum.currentForum) {
+      history = this.props.forum.currentForum.messages;
+    }
+
     return(
       <div className="message-container">
-        {this.messageHistory()}
+        <MessageHistory history={history}/>
         {this.compose()}
       </div>
     );
