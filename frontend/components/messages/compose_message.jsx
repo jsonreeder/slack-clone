@@ -25,6 +25,7 @@ class ComposeMessage extends React.Component {
           <input
             type="text"
             placeholder={placeholder}
+            className="message-input"
           />
         </form>
       </div>
