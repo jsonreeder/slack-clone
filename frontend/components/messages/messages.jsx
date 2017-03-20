@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
 import MessageHistory from './message_history';
-import ComposeMessageContainer from './compose_message_container';
+import ComposeMessage from './compose_message';
 
 class Message extends React.Component {
   constructor(props) {
@@ -167,14 +167,20 @@ class Message extends React.Component {
 
   messageContainer () {
     let history;
+    let currentForum;
     if (this.props.forum.currentForum) {
       history = this.props.forum.currentForum.messages;
+      currentForum = this.props.forum.currentForum;
     }
 
     return(
       <div className="message-container">
         <MessageHistory history={history}/>
-        <ComposeMessageContainer />
+        <ComposeMessage
+          currentForum={currentForum}
+          createMessage={this.props.createMessage}
+          currentUser={this.props.currentUser}
+        />
       </div>
     );
   }
