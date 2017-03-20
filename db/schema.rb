@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317162917) do
+ActiveRecord::Schema.define(version: 20170320171513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20170317162917) do
     t.index ["forum_id", "membershipable_id", "membershipable_type"], name: "index_membershps_on_member", unique: true, using: :btree
     t.index ["forum_id"], name: "index_memberships_on_forum_id", using: :btree
     t.index ["membershipable_type", "membershipable_id"], name: "index_memberships_on_membershipable_type_and_membershipable_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "forum_id",         null: false
+    t.text     "body",             null: false
+    t.string   "messageable_type"
+    t.integer  "messageable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["forum_id"], name: "index_messages_on_forum_id", using: :btree
+    t.index ["messageable_type", "messageable_id"], name: "index_messages_on_messageable_type_and_messageable_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

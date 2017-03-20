@@ -19,4 +19,5 @@ class Forum < ApplicationRecord
            through: :memberships,
            source: :membershipable,
            source_type: :User
+  has_many :messages
 end
