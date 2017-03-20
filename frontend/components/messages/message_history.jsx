@@ -1,6 +1,13 @@
 import React from 'react';
 
 const singleMessage = ({body, username, createdAt}, idx) => {
+  const date = new Date(createdAt);
+  const hours24 = date.getHours();
+  const hours12 = hours24 % 12;
+  const amPm = (hours24<12 ? 'AM' : 'PM');
+  const minutes = date.getMinutes();
+  const minutesPadded = (minutes>9 ? '' : '0') + minutes;
+  const time = `${hours24}:${minutesPadded} ${amPm}`;
 
   return(
     <div key={idx} className="single-message-container">
@@ -9,7 +16,7 @@ const singleMessage = ({body, username, createdAt}, idx) => {
           {username}
         </div>
         <div className="time">
-          {createdAt}
+          {time}
         </div>
       </div>
       <div className="single-message-content">
