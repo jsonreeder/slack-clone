@@ -5,15 +5,19 @@ class ComposeMessage extends React.Component {
     super(props);
     this.state = {
       body: "",
-      messageable_type: "User"
+      messageable_type: "User",
+      forum_id: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({messageable_id: this.props.currentUser.id});
-    this.setState({forum_id: 34});
-    console.log(this.props);
+  componentWillReceiveProps(newProps) {
+    if (newProps.currentForum && newProps.currentUser) {
+      this.setState({
+        forum_id: newProps.currentForum.id,
+        messageable_id: this.props.currentUser.id
+      });
+    }
   }
 
   handleSubmit(e) {
