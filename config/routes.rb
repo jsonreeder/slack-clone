@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :users, only: [ :index, :create ]
     resources :forums, only: [ :show, :index ], param: :name
     resources :memberships, only: [ :create ]
+    resources :messages, only: [ :create ]
     resource :session, only: [ :create, :destroy ]
   end
 end
