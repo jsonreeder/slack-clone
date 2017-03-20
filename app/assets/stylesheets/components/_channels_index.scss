@@ -1,0 +1,35 @@
+.channels-index-container {
+  display: flex;
+  justify-content: center;
+  background: $white;
+  height: 100vh;
+}
+
+.channels-index-selector-container {
+  width: 680px;
+  padding: 60px 30px;
+}
+
+.channels-index-header {
+  h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+}
+.channels-index-body {
+  padding: 10px;
+  color: $gray-dark-text;
+
+  ul {
+    li {
+      border-top: $border;
+      padding: 10px 0;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+}
