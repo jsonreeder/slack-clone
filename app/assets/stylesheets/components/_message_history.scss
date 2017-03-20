@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 20px;
+  overflow: scroll;
 }
 
 .single-message-container {
@@ -23,5 +24,10 @@
   .time {
     color: $gray;
     font-size: .7em;
+    font-weight: 300;
   }
+}
+
+.single-message-content {
+  font-weight: 300;
 }

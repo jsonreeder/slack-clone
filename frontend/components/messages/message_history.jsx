@@ -12,7 +12,9 @@ const singleMessage = ({content, sender, time}) => {
           {time}
         </div>
       </div>
-      {content}
+      <div className="single-message-content">
+        {content}
+      </div>
     </div>
   );
 };
