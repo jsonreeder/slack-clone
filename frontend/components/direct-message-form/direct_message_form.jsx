@@ -9,7 +9,8 @@ class DirectMessageForm extends React.Component {
     this.state = {
       selectedUsers: [],
       remainingUsers: [],
-      filteredUsers: []
+      filteredUsers: [],
+      inputText: ""
     };
   }
 
@@ -53,7 +54,7 @@ class DirectMessageForm extends React.Component {
   selectUser(user) {
     return e => {
       this.setState({
-        selectedUsers: this.state.selectedUsers.concat(user),
+        selectedUsers: this.state.selectedUsers.concat(user)
       });
       const userIndex = this.state.remainingUsers.indexOf(user);
       this.state.remainingUsers.splice(userIndex, 1);
@@ -64,7 +65,11 @@ class DirectMessageForm extends React.Component {
 
   constrainUsersList() {
     return e => {
-      const query = RegExp(e.currentTarget.value);
+      /* const query = RegExp(e.currentTarget.value);*/
+      this.setState({
+        inputText: e.currentTarget.value
+      });
+      let query = RegExp(this.state.inputText);
       this.setState({
         filteredUsers: this.state.remainingUsers.filter(user => query.test(user))
       });
@@ -86,6 +91,7 @@ class DirectMessageForm extends React.Component {
           placeholder="Start a conversation"
           className="direct-message-form-text-input"
           onChange={this.constrainUsersList()}
+          value={this.state.inputText}
         />
       </ul>
     );
