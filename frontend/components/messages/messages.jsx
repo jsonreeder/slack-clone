@@ -83,12 +83,12 @@ class Message extends React.Component {
 
   channelsJoined () {
     let channels;
-    if (this.props.currentUser.forums) {
+    if (this.props.currentUser.channels) {
       channels = (
-        this.props.currentUser.forums.map((forum, idx) => (
+        this.props.currentUser.channels.map((channel, idx) => (
           <li key={idx}>
-            <Link to={`/messages/${forum.name}/details`}>
-              # {forum.name}
+            <Link to={`/messages/${channel.name}/details`}>
+              # {channel.name}
             </Link>
           </li>
         ))
