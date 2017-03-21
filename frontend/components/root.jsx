@@ -8,6 +8,7 @@ import SessionFormContainer from './session/session_form_container';
 import MessagesContainer from './messages/messages_container';
 import ForumDetailsContainer from './forum-details/forum_details_container';
 import ChannelsIndexContainer from './channels/channels_index_container';
+import DirectMessageFormContainer from './direct-message-form/direct_message_form_container';
 
 const Root = ({ store }) => {
 
@@ -62,6 +63,11 @@ const Root = ({ store }) => {
           <Route
             path="/browse"
             component={ ChannelsIndexContainer }
+            onEnter={ _ensureLoggedIn }
+          />
+          <Route
+            path="/direct_message"
+            component={ DirectMessageFormContainer }
             onEnter={ _ensureLoggedIn }
           />
         </Route>

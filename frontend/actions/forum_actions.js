@@ -13,6 +13,11 @@ export const requestSingleForum = name => dispatch => (
     .then(fetchedForum => dispatch(receiveSingleForum(fetchedForum)))
 );
 
+export const createForum = (currentUser, otherUsers) => dispatch => (
+  ForumAPIUtil.createForum(currentUser, otherUsers)
+    .then(createdForum => dispatch(receiveSingleForum(createdForum)))
+);
+
 const receiveAllForums = forums => ({
   type: RECEIVE_ALL_FORUMS,
   forums

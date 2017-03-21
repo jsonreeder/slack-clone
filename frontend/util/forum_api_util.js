@@ -12,10 +12,15 @@ export const fetchAllForums = () => (
   })
 );
 
-export const createForum = forum => (
+export const createForum = (current_user, other_users) => (
   $.ajax({
     method: 'post',
     url: 'api/forums',
-    data: forum
+    data: {
+      forum: {
+        current_user,
+        other_users
+      }
+    }
   })
 );

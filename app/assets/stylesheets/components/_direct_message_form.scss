@@ -1,0 +1,44 @@
+.direct-message-form {
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+}
+
+.direct-message-form-input-container {
+  display: flex;
+  border: $border-light-1;
+  padding: 12px;
+  margin-right: 20px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: 100;
+}
+
+.selected-users {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+
+  input,
+  li {
+    margin-top: 5px;
+  }
+
+  li {
+    margin-left: 5px;
+    background: $blue-sky;
+    color: $white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: .8em;
+  }
+}
+
+.direct-message-form-text-input {
+  padding-left: 10px;
+  width: 250px;
+}
+
+.direct-message-form-submit {
+
+}
