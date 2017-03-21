@@ -133,7 +133,7 @@ class Message extends React.Component {
 
     return(
       <div className="direct-messages-list">
-        <Link to="/browse">
+        <Link to="/direct_message">
           <h2>Direct Messages</h2>
         </Link>
         <ul>
