@@ -11,6 +11,7 @@ class DirectMessageForm extends React.Component {
   componentDidMount() {
     this.props.requestAllForums();
     $('html,body').css('overflow','hidden');
+    this.props.requestAllUsers();
   }
 
   handleCreateMembership(forumName) {
@@ -20,7 +21,7 @@ class DirectMessageForm extends React.Component {
     };
   }
 
-  channelsIndexHeader() {
+  usersIndexHeader() {
     return(
       <div className="channels-index-header">
         <div className="channels-index-nav">
@@ -30,21 +31,21 @@ class DirectMessageForm extends React.Component {
             </Link>
           </ul>
         </div>
-        <h1>Browse all channels</h1>
+        <h1>Direct Messages</h1>
       </div>
     );
   }
 
-  channelsIndexBody() {
-    let channelsList;
-    if (this.props.forum.forums) {
-      channelsList = <li>Success</li>;
-      channelsList = <ul className="channels-index-channels-list">
-        {this.props.forum.forums.map((forum, idx) => (
+  usersIndexBody() {
+    let usersList;
+    if (this.props.allUsers) {
+      usersList = <li>Success</li>;
+      usersList = <ul className="channels-index-channels-list">
+        {this.props.allUsers.map((user, idx) => (
           <li key={idx}
-              onClick={this.handleCreateMembership(forum.name)}
+              onClick={this.handleCreateMembership(user.username)}
             >
-              {forum.name}
+              {user.username}
           </li>
          ))}
       </ul>;
@@ -52,10 +53,8 @@ class DirectMessageForm extends React.Component {
 
     return(
       <div className="channels-index-body">
-        <h2>
-          Channels you can join
-        </h2>
-        {channelsList}
+        <h2>Users you can message</h2>
+        {usersList}
       </div>
     );
   }
@@ -64,8 +63,8 @@ class DirectMessageForm extends React.Component {
     return(
       <div className="channels-index-container">
         <div className="channels-index-selector-container">
-          {this.channelsIndexHeader()}
-          {this.channelsIndexBody()}
+          {this.usersIndexHeader()}
+          {this.usersIndexBody()}
         </div>
       </div>
     );
