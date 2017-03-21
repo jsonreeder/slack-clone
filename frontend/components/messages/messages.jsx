@@ -156,17 +156,11 @@ class Message extends React.Component {
           <li id="sub-header-topic">{`${this.props.forum.currentForum.topic}`}</li>
         </ul>
       </div>;
-      detailsLinks = <Link
-          to={`/messages/${this.props.forum.currentForum.name}/details`}
-        >
-          <i className="fa fa-columns" aria-hidden="true"></i>
-      </Link>;
     }
 
     return(
       <ul className="forum-header">
         <li>{title}</li>
-        <li>{detailsLinks}</li>
       </ul>
     );
   }
