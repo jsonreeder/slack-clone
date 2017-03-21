@@ -42,10 +42,15 @@ class DirectMessageForm extends React.Component {
   }
 
   selectedUsers() {
+    let users;
+    if (this.state.selectedUsers) {
+      users = this.state.selectedUsers.map((user, idx) => (
+        <li key={idx}>{user.username}</li>
+      ));
+    }
     return(
       <ul className="selected-users">
-        <li>maude</li>
-        <li>costello</li>
+        {users}
       </ul>
     );
   }
