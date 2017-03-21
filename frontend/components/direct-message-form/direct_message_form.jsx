@@ -81,6 +81,12 @@ class DirectMessageForm extends React.Component {
     return(
       <ul className="selected-users">
         {users}
+        <input
+          type="text"
+          placeholder="Start a conversation"
+          className="direct-message-form-text-input"
+          onChange={this.constrainUsersList()}
+        />
       </ul>
     );
   }
@@ -90,12 +96,6 @@ class DirectMessageForm extends React.Component {
       <form className="direct-message-form">
         <div className="direct-message-form-input-container">
         {this.selectedUsers()}
-        <input
-          type="text"
-          placeholder="Start a conversation"
-          className="direct-message-form-text-input"
-          onChange={this.constrainUsersList()}
-        />
         </div>
         <input
           type="submit"

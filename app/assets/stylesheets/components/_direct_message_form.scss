@@ -10,24 +10,22 @@
   padding: 12px;
   margin-right: 20px;
   border-radius: 5px;
-  width: 100%;
   font-size: 1.2em;
   font-weight: 100;
 }
 
 .selected-users {
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: scroll;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  width: 600px;
+  flex-wrap: wrap;
 
-  li+li {
-    margin-left: 5px;
+  input,
+  li {
+    margin-top: 5px;
   }
 
   li {
+    margin-left: 5px;
     background: $blue-sky;
     color: $white;
     padding: 5px 10px;
@@ -38,6 +36,7 @@
 
 .direct-message-form-text-input {
   padding-left: 10px;
+  min-width: 300px;
 }
 
 .direct-message-form-submit {
