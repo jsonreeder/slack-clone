@@ -22,7 +22,7 @@ class Forum < ApplicationRecord
   has_many :messages
 
   def self.channels
-    Forum.all.where(kind: 'channel')
+    Forum.where(kind: 'channel')
   end
 
   def configure_dm(current_user, other_users)

@@ -43,19 +43,22 @@ class DirectMessageForm extends React.Component {
 
   selectedUsers() {
     return(
-      <div>
-        Maude
-      </div>
+      <ul className="selected-users">
+        <li>maude</li>
+        <li>costello</li>
+      </ul>
     );
   }
 
   directMessageForm() {
     return(
       <form className="direct-message-form">
-        <div className="direct-message-form-input">
+        <div className="direct-message-form-input-container">
+        {this.selectedUsers()}
         <input
           type="text"
           placeholder="Start a conversation"
+          className="direct-message-form-text-input"
         />
         </div>
         <input

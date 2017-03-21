@@ -1,18 +1,38 @@
 .direct-message-form {
   display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.direct-message-form-input {
+.direct-message-form-input-container {
+  display: flex;
   border: $border-light-1;
-  padding: 14px;
+  padding: 12px;
   margin-right: 20px;
   border-radius: 5px;
   width: 100%;
   font-size: 1.2em;
   font-weight: 100;
+}
+
+.selected-users {
+  display: flex;
+  align-items: center;
+
+  li+li {
+    margin-left: 5px;
+  }
+
+  li {
+    background: $blue-sky;
+    color: $white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: .8em;
+  }
+}
+
+.direct-message-form-text-input {
+  padding-left: 10px;
 }
 
 .direct-message-form-submit {
