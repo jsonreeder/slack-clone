@@ -11,3 +11,11 @@ export const fetchAllForums = () => (
     url: 'api/forums'
   })
 );
+
+export const createForum = forum => (
+  $.ajax({
+    method: 'post',
+    url: 'api/forums',
+    data: forum
+  })
+);
