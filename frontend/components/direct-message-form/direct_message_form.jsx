@@ -5,7 +5,6 @@ import { hashHistory } from 'react-router';
 class DirectMessageForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.handleCreateForum = this.handleCreateForum.bind(this);
     this.state = {
       selectedUsers: [],
@@ -16,7 +15,6 @@ class DirectMessageForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestAllForums();
     $('html,body').css('overflow','hidden');
     this.props.requestAllUsers();
   }
@@ -30,11 +28,9 @@ class DirectMessageForm extends React.Component {
     }
   }
 
-  handleCreateMembership(forumName) {
-    return e => {
-      this.props.createMembership(forumName);
-      hashHistory.push(`/messages/${forumName}/details`);
-    };
+  generateForumTitle(currentUser, otherUsers) {
+    const allUsers = [currentUser].concat(otherUsers).sort();
+    return allUsers.join('-');
   }
 
   handleCreateForum() {
@@ -42,10 +38,9 @@ class DirectMessageForm extends React.Component {
       e.preventDefault();
       const currentUser = this.props.currentUser.username;
       const otherUsers = this.state.selectedUsers;
-      const allUsers = [currentUser].concat(otherUsers);
-      const forumName = allUsers.join('-');
+      const forumTitle = this.generateForumTitle(currentUser, otherUsers);
       this.props.createForum(currentUser, otherUsers);
-      hashHistory.push(`/messages/${forumName}/details`);
+      hashHistory.push(`/messages/${forumTitle}/details`);
     };
   }
 

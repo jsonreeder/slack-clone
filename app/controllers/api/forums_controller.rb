@@ -19,7 +19,7 @@ class Api::ForumsController < ApplicationController
     @forum = Forum.new
     @forum.configure_dm(forum_params[:current_user], forum_params[:other_users])
 
-    if @forum.save!
+    if @forum.save
       current_user.forums << @forum
       other_users.each do |user|
         user.forums << @forum
