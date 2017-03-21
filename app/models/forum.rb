@@ -22,8 +22,9 @@ class Forum < ApplicationRecord
   has_many :messages
 
   def configure_dm(current_user, other_users)
+    all_users = [current_user] + other_users
     self.kind = "direct_message"
-    self.topic = Forum.topic(other_users.unshift(current_user))
+    self.topic = Forum.topic(all_users)
     self.name = other_users.unshift(current_user).join('-')
   end
 
