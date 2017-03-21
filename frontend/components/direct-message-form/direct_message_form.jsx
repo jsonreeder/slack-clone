@@ -23,7 +23,7 @@ class DirectMessageForm extends React.Component {
     if (newProps.allUsers) {
       this.setState({
         remainingUsers: newProps.allUsers.map(user => user.username),
-        filteredUsers: newProps.allUsers.map(user => user.username)
+        filteredUsers: newProps.allUsers.map(user => user.username).sort()
       });
     }
   }
