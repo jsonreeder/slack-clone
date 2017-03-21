@@ -6,6 +6,7 @@ class DirectMessageForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
+    this.handleCreateForum = this.handleCreateForum.bind(this);
     this.state = {
       selectedUsers: [],
       remainingUsers: [],
@@ -33,6 +34,16 @@ class DirectMessageForm extends React.Component {
     return e => {
       this.props.createMembership(forumName);
       hashHistory.push(`/messages/${forumName}/details`);
+    };
+  }
+
+  handleCreateForum() {
+    // TODO: Add hash history push
+    return e => {
+      e.preventDefault();
+      const currentUser = this.props.currentUser.username;
+      const otherUsers = this.state.selectedUsers;
+      this.props.createForum(currentUser, otherUsers);
     };
   }
 
@@ -107,6 +118,7 @@ class DirectMessageForm extends React.Component {
           type="submit"
           value="Go"
           className="small-button gray"
+          onClick={this.handleCreateForum()}
         />
       </form>
     );
