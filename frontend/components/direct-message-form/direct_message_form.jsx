@@ -43,7 +43,7 @@ class DirectMessageForm extends React.Component {
             </Link>
           </ul>
         </div>
-        <h1>Direct Messages</h1>
+        <h1>New Direct Message</h1>
       </div>
     );
   }
@@ -55,6 +55,15 @@ class DirectMessageForm extends React.Component {
       });
       const userIndex = this.state.remainingUsers.indexOf(user);
       this.state.remainingUsers.splice(userIndex, 1);
+    };
+  }
+
+  constrainUsersList() {
+    return e => {
+      const query = RegExp(e.currentTarget.value);
+      this.setState({
+        remainingUsers: this.state.remainingUsers.filter(user => query.test(user))
+      });
     };
   }
 
@@ -81,6 +90,7 @@ class DirectMessageForm extends React.Component {
           type="text"
           placeholder="Start a conversation"
           className="direct-message-form-text-input"
+          onChange={this.constrainUsersList()}
         />
         </div>
         <input
