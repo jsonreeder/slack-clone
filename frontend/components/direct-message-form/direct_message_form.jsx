@@ -36,6 +36,24 @@ class DirectMessageForm extends React.Component {
     );
   }
 
+  directMessageForm() {
+    return(
+      <form className="direct-message-form">
+        <div className="direct-message-form-input">
+        <input
+          type="text"
+          placeholder="Start a conversation"
+        />
+        </div>
+        <input
+          type="submit"
+          value="Go"
+          className="small-button gray"
+        />
+      </form>
+    );
+  }
+
   usersIndexBody() {
     let usersList;
     if (this.props.allUsers) {
@@ -64,6 +82,7 @@ class DirectMessageForm extends React.Component {
       <div className="channels-index-container">
         <div className="channels-index-selector-container">
           {this.usersIndexHeader()}
+          {this.directMessageForm()}
           {this.usersIndexBody()}
         </div>
       </div>
