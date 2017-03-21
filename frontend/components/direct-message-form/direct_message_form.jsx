@@ -8,7 +8,7 @@ class DirectMessageForm extends React.Component {
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.state = {
       selectedUsers: [
-        {username: "maude"}
+        "maude"
       ]
     };
   }
@@ -41,11 +41,20 @@ class DirectMessageForm extends React.Component {
     );
   }
 
+  selectUser(user) {
+    return e => {
+      this.setState({
+        selectedUsers: [user]
+      });
+      console.log(this.state);
+    };
+  }
+
   selectedUsers() {
     let users;
     if (this.state.selectedUsers) {
       users = this.state.selectedUsers.map((user, idx) => (
-        <li key={idx}>{user.username}</li>
+        <li key={idx}>{user}</li>
       ));
     }
     return(
@@ -82,7 +91,7 @@ class DirectMessageForm extends React.Component {
       usersList = <ul className="channels-index-channels-list">
         {this.props.allUsers.map((user, idx) => (
           <li key={idx}
-              onClick={this.handleCreateMembership(user.username)}
+              onClick={this.selectUser(user.username)}
             >
               {user.username}
           </li>
