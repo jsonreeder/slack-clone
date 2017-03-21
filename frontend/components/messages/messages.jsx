@@ -32,7 +32,7 @@ class Message extends React.Component {
   sidebar (username, signOut) {
     const sidebarBody = <div className="sidebar-body">
       {this.channelsJoined()}
-      {this.usersIndex()}
+      {this.directMessagesJoined()}
     </div>;
 
     return(
@@ -107,22 +107,27 @@ class Message extends React.Component {
     );
   }
 
-  usersIndex () {
-    let users;
-    if (this.props.users.allUsers) {
-      const allUsers = this.props.users.allUsers;
-      users = <ul>
-        {allUsers.map((user, idx) => (
-          <li key={idx}>@ {user.username}</li>
-         ))}
-      </ul>;
+  directMessagesJoined () {
+    let directMessages;
+    if (this.props.currentUser.directMessages) {
+      directMessages = (
+        this.props.currentUser.directMessages.map((directMessage, idx) => (
+          <li key={idx}>
+            <Link to={`/messages/${directMessage.name}/details`}>
+              @ {directMessage.name}
+            </Link>
+          </li>
+        ))
+      );
     }
 
-    return (
-      <div className="users-index">
-        <h2>Direct Messages</h2>
+    return(
+      <div className="direct-messages-list">
+        <Link to="/browse">
+          <h2>Direct Messages</h2>
+        </Link>
         <ul>
-          {users}
+          {directMessages}
         </ul>
       </div>
     );
