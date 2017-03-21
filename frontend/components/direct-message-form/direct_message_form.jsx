@@ -8,7 +8,14 @@ class DirectMessageForm extends React.Component {
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.state = {
       selectedUsers: [
-        "maude"
+        "maude",
+        "maude1",
+        "maude2",
+        "maude3",
+        "maude4",
+        "maude5",
+        "maude6",
+        "maude7"
       ]
     };
   }
