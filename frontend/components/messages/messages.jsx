@@ -107,6 +107,12 @@ class Message extends React.Component {
     );
   }
 
+  modifiedName (original, currentUsername) {
+    return original.replace(currentUsername, '')
+                   .replace(/^-|-$/, '')
+                   .replace('--', '-');
+  }
+
   directMessagesJoined () {
     let directMessages;
     if (this.props.currentUser.directMessages) {
@@ -114,7 +120,7 @@ class Message extends React.Component {
         this.props.currentUser.directMessages.map((directMessage, idx) => (
           <li key={idx}>
             <Link to={`/messages/${directMessage.name}/details`}>
-              @ {directMessage.name}
+              @ {this.modifiedName(directMessage.name, currentUser.username)}
             </Link>
           </li>
         ))
