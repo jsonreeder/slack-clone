@@ -10,9 +10,11 @@ class ForumDetails extends React.Component {
   }
 
   forumHeader () {
-    let title;
+    let title = <h1>About this conversation</h1>;
     if (this.props.currentForum) {
-      title = <h1>About #{this.props.currentForum.name}</h1>;
+      if (this.props.currentForum.kind === "channel") {
+        title = <h1>About #{this.props.currentForum.name}</h1>;
+      }
     }
 
     return(

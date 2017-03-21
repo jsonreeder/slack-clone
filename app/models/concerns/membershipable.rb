@@ -6,7 +6,14 @@ module Membershipable
     has_many :forums,
              through: :memberships,
              source: :forum
+  end
 
+  def channels
+    forums.where(kind: 'channel')
+  end
+
+  def direct_messages
+    forums.where(kind: 'direct_message')
   end
 
   def join(forum_id)
