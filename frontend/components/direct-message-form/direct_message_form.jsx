@@ -44,9 +44,8 @@ class DirectMessageForm extends React.Component {
   selectUser(user) {
     return e => {
       this.setState({
-        selectedUsers: [user]
+        selectedUsers: this.state.selectedUsers.concat(user)
       });
-      console.log(this.state);
     };
   }
 
