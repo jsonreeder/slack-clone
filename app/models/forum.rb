@@ -21,6 +21,10 @@ class Forum < ApplicationRecord
            source_type: :User
   has_many :messages
 
+  def self.channels
+    Forum.all.where(kind: 'channel')
+  end
+
   def configure_dm(current_user, other_users)
     all_users = [current_user] + other_users
     self.kind = "direct_message"
