@@ -51,10 +51,11 @@
 
 
   li {
-    padding: 0 0 2px 5px;
+    padding: 0 8px 2px 5px;
   }
 }
 
+.direct-messages-list,
 .channels-list {
 
   ul {
@@ -63,6 +64,9 @@
 
   li {
     border-radius: 3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
     &:hover {
       background: $green-light;

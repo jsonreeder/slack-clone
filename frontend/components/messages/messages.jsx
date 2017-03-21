@@ -32,7 +32,7 @@ class Message extends React.Component {
   sidebar (username, signOut) {
     const sidebarBody = <div className="sidebar-body">
       {this.channelsJoined()}
-      {this.usersIndex()}
+      {this.directMessagesJoined()}
     </div>;
 
     return(
@@ -83,14 +83,15 @@ class Message extends React.Component {
 
   channelsJoined () {
     let channels;
-    if (this.props.currentUser.forums) {
+    if (this.props.currentUser.channels) {
       channels = (
-        this.props.currentUser.forums.map((forum, idx) => (
-          <li key={idx}>
-            <Link to={`/messages/${forum.name}/details`}>
-              # {forum.name}
-            </Link>
-          </li>
+        this.props.currentUser.channels.map((channel, idx) => (
+          <Link
+            to={`/messages/${channel.name}/details`}
+            key={idx}
+          >
+            <li># {channel.name}</li>
+          </Link>
         ))
       );
     }
@@ -107,22 +108,36 @@ class Message extends React.Component {
     );
   }
 
-  usersIndex () {
-    let users;
-    if (this.props.users.allUsers) {
-      const allUsers = this.props.users.allUsers;
-      users = <ul>
-        {allUsers.map((user, idx) => (
-          <li key={idx}>@ {user.username}</li>
-         ))}
-      </ul>;
+  modifiedName (original, currentUsername) {
+    return original.replace(currentUsername, '')
+                   .replace(/^-|-$/, '')
+                   .replace('--', '-');
+  }
+
+  directMessagesJoined () {
+    let directMessages;
+    if (this.props.currentUser.directMessages) {
+      directMessages = (
+        this.props.currentUser.directMessages.map((directMessage, idx) => (
+          <Link
+            to={`/messages/${directMessage.name}/details`}
+            key={idx}
+          >
+            <li>
+              @ {this.modifiedName(directMessage.name, this.props.currentUser.username)}
+            </li>
+          </Link>
+        ))
+      );
     }
 
-    return (
-      <div className="users-index">
-        <h2>Direct Messages</h2>
+    return(
+      <div className="direct-messages-list">
+        <Link to="/browse">
+          <h2>Direct Messages</h2>
+        </Link>
         <ul>
-          {users}
+          {directMessages}
         </ul>
       </div>
     );
@@ -141,17 +156,11 @@ class Message extends React.Component {
           <li id="sub-header-topic">{`${this.props.forum.currentForum.topic}`}</li>
         </ul>
       </div>;
-      detailsLinks = <Link
-          to={`/messages/${this.props.forum.currentForum.name}/details`}
-        >
-          <i className="fa fa-columns" aria-hidden="true"></i>
-      </Link>;
     }
 
     return(
       <ul className="forum-header">
         <li>{title}</li>
-        <li>{detailsLinks}</li>
       </ul>
     );
   }
