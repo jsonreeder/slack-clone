@@ -7,16 +7,8 @@ class DirectMessageForm extends React.Component {
     super(props);
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.state = {
-      selectedUsers: [
-        "maude",
-        "maude1",
-        "maude2",
-        "maude3",
-        "maude4",
-        "maude5",
-        "maude6",
-        "maude7"
-      ]
+      selectedUsers: [],
+      remainingUsers: []
     };
   }
 
@@ -24,6 +16,14 @@ class DirectMessageForm extends React.Component {
     this.props.requestAllForums();
     $('html,body').css('overflow','hidden');
     this.props.requestAllUsers();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.allUsers) {
+      this.setState({
+        remainingUsers: newProps.allUsers.map(user => user.username)
+      });
+    }
   }
 
   handleCreateMembership(forumName) {
@@ -51,8 +51,10 @@ class DirectMessageForm extends React.Component {
   selectUser(user) {
     return e => {
       this.setState({
-        selectedUsers: this.state.selectedUsers.concat(user)
+        selectedUsers: this.state.selectedUsers.concat(user),
       });
+      const userIndex = this.state.remainingUsers.indexOf(user);
+      this.state.remainingUsers.splice(userIndex, 1);
     };
   }
 
@@ -92,14 +94,14 @@ class DirectMessageForm extends React.Component {
 
   usersIndexBody() {
     let usersList;
-    if (this.props.allUsers) {
+    if (this.state.remainingUsers[0]) {
       usersList = <li>Success</li>;
       usersList = <ul className="channels-index-channels-list">
-        {this.props.allUsers.map((user, idx) => (
+        {this.state.remainingUsers.map((user, idx) => (
           <li key={idx}
-              onClick={this.selectUser(user.username)}
+              onClick={this.selectUser(user)}
             >
-              {user.username}
+              {user}
           </li>
          ))}
       </ul>;
