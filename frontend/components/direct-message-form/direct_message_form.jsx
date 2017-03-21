@@ -38,12 +38,14 @@ class DirectMessageForm extends React.Component {
   }
 
   handleCreateForum() {
-    // TODO: Add hash history push
     return e => {
       e.preventDefault();
       const currentUser = this.props.currentUser.username;
       const otherUsers = this.state.selectedUsers;
+      const allUsers = [currentUser].concat(otherUsers);
+      const forumName = allUsers.join('-');
       this.props.createForum(currentUser, otherUsers);
+      hashHistory.push(`/messages/${forumName}/details`);
     };
   }
 
