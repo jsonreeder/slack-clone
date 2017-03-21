@@ -16,7 +16,14 @@ PAIRS = [
   ['click', 'clack'],
   ['hannibal', 'clarice'],
   ['orville', 'wilbur'],
-  ['mozart', 'salieri']
+  ['mozart', 'salieri'],
+  ['mario', 'luigi'],
+  ['link', 'zelda'],
+  ['simba', 'rafiki'],
+  ['calvin', 'hobbes'],
+  ['sherlock', 'watson'],
+  ['winnie', 'chrisrobin'],
+  ['jekyll', 'hyde']
 ]
 
 GREETINGS = [
