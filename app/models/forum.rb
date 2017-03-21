@@ -23,11 +23,11 @@ class Forum < ApplicationRecord
 
   def configure_dm(current_user, other_users)
     self.kind = "direct_message"
-    self.greeting = Forum.greeting(other_users)
+    self.topic = Forum.topic(other_users.unshift(current_user))
     self.name = other_users.unshift(current_user).join('-')
   end
 
-  def self.greeting(other_users)
+  def self.topic(other_users)
     if other_users.length > 2
       names = other_users.take(2).join(", ") + ", and " + other_users.last
     elsif other_users.length == 2
@@ -36,6 +36,6 @@ class Forum < ApplicationRecord
       names = other_users.first
     end
 
-    "This is the very beginning of your direct message history with #{names}."
+    "The direct message history between #{names}."
   end
 end
