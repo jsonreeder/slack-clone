@@ -86,11 +86,12 @@ class Message extends React.Component {
     if (this.props.currentUser.channels) {
       channels = (
         this.props.currentUser.channels.map((channel, idx) => (
-          <li key={idx}>
-            <Link to={`/messages/${channel.name}/details`}>
-              # {channel.name}
-            </Link>
-          </li>
+          <Link
+            to={`/messages/${channel.name}/details`}
+            key={idx}
+          >
+            <li># {channel.name}</li>
+          </Link>
         ))
       );
     }
@@ -118,11 +119,14 @@ class Message extends React.Component {
     if (this.props.currentUser.directMessages) {
       directMessages = (
         this.props.currentUser.directMessages.map((directMessage, idx) => (
-          <li key={idx}>
-            <Link to={`/messages/${directMessage.name}/details`}>
+          <Link
+            to={`/messages/${directMessage.name}/details`}
+            key={idx}
+          >
+            <li>
               @ {this.modifiedName(directMessage.name, this.props.currentUser.username)}
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))
       );
     }
