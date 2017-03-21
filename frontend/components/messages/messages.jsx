@@ -120,7 +120,7 @@ class Message extends React.Component {
         this.props.currentUser.directMessages.map((directMessage, idx) => (
           <li key={idx}>
             <Link to={`/messages/${directMessage.name}/details`}>
-              @ {this.modifiedName(directMessage.name, currentUser.username)}
+              @ {this.modifiedName(directMessage.name, this.props.currentUser.username)}
             </Link>
           </li>
         ))
