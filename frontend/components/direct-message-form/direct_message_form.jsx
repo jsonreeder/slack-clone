@@ -8,7 +8,8 @@ class DirectMessageForm extends React.Component {
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.state = {
       selectedUsers: [],
-      remainingUsers: []
+      remainingUsers: [],
+      filteredUsers: []
     };
   }
 
@@ -21,7 +22,8 @@ class DirectMessageForm extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.allUsers) {
       this.setState({
-        remainingUsers: newProps.allUsers.map(user => user.username)
+        remainingUsers: newProps.allUsers.map(user => user.username),
+        filteredUsers: newProps.allUsers.map(user => user.username)
       });
     }
   }
@@ -55,6 +57,8 @@ class DirectMessageForm extends React.Component {
       });
       const userIndex = this.state.remainingUsers.indexOf(user);
       this.state.remainingUsers.splice(userIndex, 1);
+      const filteredUserIndex = this.state.filteredUsers.indexOf(user);
+      this.state.filteredUsers.splice(filteredUserIndex, 1);
     };
   }
 
@@ -62,7 +66,7 @@ class DirectMessageForm extends React.Component {
     return e => {
       const query = RegExp(e.currentTarget.value);
       this.setState({
-        remainingUsers: this.state.remainingUsers.filter(user => query.test(user))
+        filteredUsers: this.state.remainingUsers.filter(user => query.test(user))
       });
     };
   }
@@ -104,10 +108,10 @@ class DirectMessageForm extends React.Component {
 
   usersIndexBody() {
     let usersList;
-    if (this.state.remainingUsers[0]) {
+    if (this.state.filteredUsers[0]) {
       usersList = <li>Success</li>;
       usersList = <ul className="channels-index-channels-list">
-        {this.state.remainingUsers.map((user, idx) => (
+        {this.state.filteredUsers.map((user, idx) => (
           <li key={idx}
               onClick={this.selectUser(user)}
             >
