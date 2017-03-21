@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { requestAllForums } from '../../actions/forum_actions';
 import { createMembership } from '../../actions/membership_actions';
 
-import ChannelsIndex from './channels_index';
+import DirectMessageForm from './direct_message_form';
 
 const mapStateToProps = ({ forum, session }) => ({
   currentForum: session.currentUser,
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ChannelsIndex);
+)(DirectMessageForm);
