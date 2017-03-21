@@ -6,6 +6,11 @@ class DirectMessageForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
+    this.state = {
+      selectedUsers: [
+        {username: "maude"}
+      ]
+    };
   }
 
   componentDidMount() {
@@ -32,6 +37,14 @@ class DirectMessageForm extends React.Component {
           </ul>
         </div>
         <h1>Direct Messages</h1>
+      </div>
+    );
+  }
+
+  selectedUsers() {
+    return(
+      <div>
+        Maude
       </div>
     );
   }
