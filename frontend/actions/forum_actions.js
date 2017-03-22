@@ -34,7 +34,7 @@ const receiveSingleForum = forum => ({
   forum
 });
 
-const receiveSingleMessage = message => ({
+export const receiveSingleMessage = message => ({
   type: RECEIVE_SINGLE_MESSAGE,
   message
 });

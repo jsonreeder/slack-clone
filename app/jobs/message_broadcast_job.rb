@@ -1,7 +1,7 @@
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(message, channel)
+  def perform(message, forum)
     puts "Message Broadcast Job firing"
     puts "message is:"
     p message
@@ -9,7 +9,7 @@ class MessageBroadcastJob < ApplicationJob
       partial: 'api/messages/message',
       locals: { message: message }
     )
-    ActionCable.server.broadcast("room_#{channel.name}",
+    ActionCable.server.broadcast("channel_#{forum.name}",
                                  message: JSON.parse(message))
   end
 end

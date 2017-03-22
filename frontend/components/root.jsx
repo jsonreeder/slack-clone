@@ -20,6 +20,7 @@ class Root extends React.Component {
   }
 
   _ensureLoggedIn(nextState, replace) {
+    this.setSocket(`channel_${nextState.params.forumName}`);
     const currentUser = this.props.store.getState().session.currentUser;
     if (!currentUser) {
       replace('/try');
@@ -34,25 +35,25 @@ class Root extends React.Component {
   }
 
   setSocket(channelName) {
-      if (window.App.room) {
+      if (window.App.channel) {
         this.removeSocket();
       }
       this.addSocket(channelName);
     }
 
     removeSocket() {
-      window.App.cable.subscriptions.remove(window.App.room);
+      window.App.cable.subscriptions.remove(window.App.channel);
     }
 
     addSocket(channelName) {
-      window.App.room = window.App.cable.subscriptions.create({
+      window.App.channel = window.App.cable.subscriptions.create({
         channel: 'ChannelChannel',
         channel_name: channelName
       }, {
         connected: () => {},
         disconnected: () => {},
         received: (data) => {
-          this.props.store.dispatch(receiveSingleMessage(data.message));
+          this.props.store.dispatch(receiveSingleMessage(data));
         }
       });
     }
