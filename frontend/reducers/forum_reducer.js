@@ -13,7 +13,7 @@ const ForumReducer = (state = {}, action) => {
   case RECEIVE_ALL_FORUMS:
     console.log(action.forums);
     return merge({}, {
-      forums: Object.values(action.forums)
+      forums: action.forums
     });
   case RECEIVE_SINGLE_FORUM:
     newState.currentForum = action.forum;
