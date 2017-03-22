@@ -10,6 +10,8 @@ import ForumDetailsContainer from './forum-details/forum_details_container';
 import ChannelsIndexContainer from './channels/channels_index_container';
 import DirectMessageFormContainer from './direct-message-form/direct_message_form_container';
 
+import { receiveSingleMessage } from '../actions/forum_actions';
+
 class Root extends React.Component {
   constructor(props) {
     super(props);
@@ -50,8 +52,7 @@ class Root extends React.Component {
         connected: () => {},
         disconnected: () => {},
         received: (data) => {
-          console.log(data);
-          this.props.store.dispatch(receiveMessage(data.message));
+          this.props.store.dispatch(receiveSingleMessage(data.message));
         }
       });
     }
