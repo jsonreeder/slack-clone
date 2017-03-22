@@ -2,7 +2,9 @@ class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    unless @message.save
+    if @message.save
+      render 'api/messages/show'
+    else
       render(
         json: @user.errors.full_messages,
         status: 422

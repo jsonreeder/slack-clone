@@ -6,7 +6,7 @@ import {
   requestSingleForum
 } from '../../actions/forum_actions';
 import { requestAllUsers } from '../../actions/user_actions';
-import { createMessage } from '../../actions/message_actions';
+import { createMessage } from '../../actions/forum_actions';
 import Messages from './messages';
 
 const mapStateToProps = ({ forum, session, users }) => ({
