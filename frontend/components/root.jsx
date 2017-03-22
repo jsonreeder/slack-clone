@@ -10,70 +10,77 @@ import ForumDetailsContainer from './forum-details/forum_details_container';
 import ChannelsIndexContainer from './channels/channels_index_container';
 import DirectMessageFormContainer from './direct-message-form/direct_message_form_container';
 
-const Root = ({ store }) => {
+class Root extends React.Component {
+  constructor(props) {
+    super(props);
+    this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
+    this._redirectIfLoggedIn = this._redirectIfLoggedIn.bind(this);
+  }
 
-  const _ensureLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
+  _ensureLoggedIn(nextState, replace) {
+    const currentUser = this.props.store.getState().session.currentUser;
     if (!currentUser) {
       replace('/try');
     }
-  };
+  }
 
-  const _redirectIfLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
+  _redirectIfLoggedIn(nextState, replace) {
+    const currentUser = this.props.store.getState().session.currentUser;
     if (currentUser) {
       replace('/messages/general/details');
     }
-  };
+  }
 
-  return (
-    <Provider store={ store }>
-      <Router history={ hashHistory }>
-        <Route path="/" component={ App }>
-          <IndexRoute
-            component={ SplashContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/try"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/join"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/signin"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/messages/:forumName"
-            component={ MessagesContainer }
-            onEnter={ _ensureLoggedIn }
-          >
+  render() {
+    return (
+      <Provider store={ this.props.store }>
+        <Router history={ hashHistory }>
+          <Route path="/" component={ App }>
+            <IndexRoute
+              component={ SplashContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
             <Route
-              path="/messages/:forumName/details"
-              component={ ForumDetailsContainer }
-              onEnter={ _ensureLoggedIn }
+              path="/try"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/join"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/signin"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/messages/:forumName"
+              component={ MessagesContainer }
+              onEnter={ this._ensureLoggedIn }
+            >
+              <Route
+                path="/messages/:forumName/details"
+                component={ ForumDetailsContainer }
+                onEnter={ this._ensureLoggedIn }
+              />
+            </Route>
+            <Route
+              path="/browse"
+              component={ ChannelsIndexContainer }
+              onEnter={ this._ensureLoggedIn }
+            />
+            <Route
+              path="/direct_message"
+              component={ DirectMessageFormContainer }
+              onEnter={ this._ensureLoggedIn }
             />
           </Route>
-          <Route
-            path="/browse"
-            component={ ChannelsIndexContainer }
-            onEnter={ _ensureLoggedIn }
-          />
-          <Route
-            path="/direct_message"
-            component={ DirectMessageFormContainer }
-            onEnter={ _ensureLoggedIn }
-          />
-        </Route>
-      </Router>
-    </Provider>
-  );
+        </Router>
+      </Provider>
+    );
+  }
 };
 
 export default Root;
