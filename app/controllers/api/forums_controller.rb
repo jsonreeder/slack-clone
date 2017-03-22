@@ -1,6 +1,7 @@
 class Api::ForumsController < ApplicationController
   def index
-    @forums = Forum.channels
+    @channels = Forum.channels
+    @direct_messages = Forum.direct_messages
   end
 
   def show
@@ -24,6 +25,8 @@ class Api::ForumsController < ApplicationController
       other_users.each do |user|
         user.forums << @forum
       end
+
+      render 'api/forums/show'
     end
   end
 

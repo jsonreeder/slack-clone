@@ -35,7 +35,9 @@ class Message extends React.Component {
 
   scrollToBottom() {
     const node = ReactDOM.findDOMNode(this.messagesEnd);
-    node.scrollIntoView({behavior: "smooth"});
+    if (node) {
+      node.scrollIntoView({behavior: "smooth"});
+    }
   }
 
   // Parents

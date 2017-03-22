@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 import React from 'react';
 import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
@@ -39,7 +40,10 @@ class DirectMessageForm extends React.Component {
       const currentUser = this.props.currentUser.username;
       const otherUsers = this.state.selectedUsers;
       const forumTitle = this.generateForumTitle(currentUser, otherUsers);
-      this.props.createForum(currentUser, otherUsers);
+      this.props.addDirectMessage(
+        currentUser,
+        otherUsers
+      );
       hashHistory.push(`/messages/${forumTitle}/details`);
     };
   }

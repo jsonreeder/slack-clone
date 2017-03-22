@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_CURRENT_USER,
+  RECEIVE_NEW_DIRECT_MESSAGE,
   RECEIVE_ERRORS
 } from '../actions/session_actions';
 
@@ -19,6 +20,10 @@ const SessionReducer = (state = _nullUser, action) => {
   case RECEIVE_ERRORS:
     const errors = action.errors;
     return merge({}, _nullUser, {errors});
+  case RECEIVE_NEW_DIRECT_MESSAGE:
+    let newState = merge([], state);
+    newState.currentUser.directMessages.push(action.directMessage);
+    return newState;
   default:
     return state;
   }
