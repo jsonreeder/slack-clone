@@ -6,6 +6,9 @@ class ChannelsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
+    this.state = {
+      allChannels: []
+    }
   }
 
   componentDidMount() {
@@ -18,6 +21,12 @@ class ChannelsIndex extends React.Component {
       this.props.createMembership(forumName);
       hashHistory.push(`/messages/${forumName}/details`);
     };
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.forum.forums.channels) {
+      this.setState({allChannels: newProps.forum.forums.channels});
+    }
   }
 
   channelsIndexHeader() {
@@ -36,19 +45,15 @@ class ChannelsIndex extends React.Component {
   }
 
   channelsIndexBody() {
-    let channelsList;
-    if (this.props.forum.forums) {
-      channelsList = <li>Success</li>;
-      channelsList = <ul className="channels-index-channels-list">
-        {this.props.forum.forums.map((forum, idx) => (
-          <li key={idx}
-              onClick={this.handleCreateMembership(forum.name)}
-            >
-              {forum.name}
-          </li>
-         ))}
-      </ul>;
-    }
+    let channelsList = <ul className="channels-index-channels-list">
+      {this.state.allChannels.map((forum, idx) => (
+        <li key={idx}
+            onClick={this.handleCreateMembership(forum.name)}
+          >
+            {forum.name}
+        </li>
+        ))}
+    </ul>;
 
     return(
       <div className="channels-index-body">

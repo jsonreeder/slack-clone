@@ -2,6 +2,7 @@ import * as ForumAPIUtil from '../util/forum_api_util';
 
 export const RECEIVE_ALL_FORUMS = 'RECEIVE_ALL_FORUMS';
 export const RECEIVE_SINGLE_FORUM = 'RECEIVE_SINGLE_FORUM';
+export const RECEIVE_SINGLE_MESSAGE = 'RECEIVE_SINGLE_MESSAGE';
 
 export const requestAllForums = () => dispatch => (
   ForumAPIUtil.fetchAllForums()
@@ -18,6 +19,11 @@ export const createForum = (currentUser, otherUsers) => dispatch => (
     .then(createdForum => dispatch(receiveSingleForum(createdForum)))
 );
 
+export const createMessage = message => dispatch => (
+  ForumAPIUtil.createMessage(message)
+    .then(createdMessage => dispatch(receiveSingleMessage(createdMessage)))
+);
+
 const receiveAllForums = forums => ({
   type: RECEIVE_ALL_FORUMS,
   forums
@@ -26,4 +32,9 @@ const receiveAllForums = forums => ({
 const receiveSingleForum = forum => ({
   type: RECEIVE_SINGLE_FORUM,
   forum
+});
+
+const receiveSingleMessage = message => ({
+  type: RECEIVE_SINGLE_MESSAGE,
+  message
 });

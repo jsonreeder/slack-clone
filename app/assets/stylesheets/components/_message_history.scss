@@ -1,8 +1,8 @@
 .message-history-container {
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
+  // justify-content: flex-end;
   margin-bottom: 20px;
   overflow: scroll;
 }

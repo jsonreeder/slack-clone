@@ -1,8 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import { hashHistory } from 'react-router';
 
-import MessageHistory from './message_history';
 import ComposeMessage from './compose_message';
 
 class Message extends React.Component {
@@ -26,6 +26,18 @@ class Message extends React.Component {
     this.props.requestAllForums();
     this.props.requestSingleForum(this.props.params.forumName);
     this.props.requestAllUsers();
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    const node = ReactDOM.findDOMNode(this.messagesEnd);
+    if (node) {
+      node.scrollIntoView({behavior: "smooth"});
+    }
   }
 
   // Parents
@@ -174,6 +186,56 @@ class Message extends React.Component {
     );
   }
 
+  // Message History
+
+
+  singleMessage ({body, username, createdAt}, idx) {
+    const date = new Date(createdAt);
+    const hours24 = date.getHours();
+    const hours12 = (hours24<13 ? hours24 : hours24 % 12);
+    const amPm = (hours24<12 ? 'AM' : 'PM');
+    const minutes = date.getMinutes();
+    const minutesPadded = (minutes>9 ? '' : '0') + minutes;
+    const time = `${hours12}:${minutesPadded} ${amPm}`;
+
+    return(
+      <div key={idx} className="single-message-container">
+        <div className="single-message-header">
+          <div className="sender">
+            {username}
+          </div>
+          <div className="time">
+            {time}
+          </div>
+        </div>
+        <div className="single-message-content">
+          {body}
+        </div>
+      </div>
+    );
+  }
+
+  messageHistory (history)  {
+    let messageHistory = [];
+    if (history) {
+      messageHistory = history;
+    }
+
+    return(
+      <div
+        id="message-history-container"
+        className="message-history-container"
+      >
+        <div ref={(el) => { this.messagesEnd = el; }}></div>
+        {
+          messageHistory.map((message, idx) => (
+            this.singleMessage(message, idx)
+          ))
+        }
+      </div>
+    );
+  }
+
   messageContainer () {
     let history;
     let currentForum;
@@ -184,30 +246,12 @@ class Message extends React.Component {
 
     return(
       <div className="message-container">
-        <MessageHistory history={history}/>
+        {this.messageHistory(history)}
         <ComposeMessage
           currentForum={currentForum}
           createMessage={this.props.createMessage}
           currentUser={this.props.currentUser}
         />
-      </div>
-    );
-  }
-
-
-  // Message
-
-  messageHistory () {
-    let greeting;
-    if (this.props.forum.currentForum) {
-      greeting = <p className="forum-greeting">
-        {this.props.forum.currentForum.greeting}
-      </p>;
-    }
-
-    return(
-      <div className="message-history">
-        {greeting}
       </div>
     );
   }

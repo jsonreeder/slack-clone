@@ -13,6 +13,7 @@
 
 class Forum < ApplicationRecord
   validates :name, :kind, presence: true
+  validates :name, uniqueness: true
   validates :kind, inclusion: { in: %w(channel direct_message) }
   has_many :memberships
   has_many :members,
@@ -25,20 +26,29 @@ class Forum < ApplicationRecord
     Forum.where(kind: 'channel')
   end
 
-  def configure_dm(current_user, other_users)
-    all_users = [current_user] + other_users
-    self.kind = "direct_message"
-    self.topic = Forum.topic(all_users)
-    self.name = other_users.unshift(current_user).join('-')
+  def self.direct_messages
+    Forum.where(kind: 'direct_message')
   end
 
-  def self.topic(other_users)
-    if other_users.length > 2
-      names = other_users.take(2).join(", ") + ", and " + other_users.last
-    elsif other_users.length == 2
-      names = other_users.join(" and ")
+  def reverse_chron_messages
+    messages.order(created_at: :desc)
+  end
+
+  def configure_dm(current_user, other_users)
+    all_users = [current_user] + other_users
+    all_users.sort!
+    self.kind = "direct_message"
+    self.topic = Forum.topic(all_users)
+    self.name = all_users.join('-')
+  end
+
+  def self.topic(users)
+    if users.length > 2
+      names = users.take(2).join(", ") + ", and " + users.last
+    elsif users.length == 2
+      names = users.join(" and ")
     else
-      names = other_users.first
+      names = users.first
     end
 
     "The direct message history between #{names}."

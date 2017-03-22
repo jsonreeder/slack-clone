@@ -1,7 +1,9 @@
 import * as SessionAPIUtil from '../util/session_api_util';
+import * as ForumAPIUtil from '../util/forum_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_NEW_DIRECT_MESSAGE = 'RECEIVE_NEW_DIRECT_MESSAGE';
 
 export const join = user => dispatch => (
   SessionAPIUtil.join(user)
@@ -19,6 +21,23 @@ export const signOut = () => dispatch => (
   SessionAPIUtil.signOut()
     .then(signedOutUser => dispatch(receiveCurrentUser(null)))
 );
+
+export const createMembership = forumName => dispatch => (
+  SessionAPIUtil.createMembership(forumName)
+    .then(updatedCurrentUser => (
+      dispatch(receiveCurrentUser(updatedCurrentUser))
+    ))
+);
+
+export const addDirectMessage = (currentUser, otherUsers) => dispatch => (
+  ForumAPIUtil.createForum(currentUser, otherUsers)
+    .then(createdForum => dispatch(receiveNewDirectMessage(createdForum)))
+);
+
+const receiveNewDirectMessage = directMessage => ({
+  type: RECEIVE_NEW_DIRECT_MESSAGE,
+  directMessage
+});
 
 const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,

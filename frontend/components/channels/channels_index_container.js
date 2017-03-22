@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { requestAllForums } from '../../actions/forum_actions';
-import { createMembership } from '../../actions/membership_actions';
+import { createMembership } from '../../actions/session_actions';
 
 import ChannelsIndex from './channels_index';
 
