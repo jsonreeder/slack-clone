@@ -43,10 +43,10 @@ class DirectMessageForm extends React.Component {
       this.props.createForum(currentUser, otherUsers);
       this.props.requestAllForums();
 
-      let newUser = merge({}, currentUser);
-      newUser.directMessages = ["horse"];
-      this.props.updateCurrentUser(newUser);
-      hashHistory.push(`/messages/${forumTitle}/details`);
+      /* let newUser = merge({}, currentUser);
+       * newUser.directMessages = ["horse"];*/
+      this.props.updateDirectMessages(this.props.currentUser);
+      /* hashHistory.push(`/messages/${forumTitle}/details`);*/
     };
   }
 

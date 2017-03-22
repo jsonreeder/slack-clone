@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { requestAllForums, createForum } from '../../actions/forum_actions';
 import { requestAllUsers } from '../../actions/user_actions';
-import { updateCurrentUser } from '../../actions/session_actions';
+import { updateDirectMessages } from '../../actions/session_actions';
 
 import DirectMessageForm from './direct_message_form';
 
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
   requestAllForums: forums => dispatch(requestAllForums(forums)),
   requestAllUsers: users => dispatch(requestAllUsers(users)),
   createForum: (currentUser, otherUsers) => dispatch(createForum(currentUser, otherUsers)),
-  updateCurrentUser: user => dispatch(updateCurrentUser(user))
+  updateDirectMessages: user => dispatch(updateDirectMessages(user))
 });
 
 export default connect(

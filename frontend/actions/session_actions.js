@@ -3,6 +3,7 @@ import * as SessionAPIUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SINGLE_MEMBERSHIP = 'RECEIVE_SINGLE_MEMBERSHIP';
+export const ADD_DIRECT_MESSAGE = 'ADD_DIRECT_MESSAGE';
 
 export const join = user => dispatch => (
   SessionAPIUtil.join(user)
@@ -28,9 +29,11 @@ export const createMembership = forumName => dispatch => (
     ))
 );
 
-export const updateCurrentUser = user => dispatch => (
-  dispatch(receiveCurrentUser(user))
-);
+export const updateDirectMessages = (currentUser, newDirectMessage) => ({
+  type: ADD_DIRECT_MESSAGE,
+  currentUser,
+  newDirectMessage
+});
 
 const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
