@@ -50,6 +50,7 @@ class ComposeMessage extends React.Component {
             onChange={this.update("body")}
             placeholder={placeholder}
             className="message-input"
+            data-behavior="room_speaker"
           />
         </form>
       </div>

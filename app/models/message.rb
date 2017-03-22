@@ -15,4 +15,6 @@ class Message < ApplicationRecord
   validates :forum_id, :body, :messageable_type, :messageable_id, presence: true
   belongs_to :messageable, polymorphic: true
   belongs_to :forum
+
+  after_create_commit { MessageBroadcastJob.perform_later self }
 end
