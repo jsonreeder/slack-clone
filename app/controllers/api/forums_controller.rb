@@ -1,6 +1,7 @@
 class Api::ForumsController < ApplicationController
   def index
-    @forums = Forum.channels
+    @channels = Forum.channels
+    @direct_messages = Forum.direct_messages
   end
 
   def show

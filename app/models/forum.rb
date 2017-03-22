@@ -26,6 +26,10 @@ class Forum < ApplicationRecord
     Forum.where(kind: 'channel')
   end
 
+  def self.direct_messages
+    Forum.where(kind: 'direct_message')
+  end
+
   def reverse_chron_messages
     messages.order(created_at: :desc)
   end

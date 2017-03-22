@@ -20,10 +20,6 @@ const SessionReducer = (state = _nullUser, action) => {
   case RECEIVE_ERRORS:
     const errors = action.errors;
     return merge({}, _nullUser, {errors});
-  case RECEIVE_SINGLE_MEMBERSHIP:
-    console.log("reducer fired");
-    console.log(action);
-    return state;
   default:
     return state;
   }
