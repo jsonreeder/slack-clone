@@ -26,11 +26,11 @@ class Message extends React.Component {
     this.props.requestAllForums();
     this.props.requestSingleForum(this.props.params.forumName);
     this.props.requestAllUsers();
-    this.scrollToBottom();
+    /* this.scrollToBottom();*/
   }
 
   componentDidUpdate() {
-    this.scrollToBottom();
+    /* this.scrollToBottom();*/
   }
 
   scrollToBottom() {
