@@ -1,6 +1,10 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
+    puts "PARAMS PARAMS PARAMS"
+    puts params
+    puts "constructed name:"
+    puts "room_#{params[:channel]}"
+    stream_from "room_#{params[:channel]}"
   end
 
   def unsubscribed
@@ -8,6 +12,11 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create! content: data['message']
+    Message.create!(
+      body: data['message'],
+      forum_id: 363,
+      messageable_type: 'User',
+      messageable_id: 595
+    )
   end
 end
