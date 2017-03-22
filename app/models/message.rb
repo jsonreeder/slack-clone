@@ -16,5 +16,5 @@ class Message < ApplicationRecord
   belongs_to :messageable, polymorphic: true
   belongs_to :forum
 
-  after_create_commit { MessageBroadcastJob.perform_later self }
+  after_create_commit { MessageBroadcastJob.perform_later(self, 363) }
 end
