@@ -45,7 +45,6 @@ class ChannelsIndex extends React.Component {
   }
 
   channelsIndexBody() {
-    console.log(this.state);
     let channelsList = <ul className="channels-index-channels-list">
       {this.state.allChannels.map((forum, idx) => (
         <li key={idx}
