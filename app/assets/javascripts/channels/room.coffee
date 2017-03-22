@@ -6,7 +6,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#message-history-container').append data['message']
+    # $('#message-history-container').append data['message']
+    alert(data['message'])
 
   speak: (message) ->
     @perform 'speak', message: message

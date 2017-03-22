@@ -32,24 +32,25 @@ class Root extends React.Component {
   }
 
   setSocket(channelName) {
-      if (window.App.channel) {
+      if (window.App.room) {
         this.removeSocket();
       }
       this.addSocket(channelName);
     }
 
     removeSocket() {
-      window.App.cable.subscriptions.remove(window.App.channel);
+      window.App.cable.subscriptions.remove(window.App.room);
     }
 
     addSocket(channelName) {
-      window.App.channel = window.App.cable.subscriptions.create({
+      window.App.room = window.App.cable.subscriptions.create({
         channel: 'ChannelChannel',
         channel_name: channelName
       }, {
         connected: () => {},
         disconnected: () => {},
         received: (data) => {
+          console.log(data);
           this.props.store.dispatch(receiveMessage(data.message));
         }
       });
