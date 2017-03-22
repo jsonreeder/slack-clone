@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 
 import { signOut } from '../../actions/session_actions';
 import {
+  createMessage,
   requestAllForums,
   requestSingleForum
 } from '../../actions/forum_actions';
 import { requestAllUsers } from '../../actions/user_actions';
-import { createMessage } from '../../actions/forum_actions';
 import Messages from './messages';
 
 const mapStateToProps = ({ forum, session, users }) => ({
