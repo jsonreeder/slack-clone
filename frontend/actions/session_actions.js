@@ -23,7 +23,9 @@ export const signOut = () => dispatch => (
 
 export const createMembership = forumName => dispatch => (
   SessionAPIUtil.createMembership(forumName)
-    .then(updatedCurrentUser => dispatch(receiveCurrentUser(updatedCurrentUser)))
+    .then(updatedCurrentUser => (
+      dispatch(receiveCurrentUser(updatedCurrentUser))
+    ))
 );
 
 const receiveCurrentUser = currentUser => ({
