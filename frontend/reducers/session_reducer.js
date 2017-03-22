@@ -2,7 +2,8 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS
+  RECEIVE_ERRORS,
+  RECEIVE_SINGLE_MEMBERSHIP
 } from '../actions/session_actions';
 
 const _nullUser = Object.freeze({
@@ -19,6 +20,10 @@ const SessionReducer = (state = _nullUser, action) => {
   case RECEIVE_ERRORS:
     const errors = action.errors;
     return merge({}, _nullUser, {errors});
+  case RECEIVE_SINGLE_MEMBERSHIP:
+    console.log("reducer fired");
+    console.log(action);
+    return state;
   default:
     return state;
   }
