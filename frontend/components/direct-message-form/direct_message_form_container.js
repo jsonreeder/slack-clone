@@ -11,6 +11,7 @@ const mapStateToProps = ({ session, users }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  requestAllForums: forums => dispatch(requestAllForums(forums)),
   requestAllUsers: users => dispatch(requestAllUsers(users)),
   createForum: (currentUser, otherUsers) => dispatch(createForum(currentUser, otherUsers))
 });
