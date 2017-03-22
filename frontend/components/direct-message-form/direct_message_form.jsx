@@ -40,6 +40,11 @@ class DirectMessageForm extends React.Component {
       const currentUser = this.props.currentUser.username;
       const otherUsers = this.state.selectedUsers;
       const forumTitle = this.generateForumTitle(currentUser, otherUsers);
+      this.props.addDirectMessage(
+        currentUser,
+        otherUsers
+      );
+      hashHistory.push(`/messages/${forumTitle}/details`);
     };
   }
 

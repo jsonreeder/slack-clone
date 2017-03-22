@@ -22,9 +22,21 @@ const SessionReducer = (state = _nullUser, action) => {
     const errors = action.errors;
     return merge({}, _nullUser, {errors});
   case RECEIVE_SINGLE_FORUM:
-    let newestUser = merge({}, state.currentUser);
-    console.log(newestUser);
-    // return newestUser;
+    let newState = merge({}, state);
+    let directMessages = merge([], state.currentUser.directMessages);
+    // console.log(newState);
+    // console.log(directMessages);
+    directMessages.push(action.forum);
+
+
+    // let newestUser = merge({}, state.currentUser);
+
+    // console.log(newestUser);
+    // console.log(action);
+    // newestUser.directMessages.push(action.forum);
+    // console.log(newestUser);
+    newState.currentUser.directMessages = directMessages;
+    return newState;
   default:
     return state;
   }

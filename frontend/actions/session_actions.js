@@ -56,7 +56,7 @@ const receiveErrors = errors => ({
   errors
 });
 
-const receiveSingleMembership = membership => ({
-  type: RECEIVE_SINGLE_MEMBERSHIP,
-  membership
-});
+// const receiveSingleMembership = membership => ({
+//   type: RECEIVE_SINGLE_MEMBERSHIP,
+//   membership
+// });
