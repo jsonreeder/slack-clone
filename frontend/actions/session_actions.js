@@ -28,6 +28,10 @@ export const createMembership = forumName => dispatch => (
     ))
 );
 
+export const updateCurrentUser = user => dispatch => (
+  dispatch(receiveCurrentUser(user))
+);
+
 const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
