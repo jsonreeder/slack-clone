@@ -17,7 +17,10 @@ class User < ApplicationRecord
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
+  after_save :join_default_forums
   attr_reader :password
+
+  DEFAULT_FORUMS = ['general', 'random']
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64
@@ -46,5 +49,16 @@ class User < ApplicationRecord
   def is_password?(provided_password)
     current_password = BCrypt::Password.new(self.password_digest)
     current_password.is_password?(provided_password)
+  end
+
+  def join_default_forums
+    DEFAULT_FORUMS.each { |forum| self.join(forum) }
+  end
+
+  def join(forum_name)
+    forum = Forum.find_by_name(forum_name)
+    not_joined = !self.forums.include?(forum)
+    return unless forum && not_joined
+    self.forums << forum
   end
 end
