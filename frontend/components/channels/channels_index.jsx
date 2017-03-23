@@ -8,7 +8,7 @@ class ChannelsIndex extends React.Component {
     this.handleCreateMembership = this.handleCreateMembership.bind(this);
     this.state = {
       allChannels: []
-    }
+    };
   }
 
   componentDidMount() {

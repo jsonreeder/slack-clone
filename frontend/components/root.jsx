@@ -90,7 +90,6 @@ class Root extends React.Component {
               <Route
                 path="/messages/:forumName/details"
                 component={ ForumDetailsContainer }
-                onEnter={ this._ensureLoggedIn }
               />
             </Route>
             <Route
