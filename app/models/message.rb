@@ -17,13 +17,4 @@ class Message < ApplicationRecord
   belongs_to :forum
 
   after_create_commit { MessageBroadcastJob.perform_later(self, self.forum) }
-
-  def self.bot_message
-    Message.create!(
-      forum_id: Forum.first.id,
-      body: "Hey! The time is currently #{Time.now.ctime}",
-      messageable_type: "Bot",
-      messageable_id: Bot.find_by(username: "thorpbot").id
-    )
-  end
 end

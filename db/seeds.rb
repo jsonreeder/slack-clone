@@ -38,6 +38,14 @@ GREETINGS = [
   'Yo'
 ]
 
+WELCOME_FLOW = [
+  "Hey, welcome to Thorp!",
+  "I'm thorpbot, your friendly assistant.",
+  "Thorp is a chat app where you can talk to friends, bots, or even yourself.",
+  "Wondering what to do?",
+  "Try opening up a different browser, logging in as another guest, and sending chats back and forth."
+]
+
 general = Forum.create!(
   name: 'general',
   kind: 'channel',
@@ -78,12 +86,9 @@ PAIRS.each_with_index do |pair, idx|
     user.forums << thorpbot_welcome
     thorpbot.forums << thorpbot_welcome
 
-    Message.create!(
-      forum_id: thorpbot_welcome.id,
-      body: "Hey, #{user.username}. Welcome to Thorp!",
-      messageable_type: "Bot",
-      messageable_id: thorpbot.id
-    )
+    WELCOME_FLOW.each do |body|
+      thorpbot.send_message(body, thorpbot_welcome.name)
+    end
   end
 
   pair0 = User.find_by_username(pair[0])

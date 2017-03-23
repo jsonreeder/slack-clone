@@ -11,4 +11,13 @@
 class Bot < ApplicationRecord
   include Membershipable
   include Messageable
+
+  def send_message(body, forum_name)
+    Message.create!(
+      forum_id: Forum.find_by(name: forum_name).id,
+      body: body,
+      messageable_type: "Bot",
+      messageable_id: self.id
+    )
+  end
 end
