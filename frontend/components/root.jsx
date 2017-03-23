@@ -30,8 +30,7 @@ class Root extends React.Component {
   _redirectIfLoggedIn(nextState, replace) {
     const currentUser = this.props.store.getState().session.currentUser;
     if (currentUser) {
-      const channelName = [currentUser.username, "thorpbot"].sort().join("-")
-      replace(`/messages/${channelName}/details`);
+      replace('/messages/general/details');
     }
   }
 
