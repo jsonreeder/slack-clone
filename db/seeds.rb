@@ -1,4 +1,5 @@
 User.destroy_all
+Bot.destroy_all
 Membership.destroy_all
 Forum.destroy_all
 Message.destroy_all
@@ -58,16 +59,30 @@ Forum.create!(
   greeting: 'This is the very beginning of the #eastereggs channel.'
 )
 
+thorpbot = Bot.create!(username: "thorpbot")
+
 PAIRS.each_with_index do |pair, idx|
   pair.each do |username|
-    User.create!(username: username, password: 'password')
-    user_id = User.find_by_username(username).id
+    user = User.create!(username: username, password: 'password')
 
     Message.create!(
       forum_id: Forum.first.id,
       body: GREETINGS.sample,
       messageable_type: "User",
-      messageable_id: user_id
+      messageable_id: user.id
+    )
+
+    thorpbot_welcome = Forum.new
+    thorpbot_welcome.configure_dm(thorpbot.username, [user.username])
+    thorpbot_welcome.save!
+    user.forums << thorpbot_welcome
+    thorpbot.forums << thorpbot_welcome
+
+    Message.create!(
+      forum_id: thorpbot_welcome.id,
+      body: "Hey, #{user.username}. Welcome to Thorp!",
+      messageable_type: "Bot",
+      messageable_id: thorpbot.id
     )
   end
 
