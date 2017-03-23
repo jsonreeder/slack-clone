@@ -20,4 +20,9 @@ class Bot < ApplicationRecord
       messageable_id: self.id
     )
   end
+
+  def send_cat_fact(forum_name)
+    fact = JSON.load(open("http://catfacts-api.appspot.com/api/facts"))["facts"][0]
+    self.send_message(fact, forum_name)
+  end
 end

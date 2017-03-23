@@ -43,7 +43,8 @@ WELCOME_FLOW = [
   "I'm thorpbot, your friendly assistant.",
   "Thorp is a chat app where you can talk to friends, bots, or even yourself.",
   "Wondering what to do?",
-  "Try opening up a different browser, logging in as another guest, and sending chats back and forth."
+  "Maybe go check out the interesting fun facts in the #general.",
+  "Or try opening up a different browser, logging in as another guest, and sending chats back and forth."
 ]
 
 general = Forum.create!(
@@ -68,17 +69,13 @@ Forum.create!(
 )
 
 thorpbot = Bot.create!(username: "thorpbot")
+catbot = Bot.create!(username: "catbot")
+
+3.times { catbot.send_cat_fact("general") }
 
 PAIRS.each_with_index do |pair, idx|
   pair.each do |username|
     user = User.create!(username: username, password: 'password')
-
-    Message.create!(
-      forum_id: Forum.first.id,
-      body: GREETINGS.sample,
-      messageable_type: "User",
-      messageable_id: user.id
-    )
 
     thorpbot_welcome = Forum.new
     thorpbot_welcome.configure_dm(thorpbot.username, [user.username])
