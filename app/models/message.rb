@@ -17,6 +17,4 @@ class Message < ApplicationRecord
   belongs_to :forum
 
   after_create_commit { MessageBroadcastJob.perform_later(self, self.forum) }
-  # TODO: Could be this
-  # after_create_commit { MessageBroadcastJob.perform_later(self, self.channel) }
 end
