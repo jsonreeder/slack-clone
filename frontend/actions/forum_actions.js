@@ -21,7 +21,6 @@ export const createForum = (currentUser, otherUsers) => dispatch => (
 
 export const createMessage = message => dispatch => (
   ForumAPIUtil.createMessage(message)
-    .then(createdMessage => dispatch(receiveSingleMessage(createdMessage)))
 );
 
 const receiveAllForums = forums => ({
@@ -34,7 +33,7 @@ const receiveSingleForum = forum => ({
   forum
 });
 
-const receiveSingleMessage = message => ({
+export const receiveSingleMessage = message => ({
   type: RECEIVE_SINGLE_MESSAGE,
   message
 });

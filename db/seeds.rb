@@ -23,7 +23,8 @@ PAIRS = [
   ['calvin', 'hobbes'],
   ['sherlock', 'watson'],
   ['winnie', 'chrisrobin'],
-  ['jekyll', 'hyde']
+  ['jekyll', 'hyde'],
+  ['napoleon', 'pedro']
 ]
 
 GREETINGS = [
@@ -62,16 +63,6 @@ PAIRS.each_with_index do |pair, idx|
     User.create!(username: username, password: 'password')
     user_id = User.find_by_username(username).id
 
-    Membership.create!(
-      forum_id: general.id,
-      membershipable_id: user_id,
-      membershipable_type: 'User'
-    )
-    Membership.create!(
-      forum_id: random.id,
-      membershipable_id: user_id,
-      membershipable_type: 'User'
-    )
     Message.create!(
       forum_id: Forum.first.id,
       body: GREETINGS.sample,
