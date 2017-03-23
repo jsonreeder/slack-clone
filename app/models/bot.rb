@@ -25,4 +25,10 @@ class Bot < ApplicationRecord
     fact = JSON.load(open("http://catfacts-api.appspot.com/api/facts"))["facts"][0]
     self.send_message(fact, forum_name)
   end
+
+  def send_number_fact(forum_name)
+    number = rand(100)
+    fact = JSON.load(open("http://numbersapi.com/#{number}?json"))["text"]
+    self.send_message(fact, forum_name)
+  end
 end

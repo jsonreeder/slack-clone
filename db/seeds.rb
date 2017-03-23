@@ -28,16 +28,6 @@ PAIRS = [
   ['napoleon', 'pedro']
 ]
 
-GREETINGS = [
-  'Howdy',
-  'Ahlan wa Sahlan',
-  "What's up!",
-  'Salve',
-  'Cheers',
-  "What's good",
-  'Yo'
-]
-
 WELCOME_FLOW = [
   "Hey, welcome to Thorp!",
   "I'm thorpbot, your friendly assistant.",
@@ -70,8 +60,12 @@ Forum.create!(
 
 thorpbot = Bot.create!(username: "thorpbot")
 catbot = Bot.create!(username: "catbot")
+numberbot = Bot.create!(username: "numberbot")
 
-3.times { catbot.send_cat_fact("general") }
+3.times do
+  catbot.send_cat_fact("general")
+  numberbot.send_number_fact("general")
+end
 
 PAIRS.each_with_index do |pair, idx|
   pair.each do |username|
