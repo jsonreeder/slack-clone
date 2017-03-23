@@ -10,70 +10,104 @@ import ForumDetailsContainer from './forum-details/forum_details_container';
 import ChannelsIndexContainer from './channels/channels_index_container';
 import DirectMessageFormContainer from './direct-message-form/direct_message_form_container';
 
-const Root = ({ store }) => {
+import { receiveSingleMessage } from '../actions/forum_actions';
 
-  const _ensureLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
+class Root extends React.Component {
+  constructor(props) {
+    super(props);
+    this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
+    this._redirectIfLoggedIn = this._redirectIfLoggedIn.bind(this);
+  }
+
+  _ensureLoggedIn(nextState, replace) {
+    this.setSocket(`channel_${nextState.params.forumName}`);
+    const currentUser = this.props.store.getState().session.currentUser;
     if (!currentUser) {
       replace('/try');
     }
-  };
+  }
 
-  const _redirectIfLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
+  _redirectIfLoggedIn(nextState, replace) {
+    const currentUser = this.props.store.getState().session.currentUser;
     if (currentUser) {
       replace('/messages/general/details');
     }
-  };
+  }
 
-  return (
-    <Provider store={ store }>
-      <Router history={ hashHistory }>
-        <Route path="/" component={ App }>
-          <IndexRoute
-            component={ SplashContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/try"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/join"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/signin"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-          <Route
-            path="/messages/:forumName"
-            component={ MessagesContainer }
-            onEnter={ _ensureLoggedIn }
-          >
+    setSocket(channelName) {
+      if (window.App.channel) {
+        this.removeSocket();
+      }
+      this.addSocket(channelName);
+    }
+
+    removeSocket() {
+      window.App.cable.subscriptions.remove(window.App.channel);
+    }
+
+    addSocket(channelName) {
+      window.App.channel = window.App.cable.subscriptions.create({
+        channel: 'RoomChannel',
+        channel_name: channelName
+      }, {
+        connected: () => {},
+        disconnected: () => {},
+        received: (data) => {
+          this.props.store.dispatch(receiveSingleMessage(data.message));
+        }
+      });
+    }
+
+  render() {
+    return (
+      <Provider store={ this.props.store }>
+        <Router history={ hashHistory }>
+          <Route path="/" component={ App }>
+            <IndexRoute
+              component={ SplashContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
             <Route
-              path="/messages/:forumName/details"
-              component={ ForumDetailsContainer }
-              onEnter={ _ensureLoggedIn }
+              path="/try"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/join"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/signin"
+              component={ SessionFormContainer }
+              onEnter={ this._redirectIfLoggedIn }
+            />
+            <Route
+              path="/messages/:forumName"
+              component={ MessagesContainer }
+              onEnter={ this._ensureLoggedIn }
+            >
+              <Route
+                path="/messages/:forumName/details"
+                component={ ForumDetailsContainer }
+                onEnter={ this._ensureLoggedIn }
+              />
+            </Route>
+            <Route
+              path="/browse"
+              component={ ChannelsIndexContainer }
+              onEnter={ this._ensureLoggedIn }
+            />
+            <Route
+              path="/direct_message"
+              component={ DirectMessageFormContainer }
+              onEnter={ this._ensureLoggedIn }
             />
           </Route>
-          <Route
-            path="/browse"
-            component={ ChannelsIndexContainer }
-            onEnter={ _ensureLoggedIn }
-          />
-          <Route
-            path="/direct_message"
-            component={ DirectMessageFormContainer }
-            onEnter={ _ensureLoggedIn }
-          />
-        </Route>
-      </Router>
-    </Provider>
-  );
+        </Router>
+      </Provider>
+    );
+  }
 };
 
 export default Root;
