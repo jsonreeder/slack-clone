@@ -35,7 +35,6 @@ class Root extends React.Component {
   }
 
     setSocket(channelName) {
-      console.log(channelName);
       if (window.App.channel) {
         this.removeSocket();
       }
@@ -43,25 +42,18 @@ class Root extends React.Component {
     }
 
     removeSocket() {
-      console.log("removing socket from", window.App.channel);
       window.App.cable.subscriptions.remove(window.App.channel);
     }
 
     addSocket(channelName) {
-      console.log("adding socket to", window.App.channel);
       window.App.channel = window.App.cable.subscriptions.create({
         channel: 'RoomChannel',
         channel_name: channelName
       }, {
-        connected: () => {
-          console.log("connected!");
-        },
-        disconnected: () => {
-          console.log("disconnected!");
-        },
+        connected: () => {},
+        disconnected: () => {},
         received: (data) => {
-          console.log("receiving this data:", data);
-          this.props.store.dispatch(receiveSingleMessage(data));
+          this.props.store.dispatch(receiveSingleMessage(data.message));
         }
       });
     }
