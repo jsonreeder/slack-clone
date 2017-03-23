@@ -18,7 +18,7 @@ const ForumReducer = (state = {}, action) => {
     newState.currentForum = action.forum;
     return newState;
   case RECEIVE_SINGLE_MESSAGE:
-    newState.currentForum.messages.unshift(action.message);
+    newState.currentForum.messages.unshift(action.message.message);
     return newState;
   default:
     return newState;
