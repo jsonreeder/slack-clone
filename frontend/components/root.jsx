@@ -30,7 +30,7 @@ class Root extends React.Component {
   _redirectIfLoggedIn(nextState, replace) {
     const currentUser = this.props.store.getState().session.currentUser;
     if (currentUser) {
-      replace('/messages/general/details');
+      replace('/messages/general');
     }
   }
 
@@ -86,12 +86,7 @@ class Root extends React.Component {
               path="/messages/:forumName"
               component={ MessagesContainer }
               onEnter={ this._ensureLoggedIn }
-            >
-              <Route
-                path="/messages/:forumName/details"
-                component={ ForumDetailsContainer }
-              />
-            </Route>
+            />
             <Route
               path="/browse"
               component={ ChannelsIndexContainer }

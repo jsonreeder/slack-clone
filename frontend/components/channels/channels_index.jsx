@@ -19,7 +19,7 @@ class ChannelsIndex extends React.Component {
   handleCreateMembership(forumName) {
     return e => {
       this.props.createMembership(forumName);
-      hashHistory.push(`/messages/${forumName}/details`);
+      hashHistory.push(`/messages/${forumName}`);
     };
   }
 
