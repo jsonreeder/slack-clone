@@ -91,7 +91,11 @@ class SessionForm extends React.Component {
       <header className='header auth-header'>
         <a href="/">
           <ul className='brand'>
-            <li>[logo]</li>
+            <li><img
+                  src="/assets/color-logo.svg"
+                  id="logo"
+                  alt="quadrithorp"
+                /></li>
             <li>thorp</li>
           </ul>
         </a>
