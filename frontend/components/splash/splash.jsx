@@ -9,7 +9,7 @@ const splashPage = () => {
         <a href="/">
           <ul className='brand'>
             <li>[logo]</li>
-            <li>slack</li>
+            <li>thorp</li>
           </ul>
         </a>
         <ul className='nav'>
@@ -42,7 +42,7 @@ const welcome = (currentUser, signOut) => (
     <header className='header splash-header'>
       <ul className='brand'>
         <li>[logo]</li>
-        <li>slack</li>
+        <li>thorp</li>
       </ul>
       <ul className='nav'>
         <li>

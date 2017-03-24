@@ -5,7 +5,7 @@
 
 ## Minimum Viable Product
 
-Slack Clone (new name TBD) is a web application inspired by Slack's web interface and built using Ruby on Rails and React/Redux. The following is the minimum list of features that it will contain.
+ThorpChat is a web application inspired by Slack's web interface and built using Ruby on Rails and React/Redux. The following is the minimum list of features that it will contain.
 
 - Production README
 - Hosting on Heroku
