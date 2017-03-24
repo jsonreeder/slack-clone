@@ -22,7 +22,11 @@ const SessionReducer = (state = _nullUser, action) => {
     return merge({}, _nullUser, {errors});
   case RECEIVE_NEW_DIRECT_MESSAGE:
     let newState = merge([], state);
-    newState.currentUser.directMessages.push(action.directMessage);
+    const dmIndexes = newState.currentUser.directMessages.map(dm => dm.id);
+    const newDmIndex = action.directMessage.id;
+    if (!dmIndexes.includes(newDmIndex)) {
+      newState.currentUser.directMessages.push(action.directMessage);
+    }
     return newState;
   default:
     return state;

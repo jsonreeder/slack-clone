@@ -26,9 +26,13 @@ class Api::ForumsController < ApplicationController
       other_users.each do |user|
         user.forums << @forum
       end
-
-      render 'api/forums/show'
+    else
+      # Find the existing forum with that name
+      new_forum = Forum.find_by(name: @forum.name)
+      @forum = new_forum
     end
+
+    render 'api/forums/show'
   end
 
   private
