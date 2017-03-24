@@ -25,6 +25,7 @@ class Message extends React.Component {
 
   componentDidMount() {
     $('html,body').css('overflow','hidden');
+    this.props.requestSingleForum(this.props.params.forumName);
     this.props.requestAllUsers();
     this.scrollToBottom();
   }
