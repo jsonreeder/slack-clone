@@ -1,5 +1,6 @@
 import * as SessionAPIUtil from '../util/session_api_util';
 import * as ForumAPIUtil from '../util/forum_api_util';
+import { hashHistory } from 'react-router';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -31,7 +32,11 @@ export const createMembership = forumName => dispatch => (
 
 export const addDirectMessage = (currentUser, otherUsers) => dispatch => (
   ForumAPIUtil.createForum(currentUser, otherUsers)
-    .then(createdForum => dispatch(receiveNewDirectMessage(createdForum)))
+    .then(createdForum => {
+      dispatch(receiveNewDirectMessage(createdForum));
+      console.log(createdForum);
+      hashHistory.push(`/messages/${createdForum.name}`);
+    })
 );
 
 const receiveNewDirectMessage = directMessage => ({
