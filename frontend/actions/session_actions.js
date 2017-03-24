@@ -34,7 +34,6 @@ export const addDirectMessage = (currentUser, otherUsers) => dispatch => (
   ForumAPIUtil.createForum(currentUser, otherUsers)
     .then(createdForum => {
       dispatch(receiveNewDirectMessage(createdForum));
-      console.log(createdForum);
       hashHistory.push(`/messages/${createdForum.name}`);
     })
 );
