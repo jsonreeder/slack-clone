@@ -6,7 +6,7 @@ class Api::ForumsController < ApplicationController
 
   def show
     @forum = Forum.find_by_name(params[:name])
-    AutoMessageJob.set(wait: 0.seconds).perform_later(@forum.name)
+    # AutoMessageJob.set(wait: 0.seconds).perform_later(@forum.name)
   end
 
   def create
