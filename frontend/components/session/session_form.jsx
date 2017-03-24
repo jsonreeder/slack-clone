@@ -234,9 +234,7 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className='auth-form'>
           <div className="auth-form-header">
             {this.title()}
-            <p className='subtitle'>
-              slack-copy.heroku.com
-            </p>
+            <a href="thorp.jasonreeder.com" className="subtitle">thorp.jasonreeder.com</a>
           </div>
           <div className="auth-form-body">
             {this.instructions()}
