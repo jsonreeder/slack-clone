@@ -1,14 +1,10 @@
 .message-history-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column-reverse;
   margin-bottom: 20px;
   overflow: scroll;
 }
 
 .single-message-container {
   margin: 8px 0;
-
 }
 
 .single-message-header {
