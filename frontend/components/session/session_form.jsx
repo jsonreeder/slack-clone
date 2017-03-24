@@ -66,11 +66,11 @@ class SessionForm extends React.Component {
 
   title() {
     if (this.props.formType === 'signin') {
-      return <h1>Sign in to Slack Clone</h1>;
+      return <h1>Sign in to ThorpChat</h1>;
     } else if (this.props.formType === 'join') {
-      return <h1>Join Slack Clone</h1>;
+      return <h1>Join ThorpChat</h1>;
     } else {
-      return <h1>Try Slack Clone</h1>;
+      return <h1>Try Thorpchat</h1>;
     }
   }
 
@@ -91,8 +91,12 @@ class SessionForm extends React.Component {
       <header className='header auth-header'>
         <a href="/">
           <ul className='brand'>
-            <li>[logo]</li>
-            <li>slack</li>
+            <li><img
+                  src="/assets/color-logo.svg"
+                  id="logo"
+                  alt="quadrithorp"
+                /></li>
+            <li>thorp</li>
           </ul>
         </a>
         {this.navLinks()}

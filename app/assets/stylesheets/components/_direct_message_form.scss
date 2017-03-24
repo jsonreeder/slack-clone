@@ -19,11 +19,6 @@
   width: 600px;
   flex-wrap: wrap;
 
-  input,
-  li {
-    margin-top: 5px;
-  }
-
   li {
     margin-left: 5px;
     background: $blue-sky;
@@ -37,6 +32,12 @@
 .direct-message-form-text-input {
   padding-left: 10px;
   width: 250px;
+
+}
+
+p.direct-message-form-text {
+  padding-left: 10px;
+  color: $gray;
 }
 
 .direct-message-form-submit {

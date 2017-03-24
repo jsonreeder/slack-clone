@@ -81,7 +81,7 @@ class Message extends React.Component {
     if (this.props.currentUser) {
       username = this.props.currentUser.username;
       title = <div>
-        <h1>{username[0].toUpperCase() + username.slice(1)}</h1>
+        <h1>ThorpChat</h1>
         <ul className="sub-header">
           <li>@{username}</li>
         </ul>

@@ -8,8 +8,12 @@ const splashPage = () => {
       <header className='header splash-header'>
         <a href="/">
           <ul className='brand'>
-            <li>[logo]</li>
-            <li>slack</li>
+            <li><img
+                  src="/assets/color-logo.svg"
+                  id="logo"
+                  alt="quadrithorp"
+                /></li>
+            <li>thorp</li>
           </ul>
         </a>
         <ul className='nav'>
@@ -34,15 +38,19 @@ const splashPage = () => {
         </div>
       </section>
     </div>
-  )
+  );
 };
 
 const welcome = (currentUser, signOut) => (
   <div>
     <header className='header splash-header'>
       <ul className='brand'>
-        <li>[logo]</li>
-        <li>slack</li>
+        <li><img
+              src="/assets/color-logo.svg"
+              id="logo"
+              alt="quadrithorp"
+            /></li>
+        <li>thorp</li>
       </ul>
       <ul className='nav'>
         <li>
