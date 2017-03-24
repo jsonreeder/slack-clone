@@ -22,9 +22,17 @@ class DirectMessageForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.allUsers) {
+      const usersWithoutCurrent = newProps.allUsers.filter(user => {
+        if (user.username === this.props.currentUser.username) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+
       this.setState({
-        remainingUsers: newProps.allUsers.map(user => user.username),
-        filteredUsers: newProps.allUsers.map(user => user.username).sort()
+        remainingUsers: usersWithoutCurrent.map(user => user.username),
+        filteredUsers: usersWithoutCurrent.map(user => user.username).sort()
       });
     }
   }
@@ -77,7 +85,6 @@ class DirectMessageForm extends React.Component {
 
   constrainUsersList() {
     return e => {
-      /* const query = RegExp(e.currentTarget.value);*/
       this.setState({
         inputText: e.currentTarget.value
       });
@@ -90,21 +97,19 @@ class DirectMessageForm extends React.Component {
 
   selectedUsers() {
     let users;
+    let message = <p>Start a conversation by selecting users below</p>;
     if (this.state.selectedUsers) {
       users = this.state.selectedUsers.map((user, idx) => (
         <li key={idx}>{user}</li>
       ));
+      if (this.state.selectedUsers[0]) {
+        message = "";
+      }
     }
     return(
       <ul className="selected-users">
         {users}
-        <input
-          type="text"
-          placeholder="Start a conversation"
-          className="direct-message-form-text-input"
-          onChange={this.constrainUsersList()}
-          value={this.state.inputText}
-        />
+        {message}
       </ul>
     );
   }
