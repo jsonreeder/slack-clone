@@ -99,7 +99,7 @@ class Message extends React.Component {
       channels = (
         this.props.currentUser.channels.map((channel, idx) => (
           <Link
-            to={`/messages/${channel.name}/details`}
+            to={`/messages/${channel.name}`}
             key={idx}
           >
             <li># {channel.name}</li>
@@ -132,7 +132,7 @@ class Message extends React.Component {
       directMessages = (
         this.props.currentUser.directMessages.map((directMessage, idx) => (
           <Link
-            to={`/messages/${directMessage.name}/details`}
+            to={`/messages/${directMessage.name}`}
             key={idx}
           >
             <li>
