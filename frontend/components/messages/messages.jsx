@@ -17,7 +17,6 @@ class Message extends React.Component {
 
   // Lifecycle methods
   componentWillReceiveProps(newProps) {
-    console.log("receiving new props: ", newProps);
     if (!newProps.currentUser) {
       hashHistory.push('/');
     }
@@ -26,7 +25,6 @@ class Message extends React.Component {
       this.props.requestSingleForum(newProps.params.forumName);
     }
 
-    console.log("after receiving new prop current props: ", this.props);
   }
 
   componentDidMount() {
@@ -168,7 +166,6 @@ class Message extends React.Component {
     let title;
     let detailsLinks;
     if (this.props.forum.currentForum) {
-      console.log("trying to render header with the following props", this.props);
       title = <div>
         <h1>#{this.props.forum.currentForum.name}</h1>
         <ul className="sub-header">
@@ -248,7 +245,6 @@ class Message extends React.Component {
     let history;
     let currentForum;
     if (this.props.forum.currentForum) {
-      console.log("trying to render messagecontainer with the following props", this.props);
       history = this.props.forum.currentForum.messages;
       currentForum = this.props.forum.currentForum;
     }
