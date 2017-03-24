@@ -101,8 +101,9 @@ class Message extends React.Component {
   channelsJoined () {
     let channels;
     if (this.props.currentUser.channels) {
+      let sortedChannels = this.props.currentUser.channels.sort((a, b) => a.name > b.name);
       channels = (
-        this.props.currentUser.channels.map((channel, idx) => (
+        sortedChannels.map((channel, idx) => (
           <Link
             to={`/messages/${channel.name}`}
             key={idx}
@@ -134,8 +135,9 @@ class Message extends React.Component {
   directMessagesJoined () {
     let directMessages;
     if (this.props.currentUser.directMessages) {
+      let sortedDms = this.props.currentUser.directMessages.sort((a, b) => a.name > b.name);
       directMessages = (
-        this.props.currentUser.directMessages.map((directMessage, idx) => (
+        sortedDms.map((directMessage, idx) => (
           <Link
             to={`/messages/${directMessage.name}`}
             key={idx}
