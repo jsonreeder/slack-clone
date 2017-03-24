@@ -31,6 +31,10 @@
 
   .subtitle {
     font-size: .8em;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
