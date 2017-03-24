@@ -12,6 +12,11 @@ class Api::ForumsController < ApplicationController
 
   def show
     @forum = Forum.find_by_name(params[:name])
+    if @forum
+      render 'api/forums/show'
+    else
+      render text: "not found", status: 200
+    end
     # AutoMessageJob.set(wait: 0.seconds).perform_later(@forum.name)
     print "-" * 20
     print "DEBUGGING: @forum after initialization in show"
