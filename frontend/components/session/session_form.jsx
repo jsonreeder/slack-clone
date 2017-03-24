@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
     } else if (this.props.formType === 'join') {
       return <h1>Join ThorpChat</h1>;
     } else {
-      return <h1>Try Thorpchat</h1>;
+      return <h1>Try ThorpChat</h1>;
     }
   }
 
