@@ -1,0 +1,61 @@
+.app-container {
+  .messages-container {
+    display: flex;
+    height: 100vh;
+
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+
+      .sidebar-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-body {
+        overflow: auto;
+        width: 100%
+      }
+    }
+
+    .home-container {
+      overflow: scroll;
+      .forum-header {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .forum-body {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        min-height: 0;
+
+        .message-container {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          align-content: space-around;
+
+          .message-history-container {
+            display: flex;
+            flex-direction: column-reverse;
+            flex: 1;
+          }
+
+          .compose-message-container {
+
+          }
+        }
+
+        .forum-details {
+
+        }
+      }
+    }
+
+  }
+}
