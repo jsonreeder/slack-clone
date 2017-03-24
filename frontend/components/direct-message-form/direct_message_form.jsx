@@ -44,7 +44,7 @@ class DirectMessageForm extends React.Component {
         currentUser,
         otherUsers
       );
-      hashHistory.push(`/messages/${forumTitle}/details`);
+      hashHistory.push(`/messages/${forumTitle}`);
     };
   }
 
