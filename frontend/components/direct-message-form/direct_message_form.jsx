@@ -97,7 +97,9 @@ class DirectMessageForm extends React.Component {
 
   selectedUsers() {
     let users;
-    let message = <p>Start a conversation by selecting users below</p>;
+    let message = <p className="direct-message-form-text">
+        Start a conversation by selecting users below
+    </p>;
     if (this.state.selectedUsers) {
       users = this.state.selectedUsers.map((user, idx) => (
         <li key={idx}>{user}</li>
