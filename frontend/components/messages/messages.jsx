@@ -226,12 +226,12 @@ class Message extends React.Component {
         id="message-history-container"
         className="message-history-container"
       >
+        <div ref={(el) => { this.messagesEnd = el; }}></div>
         {
           messageHistory.map((message, idx) => (
             this.singleMessage(message, idx)
           ))
         }
-        <div ref={(el) => { this.messagesEnd = el; }}></div>
       </div>
     );
   }
