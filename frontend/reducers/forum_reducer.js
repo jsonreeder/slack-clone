@@ -11,7 +11,7 @@ const ForumReducer = (state = {}, action) => {
 
   switch (action.type) {
   case RECEIVE_ALL_FORUMS:
-    return merge({}, {
+    return merge({}, newState, {
       forums: action.forums
     });
   case RECEIVE_SINGLE_FORUM:

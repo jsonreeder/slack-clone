@@ -16,15 +16,15 @@ class Message extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!newProps.currentUser) {
       hashHistory.push('/');
-    } else if (this.props.params.forumName !== newProps.params.forumName) {
+    }
+
+    if (this.props.params.forumName !== newProps.params.forumName) {
       this.props.requestSingleForum(newProps.params.forumName);
     }
   }
 
   componentDidMount() {
     $('html,body').css('overflow','hidden');
-    this.props.requestAllForums();
-    this.props.requestSingleForum(this.props.params.forumName);
     this.props.requestAllUsers();
     this.scrollToBottom();
   }
