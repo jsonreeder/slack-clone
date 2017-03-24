@@ -24,7 +24,7 @@ class ChannelsIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.forum.forums.channels) {
+    if (newProps.forum.forums) {
       this.setState({allChannels: newProps.forum.forums.channels});
     }
   }
