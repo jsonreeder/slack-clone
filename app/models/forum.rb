@@ -30,10 +30,6 @@ class Forum < ApplicationRecord
     Forum.where(kind: 'direct_message')
   end
 
-  def reverse_chron_messages
-    messages.order(created_at: :desc)
-  end
-
   def configure_dm(current_user, other_users)
     all_users = [current_user] + other_users
     all_users.sort!
